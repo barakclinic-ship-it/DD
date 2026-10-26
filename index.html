@@ -167,7 +167,7 @@ const Q = [
  {id:'g_night',t:'כאב לילי שמעיר משינה?',lbl:'כאב לילי'},
  {id:'g_load',t:'הכאב קשור ישירות לפעילות או לעומס מסוים, ונרגע כשמפסיקים?',lbl:'תלוי עומס'},
  {id:'g_swell',t:'יש נפיחות שנראית לעין?',lbl:'נפיחות'},
- {id:'g_lump',t:'יש גוש או בליטה מקומית שאפשר למשש?',lbl:'גוש / בליטה'},
+ {id:'g_lump',t:'יש גוש, בליטה או נפיחות מקומית תחומה שאפשר למשש?',lbl:'גוש / בליטה',first:10.5},
 
  /* ---------- ברך: טווח תנועה ---------- */
  {id:'k_ext',t:'הברך מתיישרת עד הסוף?',h:'השווה לצד השני, אקטיבית ופסיבית.',lbl:'יישור מלא'},
@@ -279,6 +279,10 @@ const Q = [
  {id:'k_stiff',t:'נוקשות בוקר קצרה (פחות מ-30 דקות), וכאב שמחמיר לאורך היום ובעומס?',lbl:'נוקשות קצרה'},
  {id:'k_run',t:'ריצה או רכיבה, עם כאב לטרלי שמופיע אחרי מרחק קבוע?',lbl:'ריצה / רכיבה'},
  {id:'k_anser',t:'כאב ורגישות מדיאליים 2–5 ס"מ מתחת לקו המפרק?',lbl:'Pes anserine'},
+ {id:'k_lumpfront',cond:{g_lump:'y'},t:'הגוש בקדמת הברך, על הפיקה או מתחתיה?',lbl:'גוש קדמי',first:10.6},
+ {id:'k_lumpside',cond:{g_lump:'y',k_lumpfront:'n'},t:'הגוש על קו המפרק בצד (פנימי או חיצוני)?',lbl:'גוש בקו המפרק',first:10.7},
+ {id:'k_kneel',t:'עבודה או פעילות על הברכיים (כריעה, ריצוף, ניקיון, היאבקות, ג\'ודו)?',lbl:'כריעה ממושכת'},
+ {id:'t_pisani',type:'pn',t:"Joint-line cyst (Pisani's sign)",h:'מישוש הגוש על קו המפרק ביישור ובכיפוף של 30°–45°.',pos:'גוש תחום וקשיח על קו המפרק, שגודלו משתנה עם כיפוף ויישור.',lbl:'גוש בקו המפרק (בדיקה)'},
  {id:'k_pswell',t:'יש נפיחות, מלאות או גוש מאחורי הברך?',h:'מישוש חלל הברך בעמידה ובשכיבה על הבטן.',lbl:'נפיחות אחורית',first:11},
 
  /* ---------- ברך: בדיקות קליניות ---------- */
@@ -365,6 +369,28 @@ const Q = [
  {id:'t_laslett',type:'pn',t:'Laslett SIJ cluster',h:'5 בדיקות: Distraction, Thigh thrust, Compression, Sacral thrust, Gaenslen.',pos:'לפחות 3 מתוך 5 משחזרות את הכאב.',lbl:'Laslett'},
  {id:'t_stork',type:'pn',t:'One-leg hyperextension (Stork)',h:'עמידה על רגל אחת עם הטיית גב לאחור, לכל צד.',pos:'כאב גב באותו צד.',lbl:'Stork'},
  {id:'t_piri',type:'pn',t:'Seated piriformis stretch / FAIR',h:'ישיבה או שכיבה על הצד: כיפוף, אדוקציה וסיבוב פנימי של הירך.',pos:'שחזור כאב בעכוז האחורי.',lbl:'FAIR'},
+ /* ---------- גב תחתון: מקורות לא אורטופדיים ---------- */
+ {id:'c_aaa',t:'גיל מעל 60 ומעשן, עם כאב עמוק בבטן או בגב שלא משתנה בתנועה, או תחושת פעימה בבטן?',lbl:'חשד AAA',first:4.5},
+ {id:'c_uro',t:'צריבה או דם בשתן, כאב גלי בצד (מותן), או חום?',lbl:'תסמיני שתן / מותן',first:4.6},
+ {id:'c_gi',t:'עצירות, נפיחות בבטן או שינוי בהרגלי היציאות?',lbl:'עצירות / בטן'},
+ {id:'c_gi2',cond:{c_gi:'y'},t:'הכאב משתנה עם ארוחות או יציאות יותר מאשר עם תנועה?',lbl:'קשור ליציאות'},
+ {id:'c_pfloor',t:'דליפת שתן, תחושת כובד באגן, או עצירת נשימה במאמץ?',lbl:'רצפת אגן / נשימה'},
+ {id:'c_cycle',t:'הכאב מחמיר באופן קבוע סביב המחזור החודשי?',lbl:'קשור למחזור'},
+ {id:'t_aslr',type:'pn',t:'Active straight leg raise (ASLR)',h:'שכיבה על הגב, הרמת רגל ישרה 20 ס"מ. אפשר לחזור עם דחיסת אגן ידנית.',pos:'קושי, כבדות או כאב, שמשתפרים עם דחיסת האגן.',lbl:'ASLR'},
+ {id:'t_p4',type:'pn',t:'P4 / Posterior pelvic pain provocation',h:'שכיבה על הגב, ירך ב-90°. לחץ צירי דרך הברך לאורך הירך.',pos:'כאב עמוק בעכוז באותו צד.',lbl:'P4'},
+
+ /* ---------- גורמים תורמים (נשאלים לפני התוצאה) ---------- */
+ {id:'c_neigh',ctx:1,t:'יש כאב, הגבלה או בעיה במפרקים הסמוכים (מעל ומתחת לאזור)?',h:'למשל ירך וקרסול בבעיית ברך, צוואר וגב עליון בבעיית כתף.',lbl:'מפרקים סמוכים'},
+ {id:'c_trhx',ctx:1,t:'היו תאונה, פציעה קשה או שבר בעבר באזור או בשרשרת התנועה שלו?',lbl:'פציעות עבר'},
+ {id:'c_surg',ctx:1,t:'עבר ניתוח בעבר באזור, בבטן או באגן (כולל ניתוח קיסרי)?',lbl:'ניתוחים בעבר'},
+ {id:'c_work',ctx:1,t:'איזה סוג עבודה?',type:'ab',a:['ישיבה ממושכת / מחשב','עבודה פיזית / תנועות חוזרות'],lbl:'עבודה'},
+ {id:'c_stress',ctx:1,t:'יש סטרס משמעותי, שינה גרועה, או חשש שתנועה תזיק?',h:'דגלים צהובים: גורמים פסיכו-סוציאליים שמעלים סיכון לכאב מתמשך.',lbl:'סטרס / שינה'},
+ {id:'c_baby',ctx:1,t:'הריון כרגע, לידה בשנה האחרונה, או תינוק חדש בבית (נשיאה, הנקה, שינה מקוטעת)?',lbl:'הריון / תינוק'},
+ {id:'c_meds',ctx:1,t:'נוטל תרופות באופן קבוע או לאחרונה?',lbl:'תרופות'},
+ {id:'c_ster',ctx:1,cond:{c_meds:'y'},t:'סטרואידים (פרדניזון וכו\') לאורך זמן?',lbl:'סטרואידים'},
+ {id:'c_fq',ctx:1,cond:{c_meds:'y'},t:'אנטיביוטיקה מקבוצת הקווינולונים (סיפרו, לבופלוקסצין) בחודשים האחרונים?',lbl:'קווינולונים'},
+ {id:'c_acoag',ctx:1,cond:{c_meds:'y'},t:'נוגדי קרישה (אליקוויס, קומדין, קסרלטו וכו\')?',lbl:'נוגדי קרישה'},
+
 ];
 
 
@@ -420,6 +446,17 @@ const R = {
  EL07:{k:'סקירה שיטתית',c:'Ellis R, Hing W, Reid D. Iliotibial band friction syndrome: a systematic review. Man Ther 2007;12:200–8.',q:'Ellis Hing Reid 2007 iliotibial band friction syndrome systematic review'},
  HF10:{k:'סקירה',c:'Helfenstein M Jr, Kuromoto J. Anserine syndrome. Rev Bras Reumatol 2010;50:313–27.',q:'Helfenstein Kuromoto 2010 anserine syndrome'},
  FN15:{k:'סקירה',c:"Frush TJ, Noyes FR. Baker's cyst: diagnostic and surgical considerations. Sports Health 2015;7:359–65.",q:'Frush Noyes 2015 Baker cyst diagnostic surgical considerations'},
+ RM16:{k:'קריטריונים (Rome IV)',c:'Mearin F et al. Bowel disorders. Gastroenterology 2016;150:1393–407.',q:'Mearin 2016 bowel disorders Rome IV Gastroenterology'},
+ SH06:{k:'מחקר אפידמיולוגי',c:'Smith MD, Russell A, Hodges PW. Disorders of breathing and continence have a stronger association with back pain than obesity and physical activity. Aust J Physiother 2006;52:11–6.',q:'Smith Russell Hodges 2006 breathing continence back pain'},
+ VL08:{k:'הנחיה קלינית',c:'Vleeming A et al. European guidelines for the diagnosis and treatment of pelvic girdle pain. Eur Spine J 2008;17:794–819.',q:'Vleeming 2008 European guidelines pelvic girdle pain'},
+ DY92:{k:'סקירה',c:'Deyo RA, Rainville J, Kent DL. What can the history and physical examination tell us about low back pain? JAMA 1992;268:760–5.',q:'Deyo 1992 history physical examination low back pain JAMA'},
+ LS99:{k:'סקירה שיטתית',c:'Lederle FA, Simel DL. Does this patient have abdominal aortic aneurysm? JAMA 1999;281:77–82.',q:'Lederle Simel 1999 abdominal aortic aneurysm rational clinical examination'},
+ ZB20:{k:'סקירה',c:'Zondervan KT, Becker CM, Missmer SA. Endometriosis. N Engl J Med 2020;382:1244–56.',q:'Zondervan 2020 endometriosis NEJM'},
+ HL08:{k:'מחקר תיקוף',c:'Hill JC et al. A primary care back pain screening tool: identifying patient subgroups for initial treatment. Arthritis Rheum 2008;59:632–41.',q:'Hill 2008 primary care back pain screening tool STarT Back'},
+ SP13:{k:'סקירה שיטתית',c:'Stephenson AL et al. Tendon injury and fluoroquinolone use: a systematic review. Drug Saf 2013;36:709–21.',q:'Stephenson 2013 tendon injury fluoroquinolone systematic review'},
+ BH18:{k:'סקירה',c:'Buckley L, Humphrey MB. Glucocorticoid-induced osteoporosis. N Engl J Med 2018;379:2547–56.',q:'Buckley Humphrey 2018 glucocorticoid-induced osteoporosis'},
+ AP11:{k:'סקירה',c:'Aaron DL et al. Four common types of bursitis: diagnosis and management. J Am Acad Orthop Surg 2011;19:359–67.',q:'Aaron 2011 four common types of bursitis diagnosis management'},
+ CM01:{k:'מחקר הדמיה',c:'Campbell SE, Sanders TG, Morrison WB. MR imaging of meniscal cysts: incidence, location, and clinical significance. AJR Am J Roentgenol 2001;177:409–13.',q:'Campbell Sanders Morrison 2001 MR imaging meniscal cysts'},
  MT14:{k:'ספר',c:"Hengeveld E, Banks K. Maitland's Peripheral Manipulation, 5th ed. Elsevier, 2014.",q:'',u:'https://www.google.com/search?q=Maitland%27s+Peripheral+Manipulation+Hengeveld+Banks'},
  MG26:{k:'ספר מוביל',c:"Manske RC et al. Magee's Orthopedic Physical Assessment, 8th ed. Elsevier, 2026.",q:'',u:'https://shop.elsevier.com/books/magee-s-orthopedic-physical-assessment/manske/978-0-443-12864-6'},
  NT21:{k:'ספר מבוסס ראיות',c:"Cleland J, Koppenhaver S, Su J. Netter's Orthopaedic Clinical Examination: An Evidence-Based Approach, 4th ed. Elsevier, 2021.",q:'',u:'https://shop.elsevier.com/books/netters-orthopaedic-clinical-examination/cleland/978-0-323-69533-6'},
@@ -681,8 +718,18 @@ const DX = [
   d:'כאב מדיאלי מתחת לקו המפרק, שכיח בגיל מבוגר, לעיתים יחד עם OA.',
   t:['מישוש מתחת לקו המפרק המדיאלי','US'],
   m:'ניהול עומסים, חיזוק, הזרקה לשקול.',ev:['HF10','MT14','MG26','NT21']},
+ {id:'k_bursa',n:'בורסיטיס קדמית (פרה / אינפרה-פטלרית)',en:'Prepatellar / infrapatellar bursitis',
+  p:{limb:'b!',lower:'b!',lj:'a!',k_lumpfront:'y!',g_lump:'y',k_ant:'y',k_kneel:'y',k_pswell:'n',k_ext:'y',t_eff:'n',k_lock:'n'},
+  d:'נפיחות רכה ושטחית על הפיקה או מתחתיה, מחוץ למפרק, לרוב מכריעה ממושכת או מכה. המפרק עצמו תקין.',
+  t:['מישוש נפיחות שטחית ותחומה','Ballottement שלילי (אין תפליט במפרק)','חום ואודם מקומי'],
+  m:'הגנה מלחץ וכריעה, קירור, ניהול עומסים. חום, אודם או חום גוף → חשד לבורסיטיס זיהומית, הפניה לשאיבה.',ev:['AP11','MT14','MG26','NT21']},
+ {id:'k_mcyst',n:'ציסטה מניסקלית (פרה-מניסקלית)',en:'Parameniscal cyst',
+  p:{limb:'b!',lower:'b!',lj:'a!',k_lumpside:'y!',g_lump:'y',k_lumpfront:'n',k_pswell:'n',t_pisani:'y+',t_jlt:'y',k_lock:'y',t_mcm:'y',k_age:'b'},
+  d:'גוש קשיח על קו המפרק, לרוב בצד החיצוני, שקשור לקרע אופקי במניסקוס.',
+  t:["Pisani's sign",'Joint line tenderness','McMurray','MRI'],
+  m:'טיפול בקרע המניסקוס. גוש כואב שגדל → הפניה לאורתופד.',ev:['CM01','HE07','MT14','MG26','NT21']},
  {id:'k_baker',n:'ציסטת בייקר',en:"Popliteal (Baker's) cyst",
-  p:{limb:'b!',lower:'b!',lj:'a!',k_pswell:'y!',k_post:'y',k_ant:'n',k_flex:'n',k_postflex:'y+',t_foucher:'y+',t_eff:'y'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_pswell:'y!',k_post:'y',k_lumpfront:'n',k_lumpside:'n',k_ant:'n',k_flex:'n',k_postflex:'y+',t_foucher:'y+',t_eff:'y'},
   d:'גוש ומלאות מאחורי הברך, עם לחץ בכיפוף מלא ובכריעה. לרוב משני ל-OA או לקרע במניסקוס. לשלול DVT.',
   t:["Foucher's sign",'מישוש בחלל הברך','US'],
   m:'טיפול בבעיה התוך-מפרקית. התפוצצות עם נפיחות שוק → שלילת DVT.',ev:['FN15','MT14','MG26','NT21']},
@@ -764,6 +811,36 @@ const DX = [
   m:'הורדת עומס. נביקולרי / מטטרסל 5 → סיכון גבוה, הפניה.',ev:['MT16','MT14','MG26','NT21']},
 
  /* ---------- גב תחתון ---------- */
+ {id:'b_aaa',flag:1,n:'מפרצת אבי העורקים הבטני (AAA)',en:'Abdominal aortic aneurysm',
+  p:{limb:'b!',lower:'a!',c_aaa:'y!',b_age:'b',g_load:'n'},
+  d:'כאב עמוק בגב או בבטן שלא משתנה בתנועה, אצל מבוגר מעשן, לעיתים עם מסה פועמת.',
+  t:['מישוש בטן','US בטן'],
+  m:'חשד → הפניה דחופה. כאב חד ופתאומי עם חולשה או סחרחורת → מיון.',ev:['LS99','DY92','MT14','MG26','NT21']},
+ {id:'b_ren',flag:1,n:'מקור כלייתי / אורולוגי',en:'Renal colic / pyelonephritis',
+  p:{limb:'b!',lower:'a!',c_uro:'y!',g_load:'n',g_qual:'a'},
+  d:'כאב מותני גלי, תסמיני שתן או חום. אבן בכליה או זיהום בדרכי השתן.',
+  t:['בדיקת שתן','רגישות בזווית הצלעית-גבית'],
+  m:'הפניה לרופא. חום עם כאב מותני → בדחיפות.',ev:['DY92','MT14','MG26','NT21']},
+ {id:'b_gi',n:'מקור ויסצרלי: עצירות / מערכת העיכול',en:'Visceral referral: constipation / GI',
+  p:{limb:'b!',lower:'a!',c_gi:'y!',c_gi2:'y+',g_load:'n',g_qual:'b',g_burn:'n',b_rad:'n',t_slr:'n',c_stress:'y',c_surg:'y'},
+  d:'כאב גב תחתון שקשור ללחץ תוך-בטני, עצירות ונפיחות. משתנה עם ארוחות ויציאות יותר מאשר עם תנועה.',
+  t:['שאלון יציאות (Rome IV, סולם Bristol)','מישוש בטן','בדיקת נשימה וסרעפת'],
+  m:'טיפול בעצירות (שתייה, סיבים, תנועה, תנוחת יציאה) ועבודת נשימה. דם ביציאות, ירידה במשקל או שינוי חד מעל גיל 50 → הפניה לרופא.',ev:['RM16','SH06','MT14','MG26','NT21']},
+ {id:'b_pf',n:'רצפת אגן, נשימה ולחץ תוך-בטני',en:'Pelvic floor / breathing dysfunction',
+  p:{limb:'b!',lower:'a!',c_pfloor:'y!',c_baby:'y',c_surg:'y',c_stress:'y',g_burn:'n',b_below:'n',t_aslr:'y'},
+  d:'כאב גב מתמשך שקשור לדליפת שתן, כובד באגן, או דפוס נשימה של עצירת אוויר במאמץ.',
+  t:['הערכת דפוס נשימה','ASLR','הערכת רצפת אגן'],
+  m:'עבודת נשימה ותיאום עם רצפת האגן. הפניה לפיזיותרפיה של רצפת אגן.',ev:['SH06','MT14','MG26','NT21']},
+ {id:'b_pgp',n:'כאב חגורת אגן (הריון / אחרי לידה)',en:'Pregnancy-related pelvic girdle pain',
+  p:{limb:'b!',lower:'a!',c_baby:'y!',b_sij:'y',t_aslr:'y+',t_p4:'y+',b_neuro:'n',b_below:'n',g_burn:'n'},
+  d:'כאב באזור ה-SIJ או הסימפיזה בהריון או אחרי לידה. מוחמר בעמידה על רגל אחת, במדרגות ובהתהפכות במיטה.',
+  t:['ASLR','P4','Long dorsal ligament'],
+  m:'הדרכה, חגורת אגן לפי הצורך, תרגול ייצוב מותאם.',ev:['VL08','MT14','MG26','NT21']},
+ {id:'b_gyn',n:'מקור גינקולוגי (למשל אנדומטריוזיס)',en:'Gynaecological referral (e.g. endometriosis)',
+  p:{limb:'b!',lower:'a!',c_cycle:'y!',b_age:'a',g_load:'n',b_neuro:'n'},
+  d:'כאב גב תחתון ואגן שמשתנה עם המחזור החודשי.',
+  t:['יומן כאב מול מחזור','הפניה לגינקולוגיה'],
+  m:'הפניה לבירור גינקולוגי. טיפול משלים בכאב ובתנועה.',ev:['ZB20','MT14','MG26','NT21']},
  {id:'b_ces',flag:1,n:'תסמונת כאודה אקווינה',en:'Cauda equina syndrome',
   p:{limb:'b!',lower:'a!',b_cauda:'y!'},
   d:'הפרעת תחושה בחיץ, שינוי בשליטה על סוגרים או חולשה דו-צדדית מתקדמת.',
@@ -877,10 +954,21 @@ const TAG_NOTE='Maitland';
 const TAG={
  s_fx:'FRAC',s_visc:'VISC',s_inf:'INF',s_c5:'NEURAL',s_c6:'NEURAL',s_c7:'NEURAL',s_csom:'SOMATIC',s_saps:'TENDINO',s_rct:'RCT',s_froz:'FROZEN',s_oa:'DEGEN',s_ac:'MECH',s_inst:'INSTAB',s_slap:'INTRA',s_lhb:'TENDINO',s_calc:'CALC',
  e_fx:'FRAC',e_inf:'INF',e_cerv:'NEURAL',e_lat:'TENDINO',e_med:'TENDINO',e_cub:'ENTRAP',e_rtun:'ENTRAP',e_post:'BURSA',e_ucl:'MECH',e_plri:'INSTAB',e_oa:'DEGEN',e_ocd:'INTRA',
- k_fx:'FRAC',k_inf:'INF',k_dvt:'DVT',k_ref:'REF',k_acl:'LIG',k_pcl:'LIG',k_men:'MEN',k_mcl:'LIG',k_lcl:'LIG',k_pfps:'PFP',k_ptend:'TENDINO',k_osg:'APOPH',k_oa:'DEGEN',k_itb:'TENDINO',k_pes:'TENDINO',k_baker:'CYST',
+ k_fx:'FRAC',k_inf:'INF',k_dvt:'DVT',k_ref:'REF',k_acl:'LIG',k_pcl:'LIG',k_men:'MEN',k_mcl:'LIG',k_lcl:'LIG',k_pfps:'PFP',k_ptend:'TENDINO',k_osg:'APOPH',k_oa:'DEGEN',k_itb:'TENDINO',k_pes:'TENDINO',k_baker:'CYST',k_bursa:'BURSA',k_mcyst:'CYST',
  a_fx:'FRAC',a_inf:'INF',a_ach:'RUPT',a_back:'NEURAL',a_lat:'LIG',a_syn:'LIG',a_cai:'INSTAB',a_ocl:'INTRA',a_imp:'MECH',a_achT:'TENDINO',a_pf:'TENDINO',a_tts:'ENTRAP',a_ptt:'TENDINO',a_per:'TENDINO',a_sfx:'STRESS',
  b_ces:'CES',b_fxd:'FRAC',b_mal:'MAL',b_fem:'NEURAL',b_l4:'NEURAL',b_l5:'NEURAL',b_s1:'NEURAL',b_multi:'NEURAL',b_sten:'STEN',b_nslbp:'SOMATIC',b_sijp:'SOMATIC',b_axs:'INFLAM',b_spon:'MECH',b_dgs:'ENTRAP',b_mer:'ENTRAP',
 };
+const CTX={
+ c_neigh:{k_ref:'y',s_csom:'y',s_c5:'y',s_c6:'y',s_c7:'y',e_cerv:'y',a_back:'y',b_dgs:'y'},
+ c_trhx:{s_oa:'y',e_oa:'y',k_oa:'y',s_inst:'y',e_plri:'y',a_cai:'y',a_ocl:'y'},
+ c_surg:{e_plri:'y'},
+ c_work:{s_csom:'a',e_cub:'a',b_dgs:'a',s_saps:'b',e_lat:'b',e_med:'b',k_oa:'b',a_pf:'b'},
+ c_stress:{b_nslbp:'y',s_csom:'y',k_pfps:'y',b_sijp:'y'},
+ c_baby:{b_nslbp:'y'},
+ c_ster:{s_fx:'y+',e_fx:'y+',k_fx:'y+',a_fx:'y+',b_fxd:'y+',s_inf:'y',k_inf:'y',e_inf:'y',a_inf:'y',b_mal:'y'},
+ c_fq:{a_ach:'y+',a_achT:'y+'},
+};
+DX.forEach(d=>{for(const q in CTX){const v=CTX[q][d.id]; if(v&&!(q in d.p)) d.p[q]=v;}});
 DX.forEach(d=>{const g=GEN[TAG[d.id]]; if(g) for(const k in g) if(!(k in d.p)) d.p[k]=g[k];});
 
 const QI = Object.fromEntries(Q.map(q=>[q.id,q]));
@@ -903,7 +991,7 @@ function evaluate(){
     for(const [qid,v] of answers){
       const e=d.p[qid]; if(!e||v==='?')continue;
       const m=mod(e), x=e[0], q=QI[qid], txt=q.lbl+': '+ansLabel(q,v);
-      if(v===x){ s += m==='!'?(d.flag&&!q.scope?6:2): (m==='+'||m==='*')?3:1; if(!q.scope)why.push([1,txt]); }
+      if(v===x){ s += m==='!'?(qid[0]==='g'&&qid[1]==='_'?1:(d.flag&&!q.scope?6:2)): (m==='+'||m==='*')?3:1; if(!q.scope)why.push([1,txt]); }
       else if(m==='!'){ elim=txt; elimQ=qid; break; }
       else { s -= (m==='-'||m==='*')?3:1; why.push([0,txt]); }
     }
@@ -917,7 +1005,7 @@ function evaluate(){
 
 function nextQuestion(ev){
   const asked=new Set(answers.map(a=>a[0]));
-  const ok=q=>!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v));
+  const ok=q=>!q.ctx&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v));
   const cands=Q.filter(ok);
   const firsts=cands.filter(q=>q.first).sort((a,b)=>a.first-b.first);
   let best=null,bv=0;
@@ -955,11 +1043,37 @@ function testProp(q){
   return '';
 }
 
+function nextCtx(ev){
+  const asked=new Set(answers.map(a=>a[0]));
+  return Q.find(q=>q.ctx&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v)));
+}
 function render(){
-  const ev=evaluate(), q=nextQuestion(ev), top=ev.act[0];
+  const ev=evaluate(); let q=nextQuestion(ev); const top=ev.act[0];
   const confident=top&&top.pct>=.9&&top.s>=3&&answers.filter(a=>!QI[a[0]].scope).length>=4&&!(q&&q.first);
-  const done=forceDone||!q||ev.act.length<=1||(confident&&!keepAsking);
+  let done=forceDone||!q||ev.act.length<=1||(confident&&!keepAsking);
+  if(done&&!forceDone&&ev.act.length){const c=nextCtx(ev); if(c){q=c;done=false;}}
   renderTop(ev,q,done); renderDD(ev);
+}
+const CTXNOTE={
+ c_neigh:['y','מפרקים סמוכים: לבדוק מעל ומתחת לאזור הכאב ואת שרשרת התנועה.'],
+ c_trhx:['y','פציעה קודמת: סיכון ל-OA פוסט-טראומטי, אי-יציבות ושינוי דפוס תנועה.'],
+ c_surg:['y','ניתוח קודם: צלקות, הידבקויות ושינוי בדפוסי תנועה ונשימה.'],
+ c_work:[null,null],
+ c_stress:['y','דגלים צהובים: סטרס, שינה ופחד מתנועה מעלים סיכון לכאב מתמשך. לשקול STarT Back והדרכה על כאב.','HL08'],
+ c_baby:['y','הריון / תינוק: עומס נשיאה והנקה, שינה מקוטעת, רצפת אגן וחגורת אגן.','VL08'],
+ c_ster:['y','סטרואידים: סיכון לאוסטאופורוזיס, שבר ונמק עצם. זהירות בטיפול ידני.','BH18'],
+ c_fq:['y','קווינולונים: סיכון מוגבר לטנדינופתיה ולקרע באכילס.','SP13'],
+ c_acoag:['y','נוגדי קרישה: זהירות בטיפול ידני ובחשד לדימום או המטומה.'],
+ c_gi:['y','עצירות / מערכת עיכול: לחץ תוך-בטני יכול להשפיע על כאב הגב.','RM16'],
+ c_pfloor:['y','רצפת אגן / נשימה: קשורה לכאב גב מתמשך.','SH06'],
+};
+function ctxHTML(){
+  const A=Object.fromEntries(answers), items=[];
+  for(const k in CTXNOTE){const [v,t,ref]=CTXNOTE[k];
+    if(k==='c_work'&&A.c_work){items.push([A.c_work==='a'?'ישיבה ממושכת: הפסקות תנועה וארגונומיה.':'עבודה פיזית / חזרתית: ניהול עומסים והתאמת משימות.',null]);continue;}
+    if(v&&A[k]===v)items.push([t,ref]);}
+  if(!items.length)return '';
+  return `<div class="sec"><h3>גורמים תורמים</h3><ul class="why">${items.map(([t,ref])=>`<li>• ${esc(t)}${ref?` <a href="${R[ref].u||pub(R[ref].q)}" target="_blank" rel="noopener" style="color:var(--muted)">[מקור]</a>`:''}</li>`).join('')}</ul></div>`;
 }
 
 function sinHTML(){
@@ -983,7 +1097,7 @@ function renderTop(ev,q,done){
     const L=q.type==='ab'?q.a:isT?['חיובי','שלילי']:['כן','לא'];
     const V=q.type==='ab'?['a','b']:['y','n'];
     const prop=isT?testProp(q):'';
-    h+=`<div class="qcard"><span class="qnum">${isT?'<span class="kind">בדיקה קלינית</span>':''}שאלה ${answers.length+1}</span>
+    h+=`<div class="qcard"><span class="qnum">${isT?'<span class="kind">בדיקה קלינית</span>':''}${q.ctx?'<span class="kind">גורמים תורמים</span>':''}שאלה ${answers.length+1}</span>
       <h1 class="qtext ${isT?'test':''}">${esc(q.t)}</h1>
       ${q.h?`<p class="qhint">${esc(q.h)}</p>`:''}
       ${q.pos?`<p class="qpos"><b>חיובי:</b> ${esc(q.pos)}</p>`:''}
@@ -999,6 +1113,7 @@ function renderTop(ev,q,done){
       <div><h2>${esc(d.n)}</h2><div class="en">${esc(d.en)}</div></div>
       <p>${esc(d.d)}</p>
       ${sinHTML()}
+      ${ctxHTML()}
       <div class="sec"><h3>מבחנים לאישור</h3><div class="tags">${d.t.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>
       <div class="sec"><h3>כיוון טיפולי</h3><p>${esc(d.m)}</p></div>
       ${ev.act[1]?`<div class="sec"><h3>לשקול גם</h3><p>${ev.act.slice(1,3).map(x=>esc(x.d.n)+' ('+Math.round(x.pct*100)+'%)').join(' · ')}</p></div>`:''}
@@ -1086,6 +1201,8 @@ function shareSummary(){
   const ev=evaluate(); if(!ev.act.length)return;
   const lines=['DD · סיכום אבחנה מבדלת',''];
   ev.act.slice(0,3).forEach((r,i)=>lines.push(`${i+1}. ${r.d.n} (${r.d.en}) — ${Math.round(r.pct*100)}%`));
+  const cx=ctxHTML().replace(/<[^>]+>/g,'\n').split('\n').map(x=>x.trim()).filter(x=>x&&x!=='[מקור]'&&x!=='גורמים תורמים');
+  if(cx.length){lines.push('','גורמים תורמים:');cx.forEach(x=>lines.push(x.startsWith('•')?x:'• '+x));}
   lines.push('','ממצאים:');
   answers.filter(([q,v])=>v!=='?'&&!QI[q].scope).forEach(([q,v])=>lines.push(`• ${QI[q].lbl}: ${ansLabel(QI[q],v)}`));
   const t=lines.join('\n');
