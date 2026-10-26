@@ -1,7 +1,13 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DD</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="DD — אבחנה מבדלת אורטופדית">
 <meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light only">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="DD">
@@ -16,16 +22,14 @@
 :root{
   --bg:#FFFFFF; --panel:#FAFAFA; --ink:#111111; --muted:#6E6E6E;
   --accent:#111111; --soft:#F1F1F1; --line:#E4E4E4; --flag:#A3352C; --flag-soft:#F7ECEA;
+  color-scheme:light;
   --f:"IBM Plex Sans Hebrew","Segoe UI",Arial,sans-serif;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0D0D0D; --panel:#141414; --ink:#F2F2F2; --muted:#9A9A9A;
-  --accent:#F2F2F2; --soft:#222222; --line:#2C2C2C; --flag:#E0897F; --flag-soft:#2E1C1A; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0D0D0D; --panel:#141414; --ink:#F2F2F2; --muted:#9A9A9A;
-  --accent:#F2F2F2; --soft:#222222; --line:#2C2C2C; --flag:#E0897F; --flag-soft:#2E1C1A; color-scheme:dark}
 
-html,body{height:100%}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.5;overflow:hidden}
 #app{height:100%;display:grid;grid-template-rows:1fr 1fr;direction:rtl}
 .pane{min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
@@ -40,6 +44,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
 .ibtn{font:inherit;font-size:13px;color:var(--ink);background:transparent;border:1px solid var(--line)!important;border:0;border-radius:8px;padding:5px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
 .ibtn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ibtn:hover{outline:1px solid var(--accent)}
+.ibtn:disabled{opacity:.35;cursor:default}
+@media (max-width:440px){.brand small,.ibtn .bl{display:none}.ibtn{padding:7px 9px}}
 .ibtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:14px;padding:8px 16px;border-radius:8px;z-index:50;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
@@ -124,6 +130,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
 .foot{font-size:12px;color:var(--muted);padding-top:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+</head>
+<body>
+
 
 <div id="app">
   <section class="pane" id="top"><div class="inner" id="topInner"></div></section>
@@ -891,8 +900,7 @@ function render(){
 function renderTop(ev,q,done){
   const flags=ev.act.filter(r=>r.d.flag&&r.why.some(w=>w[0]));
   let h=`<div class="bar"><span class="brand"><span class="logo" aria-hidden="true"></span><b>DD</b><small>כתף · מרפק · ברך · קרסול · גב</small></span>
-    <span class="tools">${canInstall()?`<button class="ibtn" id="install" title="התקנה כאפליקציה"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>התקנה</button>`:''}<button class="ibtn" id="share" title="שיתוף"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>שיתוף</button></span></div>
-  <div class="bar" style="justify-content:flex-start"><span class="tools"><button class="tbtn" id="undo" ${answers.length?'':'disabled'}>חזרה</button><button class="tbtn" id="reset" ${answers.length?'':'disabled'}>מההתחלה</button></span></div>`;
+    <span class="tools">${canInstall()?`<button class="ibtn" id="install" title="התקנה כאפליקציה"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>התקנה</button>`:''}<button class="ibtn" id="share" title="שיתוף" aria-label="שיתוף"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span class="bl">שיתוף</span></button><button class="ibtn" id="undo" title="חזרה" aria-label="חזרה" ${answers.length?'':'disabled'}><svg viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 010 10h-3"/></svg></button><button class="ibtn" id="reset" title="מההתחלה" aria-label="מההתחלה" ${answers.length?'':'disabled'}><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.6L3 8"/><path d="M3 3v5h5"/></svg></button></span></div>`;
   if(answers.length)h+=`<div class="trail">${answers.map(([qid,v],i)=>`<button class="chip ${v==='n'?'neg':''}" data-back="${i}" title="חזרה לשאלה זו">${esc(QI[qid].lbl)}: <b>${esc(ansLabel(QI[qid],v))}</b></button>`).join('')}</div>`;
   if(flags.length)h+=`<div class="flagbox">דגל אדום: ${flags.map(f=>esc(f.d.n)).join(', ')}. נדרש בירור או הפניה לפני טיפול.</div>`;
 
@@ -1025,3 +1033,6 @@ if('serviceWorker' in navigator && location.protocol==='https:' && !/claude\.ai|
 }
 render();
 </script>
+
+</body>
+</html>
