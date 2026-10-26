@@ -2,7 +2,7 @@
   "id": "./?app=dd",
   "name": "DD — אבחנה מבדלת",
   "short_name": "DD",
-  "description": "אשף אבחנה מבדלת אורטופדית: כתף, מרפק, ברך, קרסול וגב תחתון",
+  "description": "אשף אבחנה מבדלת: אורטופדיה ועיכול",
   "start_url": "./?app=dd",
   "scope": "./",
   "display": "standalone",
