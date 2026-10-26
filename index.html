@@ -1,6 +1,6 @@
 <title>DD</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="DD — אבחנה מבדלת אורטופדית: כתף, מרפק וברך">
+<meta name="description" content="DD — אבחנה מבדלת אורטופדית">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -14,16 +14,16 @@
 <style>
 /* Layout: split screen — questions on a white top half, a fixed differential-diagnosis panel on a pale-blue bottom half, each scrolling on its own. White + one soft blue. */
 :root{
-  --bg:#FFFFFF; --panel:#F5F8FC; --ink:#1C2938; --muted:#677A8E;
-  --accent:#4F86C6; --soft:#E7EFF9; --line:#E1E8F0; --flag:#BC5F55; --flag-soft:#FBECEA;
+  --bg:#FFFFFF; --panel:#FAFAFA; --ink:#111111; --muted:#6E6E6E;
+  --accent:#111111; --soft:#F1F1F1; --line:#E4E4E4; --flag:#A3352C; --flag-soft:#F7ECEA;
   --f:"IBM Plex Sans Hebrew","Segoe UI",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F151D; --panel:#151E29; --ink:#E2EAF3; --muted:#8C9DB0;
-  --accent:#86B0E3; --soft:#1D2B3C; --line:#243344; --flag:#E08B80; --flag-soft:#3A2523; color-scheme:dark}}
+  --bg:#0D0D0D; --panel:#141414; --ink:#F2F2F2; --muted:#9A9A9A;
+  --accent:#F2F2F2; --soft:#222222; --line:#2C2C2C; --flag:#E0897F; --flag-soft:#2E1C1A; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0F151D; --panel:#151E29; --ink:#E2EAF3; --muted:#8C9DB0;
-  --accent:#86B0E3; --soft:#1D2B3C; --line:#243344; --flag:#E08B80; --flag-soft:#3A2523; color-scheme:dark}
+  --bg:#0D0D0D; --panel:#141414; --ink:#F2F2F2; --muted:#9A9A9A;
+  --accent:#F2F2F2; --soft:#222222; --line:#2C2C2C; --flag:#E0897F; --flag-soft:#2E1C1A; color-scheme:dark}
 
 html,body{height:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.5;overflow:hidden}
@@ -37,7 +37,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
 .brand{display:flex;align-items:baseline;gap:8px}
 .logo{display:block;width:30px;height:27px;background:var(--ink);-webkit-mask:url(data:image/png;base64,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) center/contain no-repeat;mask:url(data:image/png;base64,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) center/contain no-repeat;align-self:center}
 .brand b{font-weight:700;font-size:17px;letter-spacing:.5px;direction:ltr}
-.ibtn{font:inherit;font-size:13px;color:var(--accent);background:var(--soft);border:0;border-radius:8px;padding:5px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.ibtn{font:inherit;font-size:13px;color:var(--ink);background:transparent;border:1px solid var(--line)!important;border:0;border-radius:8px;padding:5px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
 .ibtn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ibtn:hover{outline:1px solid var(--accent)}
 .ibtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -68,7 +68,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
 .prop{font-size:12.5px;color:var(--muted)}
 .answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
 .ans{font:inherit;font-size:17px;font-weight:600;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:15px 10px;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
-.ans:hover{border-color:var(--accent);background:var(--soft)}
+.ans:hover{border-color:var(--ink);background:var(--soft)}
+.ans:active{background:var(--ink);color:var(--bg)}
 .ans:active{transform:scale(.98)}
 .ans:focus-visible,.tbtn:focus-visible,.chip:focus-visible,.dx-h:focus-visible,.skip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .skip{font:inherit;font-size:13.5px;color:var(--muted);background:none;border:0;cursor:pointer;justify-self:center;grid-column:1/-1;padding:4px;text-decoration:underline;text-underline-offset:3px}
@@ -81,7 +82,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:13px;background:var(--soft);border-radius:6px;padding:2px 8px}
 .row{display:flex;gap:8px;flex-wrap:wrap}
-.primary{font:inherit;font-weight:600;font-size:15px;color:#fff;background:var(--accent);border:0;border-radius:8px;padding:8px 18px;cursor:pointer}
+.primary{font:inherit;font-weight:600;font-size:15px;color:var(--bg);background:var(--accent);border:0;border-radius:8px;padding:8px 18px;cursor:pointer}
 .ghost{font:inherit;font-size:15px;color:var(--accent);background:transparent;border:1.5px solid var(--accent);border-radius:8px;padding:7px 16px;cursor:pointer}
 .refs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
 .refs li{font-size:13px;line-height:1.45;direction:ltr;text-align:left;display:flex;flex-direction:column;gap:1px}
@@ -142,7 +143,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
    'y-'  בדיקה רגישה (SnNOut): חיובי +1, שלילי −3
 */
 const Q = [
- {id:'limb',t:'איפה הכאב?',type:'ab',a:['גפה עליונה','גפה תחתונה'],lbl:'גפה',first:1,scope:1},
+ {id:'limb',t:'איפה הכאב?',type:'ab',a:['גפה עליונה','גפה תחתונה / גב'],lbl:'גפה',first:1,scope:1},
+ {id:'lower',cond:{limb:'b'},t:'מאיפה הכאב?',type:'ab',a:['גב תחתון / הקרנה לרגל','ברך / קרסול'],lbl:'אזור',first:1.2,scope:1},
+ {id:'lj',cond:{lower:'b'},t:'באיזה מפרק?',type:'ab',a:['ברך','קרסול / כף רגל'],lbl:'מפרק',first:1.4,scope:1},
  {id:'region',cond:{limb:'a'},t:'באיזה מפרק?',type:'ab',a:['כתף','מרפק'],lbl:'אזור',first:1.5,scope:1},
 
  /* ---------- כתף: אנמנזה ---------- */
@@ -150,7 +153,9 @@ const Q = [
  {id:'s_deform',r:'a',cond:{s_trauma:'y'},t:'יש עיוות נראה, אובדן תפקוד מלא או רגישות גרמית נקודתית?',h:'בדוק גם תחושה בצד החיצוני של הזרוע (עצב אקסילרי).',lbl:'עיוות / רגישות גרמית',first:3},
  {id:'s_redsys',r:'a',t:'חום, ירידה במשקל, כאב לילי קבוע או היסטוריה של סרטן?',h:'כאב שלא משתנה עם תנוחה או מנוחה.',lbl:'סימנים מערכתיים',first:4},
  {id:'s_visceral',r:'a',t:'הכאב מופיע במאמץ כללי או עם קוצר נשימה / לחץ בחזה, ולא משתנה בתנועת הכתף?',h:'כתף שמאל: לחשוב לב. כתף ימין: כבד / כיס מרה. כאב בקצה הכתף: סרעפת.',lbl:'מקור ויסצרלי',first:5},
- {id:'s_neck',r:'a',t:'תנועות הצוואר משחזרות את הכאב, או שיש הקרנה מתחת למרפק / נימול?',lbl:'צוואר / הקרנה',first:6},
+ {id:'s_neck',r:'a',t:'תנועות הצוואר משחזרות את כאב הכתף או השכמה?',h:'כיפוף, יישור, סיבוב והטיה של הצוואר.',lbl:'צוואר',first:6},
+ {id:'s_armrad',t:'יש הקרנה לאורך הזרוע, נימול או עקצוץ?',lbl:'הקרנה / נימול'},
+ {id:'s_belowelb',cond:{s_armrad:'y'},t:'ההקרנה או הנימול מגיעים מתחת למרפק, עד האצבעות?',lbl:'מתחת למרפק'},
  {id:'s_age',r:'a',t:'גיל המטופל',type:'ab',a:['מתחת ל-40','40 ומעלה'],lbl:'גיל'},
  {id:'s_prom',r:'a',t:'הטווח הפסיבי מוגבל משמעותית, בעיקר בסיבוב חיצוני?',h:'השווה לצד השני כשהמטופל רפוי. הגבלה פסיבית מצביעה על המפרק או הקופסית.',lbl:'הגבלה פסיבית'},
  {id:'s_weak',r:'a',t:'המטופל מתאר חולשה או קושי להרים את היד?',lbl:'חולשה'},
@@ -179,6 +184,10 @@ const Q = [
  {id:'t_yerg',r:'a',type:'pn',t:'Yergason',h:'מרפק 90° צמוד לגוף, פרונציה. סופינציה וסיבוב חיצוני נגד התנגדות.',pos:'כאב בחריץ הביצפיטלי או תחושת "קפיצה" של הגיד.',lbl:'Yergason'},
  {id:'t_spur',r:'a',type:'pn',t:'Spurling',h:'הטיית צוואר לצד הכואב עם יישור קל, ולחץ צירי עדין על הראש.',pos:'שחזור כאב מקרין לזרוע.',lbl:'Spurling'},
  {id:'t_dist',r:'a',type:'pn',t:'Neck distraction',h:'שכיבה על הגב, משיכה צירית עדינה של הראש.',pos:'הקלה בכאב המקרין.',lbl:'Distraction'},
+ {id:'t_crot',type:'pn',t:'Cervical rotation < 60°',h:'סיבוב צוואר אקטיבי לצד הכואב בישיבה (גוניומטר או הערכה).',pos:'סיבוב פחות מ-60° לצד הכואב. חלק מהקלאסטר של Wainner.',lbl:'סיבוב צוואר'},
+ {id:'t_c5',type:'pn',t:'C5 neuro screen',h:'כוח אבדוקציה (דלתואיד) וסיבוב חיצוני, תחושה בצד החיצוני של הזרוע, רפלקס ביספס.',pos:'חולשה, ירידה בתחושה או רפלקס ירוד בצד הכואב.',lbl:'C5'},
+ {id:'t_c6',type:'pn',t:'C6 neuro screen',h:'כוח כיפוף מרפק ויישור שורש כף היד, תחושה באגודל ובאצבע 2, רפלקס ברכיורדיאליס.',pos:'חולשה, ירידה בתחושה או רפלקס ירוד בצד הכואב.',lbl:'C6'},
+ {id:'t_c7',type:'pn',t:'C7 neuro screen',h:'כוח יישור מרפק (טריצפס) וכיפוף שורש כף היד, תחושה באצבע 3, רפלקס טריצפס.',pos:'חולשה, ירידה בתחושה או רפלקס ירוד בצד הכואב.',lbl:'C7'},
  {id:'t_ulta',r:'a',type:'pn',t:'ULTT A (Median)',h:'דפרסיה של השכמה, אבדוקציה, סופינציה, יישור שורש כף היד והאצבעות, סיבוב חיצוני ויישור מרפק.',pos:'שחזור התסמינים שמשתנה עם הטיית הצוואר.',lbl:'ULTT A'},
 
  /* ---------- מרפק: אנמנזה ---------- */
@@ -257,7 +266,75 @@ const Q = [
  {id:'t_noble',type:'pn',t:'Noble compression',h:'לחץ על ה-ITB מעל האפיקונדיל הלטרלי תוך יישור הברך מ-90°.',pos:'כאב לטרלי בסביבות 30° כיפוף.',lbl:'Noble'},
  {id:'t_crep',type:'pn',t:'Crepitus + bony enlargement',h:'מישוש בזמן כיפוף ויישור, ובדיקת הגדלה גרמית בשולי המפרק.',pos:'קרפיטציות ו/או הגדלה גרמית.',lbl:'קרפיטציות / הגדלה'},
  {id:'t_hipir',type:'pn',t:'Hip internal rotation',h:'שכיבה, ירך ב-90°. סיבוב פנימי פסיבי והשוואה לצד השני.',pos:'הגבלה (פחות מ-25°) עם שחזור כאב.',lbl:'סיבוב פנימי ירך'},
+ /* ---------- קרסול: אנמנזה ---------- */
+ {id:'a_trauma',t:'הכאב התחיל אחרי נקע, נפילה או מכה?',lbl:'טראומה',first:2},
+ {id:'a_ottawa',type:'pn',cond:{a_trauma:'y'},t:'Ottawa ankle & foot rules',h:'חיובי אם יש כאב באזור הקרסול / אמצע כף הרגל ואחד מאלה: רגישות בשוליים האחוריים או בקצה של אחד המלאולים (6 ס"מ דיסטליים) · רגישות בבסיס מטטרסל 5 · רגישות בנביקולרי · חוסר יכולת לדרוך 4 צעדים מיד ובבדיקה.',pos:'לפחות קריטריון אחד → צילום.',lbl:'Ottawa',first:3},
+ {id:'a_hot',t:'מפרק חם, אדום ונפוח בלי טראומה, או חום?',h:'לחשוב גם על גאוט.',lbl:'מפרק חם',first:4},
+ {id:'a_back',t:'כאב הגב או תנועות הגב משחזרים את הכאב בכף הרגל, או שיש נימול שמתחיל מהגב?',lbl:'הקרנה מהגב',first:5},
+ {id:'a_age',t:'גיל המטופל',type:'ab',a:['מתחת ל-40','40 ומעלה'],lbl:'גיל'},
+ {id:'a_where',t:'איפה הכאב בעיקר?',type:'ab',a:['עקב / אכילס / כף הרגל','הקרסול עצמו'],lbl:'מיקום'},
+ {id:'a_heel',cond:{a_where:'a'},t:'הכאב בגב העקב או בגיד האכילס (ולא מתחת לעקב)?',lbl:'גב העקב / אכילס'},
+ {id:'a_side',cond:{a_where:'b'},t:'באיזה צד של הקרסול?',type:'ab',a:['חיצוני (לטרלי)','פנימי (מדיאלי)'],lbl:'צד'},
+ {id:'a_ant',cond:{a_where:'b'},t:'הכאב בקדמת הקרסול, מוחמר בכיפוף גבי (סקוואט, עלייה)?',lbl:'כאב קדמי'},
+ {id:'a_inv',t:'הפציעה הייתה בהיפוך של כף הרגל פנימה?',lbl:'נקע היפוך'},
+ {id:'a_er',t:'הפציעה כללה סיבוב חיצוני של כף הרגל, עם כאב מעל הקרסול?',lbl:'סיבוב חיצוני'},
+ {id:'a_kick',t:'תחושת "בעיטה" או מכה בגב העקב, וקושי לדחוף ברגל?',lbl:'בעיטה בעקב'},
+ {id:'a_first',t:'כאב חד מתחת לעקב בצעדים הראשונים בבוקר או אחרי ישיבה?',lbl:'צעדים ראשונים'},
+ {id:'a_mstiff',t:'נוקשות וכאב בגיד האכילס בבוקר ובתחילת פעילות?',lbl:'נוקשות אכילס'},
+ {id:'a_numb',t:'נימול או צריבה בכף הרגל התחתונה או בצד הפנימי של העקב?',lbl:'נימול כף רגל'},
+ {id:'a_flat',t:'הקשת של כף הרגל שוקעת עם הזמן, עם כאב פנימי?',lbl:'שקיעת קשת'},
+ {id:'a_stress',t:'כאב שהתפתח בהדרגה עם עלייה בעומס, עם רגישות גרמית נקודתית?',lbl:'עומס + רגישות גרמית'},
+ {id:'a_unstable',t:'נקעים חוזרים או תחושת חוסר יציבות בקרסול?',lbl:'חוסר יציבות'},
+ {id:'a_persist',t:'כאב עמוק ונפיחות שנמשכים מעל 6 שבועות אחרי נקע?',lbl:'כאב מתמשך אחרי נקע'},
+ {id:'a_retro',t:'כאב מאחורי המלאולוס החיצוני, לאורך גידי הפרונאוס?',lbl:'מאחורי מלאולוס חיצוני'},
+
+ /* ---------- קרסול: בדיקות קליניות ---------- */
+ {id:'t_thomp',type:'pn',t:'Thompson (Simmonds)',h:'שכיבה על הבטן, כפות רגליים מחוץ למיטה. סחיטת השוק.',pos:'אין כיפוף כפי של כף הרגל.',lbl:'Thompson'},
+ {id:'t_adrA',type:'pn',t:'Anterior drawer (ankle)',h:'כיפוף כפי קל, משיכה קדמית של העקב מול השוק. אמין יותר 4–5 ימים אחרי הפציעה.',pos:'תזוזה מוגברת או "שקע" מול הצד השני.',lbl:'Anterior drawer'},
+ {id:'t_squeeze',type:'pn',t:'Squeeze test',h:'לחיצה על הטיביה והפיבולה באמצע השוק.',pos:'כאב דיסטלי מעל הסינדסמוזיס.',lbl:'Squeeze'},
+ {id:'t_ert',type:'pn',t:'External rotation (Kleiger)',h:'ברך ב-90°, קרסול ניטרלי. סיבוב חיצוני של כף הרגל.',pos:'כאב מעל הסינדסמוזיס הקדמי.',lbl:'Kleiger'},
+ {id:'t_arc2',type:'pn',t:'Arc sign / Royal London',h:'מישוש הגיד 2–6 ס"מ מעל העקב בכיפוף כפי ואז בכיפוף גבי.',pos:'עיבוי שזז עם הגיד, או רגישות שפוחתת בכיפוף גבי.',lbl:'Arc / Royal London'},
+ {id:'t_windlass',type:'pn',t:'Windlass test',h:'עמידה, יישור פסיבי של הבוהן הגדולה.',pos:'שחזור הכאב מתחת לעקב.',lbl:'Windlass'},
+ {id:'t_heelr',type:'pn',t:'Single-leg heel raise',h:'עמידה על רגל אחת ועלייה על קצות האצבעות, עד 10 חזרות.',pos:'לא מצליח, או שהעקב לא נוטה פנימה (וארוס) בעלייה.',lbl:'Heel raise'},
+ {id:'t_dfe',type:'pn',t:'Dorsiflexion–eversion test',h:'כיפוף גבי ואברסיה מקסימליים של הקרסול ויישור האצבעות, 5–10 שניות.',pos:'שחזור נימול או כאב בתעלה הטרסלית.',lbl:'Dorsiflexion–eversion'},
+ {id:'t_tinelT',type:'pn',t:'Tinel (tarsal tunnel)',h:'הקשה על העצב הטיביאלי מאחורי המלאולוס הפנימי.',pos:'עקצוץ שמקרין לכף הרגל.',lbl:'Tinel טרסלי'},
+ {id:'t_molloy',type:'pn',t:'Impingement sign (Molloy)',h:'לחץ באגודל על הקדמי-לטרלי של הקרסול תוך כיפוף גבי.',pos:'כאב קדמי-לטרלי.',lbl:'Impingement'},
+ {id:'t_hop',type:'pn',t:'Single-leg hop',h:'קפיצה על רגל אחת במקום, עד 10 פעמים.',pos:'כאב גרמי נקודתי.',lbl:'Hop test'},
+ {id:'t_ever',type:'pn',t:'Resisted eversion',h:'אברסיה ופלנטר-פלקסיה נגד התנגדות. מישוש הגידים בזמן הבדיקה.',pos:'כאב או "קפיצה" של הגידים מעל המלאולוס.',lbl:'אברסיה נגד התנגדות'},
+
+ /* ---------- גב תחתון: אנמנזה ---------- */
+ {id:'b_cauda',t:'אובדן תחושה באזור החיץ או המפשעה, שינוי בשליטה על שתן או צואה, או חולשה מתקדמת בשתי הרגליים?',h:'כל אחד מאלה הוא דגל אדום דחוף.',lbl:'סימני כאודה',first:2},
+ {id:'b_fx',t:'טראומה משמעותית, או גיל מעל 70 / אוסטאופורוזיס / סטרואידים ממושכים, עם כאב חד?',lbl:'סיכון לשבר',first:3},
+ {id:'b_ca',t:'היסטוריה של סרטן, ירידה במשקל לא מוסברת, חום, או כאב לילי קבוע שלא משתנה?',lbl:'סימנים מערכתיים',first:4},
+ {id:'b_age',t:'גיל המטופל',type:'ab',a:['מתחת ל-50','50 ומעלה'],lbl:'גיל'},
+ {id:'b_rad',t:'יש כאב או נימול שמקרינים לרגל?',lbl:'הקרנה לרגל'},
+ {id:'b_both',cond:{b_rad:'y'},t:'ההקרנה מגיעה גם לקדמת הירך וגם לאחורי או לצד הרגל?',h:'פיזור פמורלי וסיאטי יחד.',lbl:'פמורלי + סיאטי'},
+ {id:'b_path',cond:{b_rad:'y',b_both:'n'},t:'איפה ההקרנה בעיקר?',type:'ab',a:['קדמת הירך / מפשעה / פנים השוק','אחורי או צד הרגל'],lbl:'מסלול ההקרנה'},
+ {id:'b_below',cond:{b_rad:'y'},t:'ההקרנה מגיעה מתחת לברך?',lbl:'מתחת לברך'},
+ {id:'b_legdom',cond:{b_rad:'y'},t:'כאב הרגל חזק יותר מכאב הגב?',lbl:'רגל > גב'},
+ {id:'b_neuro',cond:{b_rad:'y'},t:'יש נימול, עקצוץ או חולשה ברגל?',lbl:'תסמינים עצביים'},
+ {id:'b_claud',t:'כאב או כבדות ברגליים בהליכה שנרגעים בישיבה או בהתכופפות קדימה?',h:'"סימן עגלת הסופר".',lbl:'צליעה נוירוגנית'},
+ {id:'b_infl',t:'כאב גב מעל 3 חודשים שהתחיל לפני גיל 40, נוקשות בוקר מעל 30 דקות, משתפר בתנועה ולא במנוחה?',lbl:'כאב דלקתי'},
+ {id:'b_sij',t:'הכאב מתחת ל-L5, סביב ה-PSIS, והמטופל מצביע על נקודה אחת שם?',h:'Fortin finger test.',lbl:'אזור SIJ'},
+ {id:'b_sit',t:'כאב בעכוז שמוחמר בישיבה, ותנועות הגב לא משחזרות אותו?',lbl:'כאב עכוז בישיבה'},
+ {id:'b_lfcn',t:'נימול או צריבה בצד הקדמי-חיצוני של הירך, בלי חולשה ובלי כאב גב?',lbl:'נימול ירך חיצוני'},
+ {id:'b_ext',t:'ספורטאי צעיר עם כאב בהטיית הגב לאחור?',lbl:'צעיר + כאב ביישור'},
+
+ /* ---------- גב תחתון: בדיקות ---------- */
+ {id:'t_slr',type:'pn',t:'Straight leg raise (SLR)',h:'שכיבה, הרמה פסיבית של רגל ישרה. הוספת כיפוף גבי של הקרסול להחמרה.',pos:'שחזור כאב הרגל המוכר בין 30° ל-70°.',lbl:'SLR'},
+ {id:'t_cslr',type:'pn',t:'Crossed SLR',h:'הרמת הרגל הבריאה.',pos:'שחזור הכאב ברגל הכואבת.',lbl:'Crossed SLR'},
+ {id:'t_slump',type:'pn',t:'Slump',h:'ישיבה, כיפוף גו וצוואר, יישור ברך וכיפוף גבי. שחרור הצוואר לבדיקת רגישות.',pos:'שחזור התסמינים, שפוחתים בשחרור הצוואר.',lbl:'Slump'},
+ {id:'t_pkb',type:'pn',t:'Prone knee bend (Femoral nerve stretch)',h:'שכיבה על הבטן, כיפוף ברך פסיבי מלא. אפשר להוסיף יישור ירך.',pos:'כאב בקדמת הירך או נימול בפיזור הפמורלי.',lbl:'Femoral stretch'},
+ {id:'t_l23',type:'pn',t:'L2–L3 neuro screen',h:'כוח כיפוף ירך ואדוקציה, תחושה בקדמת הירך ופנים הירך העליון.',pos:'חולשה או ירידה בתחושה בצד הכואב.',lbl:'L2–L3'},
+ {id:'t_l4',type:'pn',t:'L4 neuro screen',h:'כוח יישור ברך ו-Tibialis anterior, תחושה בפנים השוק, רפלקס ברך.',pos:'חולשה, ירידה בתחושה או רפלקס ברך ירוד.',lbl:'L4'},
+ {id:'t_l5',type:'pn',t:'L5 neuro screen',h:'כוח EHL ודורסיפלקסיה, הליכה על עקבים, תחושה בגב כף הרגל ובין בוהן 1–2. רפלקסים תקינים.',pos:'חולשה או ירידה בתחושה בצד הכואב.',lbl:'L5'},
+ {id:'t_s1',type:'pn',t:'S1 neuro screen',h:'כוח פלנטר-פלקסיה (עלייה על קצות אצבעות ×10), תחושה בצד החיצוני של כף הרגל, רפלקס אכילס.',pos:'חולשה, ירידה בתחושה או רפלקס אכילס ירוד.',lbl:'S1'},
+ {id:'t_lext',type:'pn',t:'Lumbar extension test',h:'עמידה עם הטיית גב לאחור למשך 30 שניות.',pos:'שחזור כאב או כבדות ברגליים.',lbl:'יישור גב 30 שנ\''},
+ {id:'t_laslett',type:'pn',t:'Laslett SIJ cluster',h:'5 בדיקות: Distraction, Thigh thrust, Compression, Sacral thrust, Gaenslen.',pos:'לפחות 3 מתוך 5 משחזרות את הכאב.',lbl:'Laslett'},
+ {id:'t_stork',type:'pn',t:'One-leg hyperextension (Stork)',h:'עמידה על רגל אחת עם הטיית גב לאחור, לכל צד.',pos:'כאב גב באותו צד.',lbl:'Stork'},
+ {id:'t_piri',type:'pn',t:'Seated piriformis stretch / FAIR',h:'ישיבה או שכיבה על הצד: כיפוף, אדוקציה וסיבוב פנימי של הירך.',pos:'שחזור כאב בעכוז האחורי.',lbl:'FAIR'},
 ];
+
 
 
 /* ---------- מקורות ---------- */
@@ -311,6 +388,39 @@ const R = {
  EL07:{k:'סקירה שיטתית',c:'Ellis R, Hing W, Reid D. Iliotibial band friction syndrome: a systematic review. Man Ther 2007;12:200–8.',q:'Ellis Hing Reid 2007 iliotibial band friction syndrome systematic review'},
  HF10:{k:'סקירה',c:'Helfenstein M Jr, Kuromoto J. Anserine syndrome. Rev Bras Reumatol 2010;50:313–27.',q:'Helfenstein Kuromoto 2010 anserine syndrome'},
  FN15:{k:'סקירה',c:"Frush TJ, Noyes FR. Baker's cyst: diagnostic and surgical considerations. Sports Health 2015;7:359–65.",q:'Frush Noyes 2015 Baker cyst diagnostic surgical considerations'},
+ MG26:{k:'ספר מוביל',c:"Manske RC et al. Magee's Orthopedic Physical Assessment, 8th ed. Elsevier, 2026.",q:'',u:'https://shop.elsevier.com/books/magee-s-orthopedic-physical-assessment/manske/978-0-443-12864-6'},
+ NT21:{k:'ספר מבוסס ראיות',c:"Cleland J, Koppenhaver S, Su J. Netter's Orthopaedic Clinical Examination: An Evidence-Based Approach, 4th ed. Elsevier, 2021.",q:'',u:'https://shop.elsevier.com/books/netters-orthopaedic-clinical-examination/cleland/978-0-323-69533-6'},
+ TH18:{k:'סקירה שיטתית',c:'Thoomes EJ et al. Value of physical tests in diagnosing cervical radiculopathy: a systematic review. Spine J 2018;18:179–89.',q:'Thoomes 2018 physical tests cervical radiculopathy systematic review'},
+ CB07:{k:'מחקר אבחוני',c:'Cooper G, Bailey B, Bogduk N. Cervical zygapophysial joint pain maps. Pain Med 2007;8:344–53.',q:'Cooper Bailey Bogduk 2007 cervical zygapophysial joint pain maps'},
+ BG09:{k:'סקירה',c:'Bogduk N. On the definitions and physiology of back pain, referred pain, and radicular pain. Pain 2009;147:17–9.',q:'Bogduk 2009 definitions physiology back pain referred pain radicular pain'},
+ BA03:{k:'סקירה שיטתית',c:'Bachmann LM et al. Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review. BMJ 2003;326:417.',q:'Bachmann 2003 Ottawa ankle rules systematic review'},
+ MF98:{k:'מחקר אבחוני',c:'Maffulli N. The clinical diagnosis of subcutaneous tear of the Achilles tendon: a prospective study in 174 patients. Am J Sports Med 1998;26:266–70.',q:'Maffulli 1998 clinical diagnosis subcutaneous tear Achilles tendon'},
+ VD96:{k:'מחקר אבחוני',c:'van Dijk CN et al. Physical examination is sufficient for the diagnosis of sprained ankles. J Bone Joint Surg Br 1996;78:958–62.',q:'van Dijk 1996 physical examination sufficient diagnosis sprained ankles'},
+ VU18:{k:'הנחיה קלינית',c:'Vuurberg G et al. Diagnosis, treatment and prevention of ankle sprains: update of an evidence-based clinical guideline. Br J Sports Med 2018;52:956.',q:'Vuurberg 2018 ankle sprains evidence-based clinical guideline'},
+ DO17:{k:'מטא-אנליזה',c:'Doherty C et al. Treatment and prevention of acute and recurrent ankle sprain: an overview of systematic reviews with meta-analysis. Br J Sports Med 2017;51:113–25.',q:'Doherty 2017 ankle sprain overview systematic reviews meta-analysis'},
+ SM13:{k:'סקירה שיטתית',c:'Sman AD et al. Diagnostic accuracy of clinical tests for diagnosis of ankle syndesmosis injury: a systematic review. Br J Sports Med 2013;47:620–8.',q:'Sman 2013 ankle syndesmosis clinical tests systematic review'},
+ MR18:{k:'הנחיה קלינית',c:'Martin RL et al. Achilles pain, stiffness, and muscle power deficits: midportion Achilles tendinopathy revision 2018. J Orthop Sports Phys Ther 2018;48:A1–A38.',q:'Martin 2018 midportion Achilles tendinopathy clinical practice guideline'},
+ MR14:{k:'הנחיה קלינית',c:'Martin RL et al. Heel pain—plantar fasciitis: revision 2014. J Orthop Sports Phys Ther 2014;44:A1–A33.',q:'Martin 2014 heel pain plantar fasciitis clinical practice guideline'},
+ KI01:{k:'מחקר אבחוני',c:'Kinoshita M et al. The dorsiflexion-eversion test for diagnosis of tarsal tunnel syndrome. J Bone Joint Surg Am 2001;83:1835–9.',q:'Kinoshita 2001 dorsiflexion-eversion test tarsal tunnel'},
+ HK08:{k:'סקירה',c:'Heckman DS et al. Tendon disorders of the foot and ankle, part 1: peroneal tendon disorders. Am J Sports Med 2008;36:1404–13.',q:'Heckman 2008 peroneal tendon disorders'},
+ KG04:{k:'סקירה',c:'Kohls-Gatzoulis J et al. Tibialis posterior dysfunction: a common and treatable cause of adult acquired flatfoot. BMJ 2004;329:1328–33.',q:'Kohls-Gatzoulis 2004 tibialis posterior dysfunction'},
+ MO03:{k:'מחקר אבחוני',c:'Molloy S et al. Anterolateral impingement of the ankle: a clinical test. J Bone Joint Surg Br 2003;85:330–3.',q:'Molloy 2003 anterolateral impingement ankle clinical test'},
+ MT16:{k:'סקירה',c:'Matcuk GR et al. Stress fractures: pathophysiology, clinical presentation, imaging features, and treatment options. Emerg Radiol 2016;23:365–75.',q:'Matcuk 2016 stress fractures pathophysiology imaging'},
+ FI20:{k:'הצהרת קונצנזוס',c:'Finucane LM et al. International framework for red flags for potential serious spinal pathologies. J Orthop Sports Phys Ther 2020;50:350–72.',q:'Finucane 2020 international framework red flags serious spinal pathologies'},
+ DW13:{k:'סקירה שיטתית',c:'Downie A et al. Red flags to screen for malignancy and fracture in patients with low back pain: systematic review. BMJ 2013;347:f7095.',q:'Downie 2013 red flags malignancy fracture low back pain'},
+ VW10:{k:'סקירת Cochrane',c:'van der Windt DA et al. Physical examination for lumbar radiculopathy due to disc herniation in patients with low-back pain. Cochrane Database Syst Rev 2010;CD007431.',q:'van der Windt 2010 physical examination lumbar radiculopathy disc herniation Cochrane'},
+ SU11:{k:'מחקר אבחוני',c:'Suri P et al. The accuracy of the physical examination for the diagnosis of midlumbar and low lumbar nerve root impingement. Spine 2011;36:63–73.',q:'Suri 2011 physical examination midlumbar low lumbar nerve root impingement'},
+ AN13:{k:'מטא-אנליזה',c:'Al Nezari NH, Schneiders AG, Hendrick PA. Neurological examination of the peripheral nervous system to diagnose lumbar spinal disc herniation with suspected radiculopathy: a systematic review and meta-analysis. Spine J 2013;13:657–74.',q:'Al Nezari 2013 neurological examination lumbar disc herniation radiculopathy meta-analysis'},
+ MJ08:{k:'מחקר אבחוני',c:'Majlesi J et al. The sensitivity and specificity of the Slump and the Straight Leg Raising tests in patients with lumbar disc herniation. J Clin Rheumatol 2008;14:87–91.',q:'Majlesi 2008 Slump Straight Leg Raising lumbar disc herniation'},
+ LA05:{k:'מחקר אבחוני',c:'Laslett M et al. Diagnosis of sacroiliac joint pain: validity of individual provocation tests and composites of tests. Man Ther 2005;10:207–18.',q:'Laslett 2005 sacroiliac joint pain provocation tests composites'},
+ CK11:{k:'מחקר אבחוני',c:'Cook C et al. The clinical value of a cluster of patient history and observational findings as a diagnostic support tool for lumbar spinal stenosis. Physiother Res Int 2011;16:170–8.',q:'Cook 2011 cluster patient history lumbar spinal stenosis'},
+ KZ08:{k:'סקירה',c:'Katz JN, Harris MB. Lumbar spinal stenosis. N Engl J Med 2008;358:818–25.',q:'Katz Harris 2008 lumbar spinal stenosis NEJM'},
+ SI09:{k:'קריטריונים אבחוניים',c:'Sieper J et al. New criteria for inflammatory back pain in patients with chronic back pain: a real patient exercise by experts from ASAS. Ann Rheum Dis 2009;68:784–8.',q:'Sieper 2009 new criteria inflammatory back pain ASAS'},
+ MH17:{k:'סקירה',c:'Maher C, Underwood M, Buchbinder R. Non-specific low back pain. Lancet 2017;389:736–47.',q:'Maher Underwood Buchbinder 2017 non-specific low back pain Lancet'},
+ OL18:{k:'סקירת הנחיות',c:'Oliveira CB et al. Clinical practice guidelines for the management of non-specific low back pain in primary care: an updated overview. Eur Spine J 2018;27:2791–803.',q:'Oliveira 2018 clinical practice guidelines non-specific low back pain overview'},
+ GR16:{k:'סקירה שיטתית',c:'Grødahl LHJ et al. Diagnostic utility of patient history and physical examination data to detect spondylolysis and spondylolisthesis in athletes with low back pain: a systematic review. Man Ther 2016;24:7–17.',q:'Grødahl 2016 spondylolysis spondylolisthesis athletes systematic review'},
+ HP10:{k:'סקירה שיטתית',c:'Hopayian K et al. The clinical features of the piriformis syndrome: a systematic review. Eur Spine J 2010;19:2095–109.',q:'Hopayian 2010 piriformis syndrome systematic review'},
+ CT13:{k:'סקירה',c:'Cheatham SW, Kolber MJ, Salamh PA. Meralgia paresthetica: a review of the literature. Int J Sports Phys Ther 2013;8:883–93.',q:'Cheatham 2013 meralgia paresthetica review'},
 };
 
 const DX = [
@@ -319,215 +429,383 @@ const DX = [
   p:{limb:'a!',region:'a!',s_trauma:'y!',s_deform:'y!'},
   d:'טראומה עם עיוות, אובדן תפקוד או רגישות גרמית נקודתית.',
   t:['צילום דחוף','בדיקה נוירו-וסקולרית (עצב אקסילרי)'],
-  m:'הפניה למיון / אורתופד.',ev:['MI05']},
+  m:'הפניה למיון / אורתופד.',ev:['MI05','MG26','NT21']},
  {id:'s_visc',flag:1,n:'מקור ויסצרלי',en:'Cardiac / pulmonary / diaphragmatic / hepatobiliary',
   p:{limb:'a!',region:'a!',s_visceral:'y!'},
   d:'כאב כתף שלא משתנה בתנועה, מופיע במאמץ או עם תסמינים מערכתיים.',
   t:['סימנים חיוניים','גורמי סיכון לבביים'],
-  m:'בירור רפואי. כאב בחזה או קוצר נשימה → מיון.',ev:['MI05']},
+  m:'בירור רפואי. כאב בחזה או קוצר נשימה → מיון.',ev:['MI05','MG26','NT21']},
  {id:'s_inf',flag:1,n:'זיהום / גידול / מחלה דלקתית',en:'Infection / neoplasm / inflammatory',
   p:{limb:'a!',region:'a!',s_redsys:'y!'},
   d:'חום, ירידה במשקל, כאב לילי קבוע או היסטוריה ממאירה.',
   t:['בדיקות דם (CRP, ESR, ספירה)','הדמיה'],
-  m:'הפניה לבירור רפואי.',ev:['MI05','MA07']},
- {id:'s_cerv',n:'כאב מוחזר צווארי',en:'Cervical radiculopathy (C5–C6)',
-  p:{limb:'a!',region:'a!',s_neck:'y!',s_prom:'n',t_spur:'y+',t_dist:'y',t_ulta:'y-',t_arc:'n',t_hk:'n'},
-  d:'כאב כתף שמקורו בעמוד השדרה הצווארי, לעיתים עם הקרנה ותסמינים נוירולוגיים.',
-  t:['Spurling','Distraction','ULTT A','סיבוב צוואר מתחת ל-60°','בדיקה נוירולוגית'],
-  m:'טיפול בצוואר. חסר נוירולוגי מתקדם → הפניה.',ev:['WA03','RU07']},
+  m:'הפניה לבירור רפואי.',ev:['MI05','MA07','MG26','NT21']},
+ {id:'s_c5',n:'רדיקולופתיה צווארית C5',en:'Cervical radiculopathy C5 (C4–C5)',
+  p:{limb:'a!',region:'a!',s_neck:'y!',s_armrad:'y',s_belowelb:'n',s_prom:'n',t_c5:'y+',t_c6:'n',t_c7:'n',t_spur:'y+',t_dist:'y',t_ulta:'y-',t_crot:'y'},
+  d:'כאב בכתף ובצד החיצוני של הזרוע, עם חולשת דלתואיד ורפלקס ביספס ירוד. מתחזה לפתולוגיית שרוול.',
+  t:['Spurling','Distraction','ULTT A','סיבוב צוואר < 60°','בדיקת C5'],
+  m:'טיפול בצוואר. חולשה מתקדמת או מיאלופתיה → הפניה.',ev:['WA03','TH18','RU07','MG26','NT21']},
+ {id:'s_c6',n:'רדיקולופתיה צווארית C6',en:'Cervical radiculopathy C6 (C5–C6)',
+  p:{limb:'a!',region:'a!',s_neck:'y!',s_armrad:'y!',s_belowelb:'y',s_prom:'n',t_c6:'y+',t_c5:'n',t_c7:'n',t_spur:'y+',t_dist:'y',t_ulta:'y-',t_crot:'y'},
+  d:'כאב מהצוואר והכתף לאמה ולאגודל, עם נימול באגודל ובאצבע 2. הרמה השכיחה ביותר לצד C7.',
+  t:['Spurling','Distraction','ULTT A','בדיקת C6'],
+  m:'טיפול בצוואר. חסר נוירולוגי מתקדם → הפניה.',ev:['WA03','TH18','RU07','MG26','NT21']},
+ {id:'s_c7',n:'רדיקולופתיה צווארית C7',en:'Cervical radiculopathy C7 (C6–C7)',
+  p:{limb:'a!',region:'a!',s_neck:'y!',s_armrad:'y!',s_belowelb:'y',s_prom:'n',t_c7:'y+',t_c5:'n',t_c6:'n',t_spur:'y+',t_ulta:'y-'},
+  d:'כאב בשכמה ובגב הזרוע עד אצבע 3, עם חולשת טריצפס ורפלקס טריצפס ירוד.',
+  t:['Spurling','ULTT A','בדיקת C7'],
+  m:'טיפול בצוואר. חסר נוירולוגי מתקדם → הפניה.',ev:['WA03','TH18','RU07','MG26','NT21']},
+ {id:'s_csom',n:'כאב סומטי מוחזר מהצוואר',en:'Cervical somatic referred pain (facet / discogenic)',
+  p:{limb:'a!',region:'a!',s_neck:'y!',s_armrad:'n',s_prom:'n',t_c5:'n',t_c6:'n',t_c7:'n',t_ulta:'n',t_spur:'n',t_arc:'n',t_hk:'n'},
+  d:'כאב עמום מהצוואר לכתף, לשכמה או לזרוע העליונה, בלי חסר נוירולוגי ובלי ממצאים בכתף עצמה.',
+  t:['שחזור בתנועות צוואר','בדיקה סגמנטלית','שלילת ממצאי כתף'],
+  m:'טיפול בצוואר: תנועתיות, תרגול, הדרכה.',ev:['CB07','BG09','MG26','NT21']},
  {id:'s_saps',n:'כאב תת-אקרומיאלי / טנדינופתיה של השרוול',en:'Subacromial pain syndrome / RC tendinopathy',
   p:{limb:'a!',region:'a!',s_prom:'n!',s_overhead:'y',s_neck:'n',s_appreh:'n',s_acute:'n',s_acloc:'n',t_arc:'y',t_hk:'y-',t_neer:'y-',t_jobe:'y',t_erls:'n',t_drop:'n',t_spur:'n'},
   d:'כאב בצד-קדמי של הכתף בהרמה, עם טווח פסיבי שמור. כולל טנדינופתיה ובורסיטיס תת-אקרומיאלית.',
   t:['Painful arc','Hawkins-Kennedy','Neer','Jobe','סיבוב חיצוני נגד התנגדות'],
-  m:'תרגול הדרגתי של השרוול והשכמה כקו ראשון, ניהול עומסים. הזרקה לשקול לטווח קצר.',ev:['H12','HA13','PK05','DI14','ST17']},
+  m:'תרגול הדרגתי של השרוול והשכמה כקו ראשון, ניהול עומסים. הזרקה לשקול לטווח קצר.',ev:['H12','HA13','PK05','DI14','ST17','MG26','NT21']},
  {id:'s_rct',n:'קרע מלא בשרוול המסובב',en:'Full-thickness rotator cuff tear',
   p:{limb:'a!',region:'a!',s_weak:'y',s_age:'b',s_prom:'n',s_neck:'n',t_erls:'y+',t_drop:'y+',t_belly:'y+',t_jobe:'y',t_arc:'y',t_hk:'y'},
   d:'חולשה בולטת בהרמה או בסיבוב חיצוני, לרוב מעל גיל 40, לעיתים אחרי טראומה קלה.',
   t:['External rotation lag sign','Drop arm','Belly press / Lift-off','Painful arc עם חולשה'],
-  m:'US או MRI. קרע טראומטי חריף במטופל צעיר או פעיל → הפניה מוקדמת. קרע ניווני → תרגול כקו ראשון.',ev:['HE13','H12','PK05']},
+  m:'US או MRI. קרע טראומטי חריף במטופל צעיר או פעיל → הפניה מוקדמת. קרע ניווני → תרגול כקו ראשון.',ev:['HE13','H12','PK05','MG26','NT21']},
  {id:'s_froz',n:'כתף קפואה',en:'Adhesive capsulitis',
   p:{limb:'a!',region:'a!',s_prom:'y!',s_age:'b',s_dm:'y',s_crep:'n',s_trauma:'n',s_weak:'n',t_arc:'n'},
   d:'הגבלה פסיבית גלובלית, בולטת בסיבוב חיצוני, עם כאב לילי. שכיחה בגילאי 40–60 ובסוכרת או תריס.',
   t:['סיבוב חיצוני פסיבי מול הצד השני','צילום תקין (שלילת OA)'],
-  m:'הסבר על המהלך הטבעי. הזרקת סטרואיד בשלב הכאבי, מתיחות עדינות בגבול הכאב, הידרודילטציה לשקול.',ev:['KE13','CH20']},
+  m:'הסבר על המהלך הטבעי. הזרקת סטרואיד בשלב הכאבי, מתיחות עדינות בגבול הכאב, הידרודילטציה לשקול.',ev:['KE13','CH20','MG26','NT21']},
  {id:'s_oa',n:'אוסטאוארתריטיס גלנוהומרלי',en:'Glenohumeral osteoarthritis',
   p:{limb:'a!',region:'a!',s_prom:'y!',s_age:'b!',s_crep:'y',s_dm:'n',s_acute:'n'},
   d:'הגבלה פסיבית עם קרפיטציות וכאב מכני בגיל מבוגר. מאובחן בצילום.',
   t:['צילום AP ו-Axillary','קרפיטציות בסיבוב'],
-  m:'תרגול ושימור טווח, משככים, הזרקה. החלפת מפרק במקרים מתקדמים.',ev:['AA20']},
+  m:'תרגול ושימור טווח, משככים, הזרקה. החלפת מפרק במקרים מתקדמים.',ev:['AA20','MG26','NT21']},
  {id:'s_ac',n:'פתולוגיית מפרק AC',en:'AC joint arthropathy / sprain',
   p:{limb:'a!',region:'a!',s_acloc:'y!',s_prom:'n',s_neck:'n',t_cross:'y-',t_obr:'y'},
   d:'כאב נקודתי מעל מפרק ה-AC, מוחמר ב-Cross-body ובלחיצת חזה.',
   t:['Cross-body adduction',"O'Brien (כאב עליון)",'רגישות מקומית'],
-  m:'ניהול עומסים, הזרקה מקומית. בנקע — דירוג לפי Rockwood.',ev:['CR04','H12']},
+  m:'ניהול עומסים, הזרקה מקומית. בנקע — דירוג לפי Rockwood.',ev:['CR04','H12','MG26','NT21']},
  {id:'s_inst',n:'אי-יציבות גלנוהומרלית',en:'Glenohumeral instability',
   p:{limb:'a!',region:'a!',s_appreh:'y!',s_age:'a',s_prom:'n',s_weak:'n',t_app:'y+'},
   d:'תחושת "יציאה" של הכתף, לרוב בצעירים אחרי פריקה, או על רקע היפרמוביליות.',
   t:['Apprehension','Relocation','Release','Load & shift','Sulcus sign'],
-  m:'אחרי פריקה ראשונה בצעיר → הערכה אורתופדית. תרגול ייצוב ופרופריוספציה.',ev:['FA06','H12']},
+  m:'אחרי פריקה ראשונה בצעיר → הערכה אורתופדית. תרגול ייצוב ופרופריוספציה.',ev:['FA06','H12','MG26','NT21']},
  {id:'s_slap',n:'פגיעה בלברום (SLAP)',en:'SLAP / labral lesion',
   p:{limb:'a!',region:'a!',s_click:'y!',s_age:'a',s_overhead:'y',s_prom:'n',t_obr:'y',t_bl2:'y+',t_speed:'y'},
   d:'כאב עמוק עם קליקים או תפיסות, בזורקים ובתנועות מעל הראש.',
   t:["O'Brien",'Biceps load II','Crank'],
-  m:'אבחון קליני מוגבל, MR-ארתרוגרפיה. תרגול שמרני כקו ראשון.',ev:['H12','HA13','HO04']},
+  m:'אבחון קליני מוגבל, MR-ארתרוגרפיה. תרגול שמרני כקו ראשון.',ev:['H12','HA13','HO04','MG26','NT21']},
  {id:'s_lhb',n:'טנדינופתיה של הראש הארוך של הביספס',en:'Long head of biceps tendinopathy',
   p:{limb:'a!',region:'a!',s_ant:'y!',s_overhead:'y',s_prom:'n',t_speed:'y',t_yerg:'y+'},
   d:'כאב קדמי לאורך החריץ הביצפיטלי, לרוב יחד עם פתולוגיה בשרוול.',
   t:['Speed','Yergason','Upper cut','רגישות בחריץ'],
-  m:'ניהול עומסים ותרגול. הזרקה מונחית US. טנודזיס או טנוטומיה במקרים עמידים.',ev:['HO04','H12']},
+  m:'ניהול עומסים ותרגול. הזרקה מונחית US. טנודזיס או טנוטומיה במקרים עמידים.',ev:['HO04','H12','MG26','NT21']},
  {id:'s_calc',n:'טנדיניטיס הסתיידותית',en:'Calcific tendinitis',
   p:{limb:'a!',region:'a!',s_acute:'y!',s_trauma:'n!',s_age:'b',t_arc:'y'},
   d:'כאב חריף מאוד ומתפרץ, לרוב בגילאי 30–60, עם משקעי סידן בגיד.',
   t:['צילום או US להדגמת ההסתיידות'],
-  m:'שליטה בכאב, הזרקה. ESWT. Barbotage מונחה US.',ev:['ME16']},
+  m:'שליטה בכאב, הזרקה. ESWT. Barbotage מונחה US.',ev:['ME16','MG26','NT21']},
 
  /* ---------- מרפק ---------- */
  {id:'e_fx',flag:1,n:'שבר',en:'Radial head / supracondylar / olecranon fracture',
   p:{limb:'a!',region:'b!',e_trauma:'y!',t_ext:'y!'},
   d:'נפילה על יד פתוחה, נפיחות מפרקית וחוסר יכולת ליישר.',
   t:['Elbow extension test','צילום','בדיקה נוירו-וסקולרית'],
-  m:'הפניה לצילום / מיון.',ev:['AP08']},
+  m:'הפניה לצילום / מיון.',ev:['AP08','MG26','NT21']},
  {id:'e_inf',flag:1,n:'זיהום במפרק או בבורסה / מחלה דלקתית',en:'Septic joint or bursa / inflammatory arthritis',
   p:{limb:'a!',region:'b!',e_redsys:'y!'},
   d:'נפיחות חמה ואדומה, חום, או מחלה דלקתית ידועה.',
   t:['בדיקות דם','שאיבה'],
-  m:'בירור רפואי דחוף.',ev:['MA07','BL14']},
+  m:'בירור רפואי דחוף.',ev:['MA07','BL14','MG26','NT21']},
  {id:'e_cerv',n:'כאב מוחזר צווארי',en:'Cervical radiculopathy (C6–C7)',
   p:{limb:'a!',region:'b!',e_neck:'y!',e_grip:'n',t_spurE:'y+',t_cozen:'n'},
   d:'כאב מרפק או אמה שמקורו בעמוד השדרה הצווארי, לעיתים עם נימול.',
   t:['Spurling','ULTT','בדיקה נוירולוגית'],
-  m:'טיפול בצוואר. חסר נוירולוגי → הפניה.',ev:['WA03','RU07']},
+  m:'טיפול בצוואר. חסר נוירולוגי → הפניה.',ev:['WA03','RU07','MG26','NT21']},
  {id:'e_lat',n:'אפיקונדילאלגיה לטרלית ("מרפק טניס")',en:'Lateral elbow tendinopathy',
   p:{limb:'a!',region:'b!',e_axis:'a!',e_side:'a!',e_grip:'y',e_numb:'n',e_rtun:'n',e_neck:'n',e_age:'b',e_lock:'n',t_cozen:'y-',t_mill:'y',t_maud:'y',t_mflex:'n'},
   d:'כאב באפיקונדיל החיצוני באחיזה וביישור שורש כף היד. שכיח בגילאי 35–55.',
   t:['Cozen','Mill','Maudsley','כוח אחיזה עד כאב (PFGS)'],
-  m:'הסבר על מהלך טבעי חיובי, תרגול הדרגתי, פס מרפק. להימנע מהזרקות סטרואיד חוזרות.',ev:['LU22','CB10','ZW18']},
+  m:'הסבר על מהלך טבעי חיובי, תרגול הדרגתי, פס מרפק. להימנע מהזרקות סטרואיד חוזרות.',ev:['LU22','CB10','ZW18','MG26','NT21']},
  {id:'e_med',n:'אפיקונדילאלגיה מדיאלית ("מרפק גולף")',en:'Medial elbow tendinopathy',
   p:{limb:'a!',region:'b!',e_axis:'a!',e_side:'b!',e_numb:'n',e_age:'b',t_mflex:'y-',t_mvs:'n',t_cozen:'n'},
   d:'כאב באפיקונדיל הפנימי בכיפוף שורש כף היד ובפרונציה נגד התנגדות.',
   t:['כיפוף שורש כף יד נגד התנגדות','פרונציה נגד התנגדות','שלילת עצב אולנרי ו-UCL'],
-  m:'ניהול עומסים ותרגול הדרגתי.',ev:['ZW18','CB10']},
+  m:'ניהול עומסים ותרגול הדרגתי.',ev:['ZW18','CB10','MG26','NT21']},
  {id:'e_cub',n:'נוירופתיה אולנרית (תעלה קוביטלית)',en:'Cubital tunnel syndrome',
   p:{limb:'a!',region:'b!',e_numb:'y!',e_side:'b',e_neck:'n',t_tinel:'y',t_eft:'y+',t_froment:'y+'},
   d:'נימול בזרת ובחצי הקמיצה, מוחמר בכיפוף ממושך. חולשה בשרירי כף היד במקרים מתקדמים.',
   t:['Tinel בתעלה','Elbow flexion test','Froment','Scratch collapse'],
-  m:'הימנעות מכיפוף ממושך ולחץ, סד לילה, גלישת עצב. חסר מוטורי → EMG והפניה.',ev:['NO94','CA16','ZW18']},
+  m:'הימנעות מכיפוף ממושך ולחץ, סד לילה, גלישת עצב. חסר מוטורי → EMG והפניה.',ev:['NO94','CA16','ZW18','MG26','NT21']},
  {id:'e_rtun',n:'תסמונת התעלה הרדיאלית / PIN',en:'Radial tunnel syndrome / PIN',
   p:{limb:'a!',region:'b!',e_rtun:'y!',e_side:'a',e_numb:'n',t_maud:'y'},
   d:'כאב עמוק במסת המיישרים מתחת לאפיקונדיל, ללא חסר תחושתי. מתחזה לאפיקונדילאלגיה.',
   t:['רגישות 3–5 ס"מ דיסטלית לאפיקונדיל','סופינציה נגד התנגדות','Maudsley'],
-  m:'ניהול עומסים וטיפול עצבי. PIN עם חולשה מוטורית → הפניה.',ev:['NA12']},
+  m:'ניהול עומסים וטיפול עצבי. PIN עם חולשה מוטורית → הפניה.',ev:['NA12','MG26','NT21']},
  {id:'e_bic',n:'טנדינופתיה / קרע ביספס דיסטלי',en:'Distal biceps tendinopathy / rupture',
   p:{limb:'a!',region:'b!',e_axis:'b!',e_ap:'a!',e_supin:'y!',e_pop:'y',e_age:'b',t_hook:'y+'},
   d:'כאב קדמי בכיפוף ובסופינציה. בקרע: "פופ", שטף דם וחולשה בסופינציה.',
   t:['Hook test','Biceps squeeze','Reverse Popeye'],
-  m:'חשד לקרע מלא → הפניה מהירה לאורתופד. טנדינופתיה → תרגול הדרגתי.',ev:['OD07','ZW18']},
+  m:'חשד לקרע מלא → הפניה מהירה לאורתופד. טנדינופתיה → תרגול הדרגתי.',ev:['OD07','ZW18','MG26','NT21']},
  {id:'e_post',n:'טריצפס / בורסיטיס אולקרנון',en:'Triceps tendinopathy / olecranon bursitis',
   p:{limb:'a!',region:'b!',e_axis:'b!',e_ap:'b!',e_bursa:'y',e_lock:'n'},
   d:'כאב או נפיחות בגב המרפק. בבורסיטיס: בליטה רכה מעל האולקרנון.',
   t:['יישור נגד התנגדות','בדיקת נפיחות וחום מקומי'],
-  m:'הגנה מלחץ, ניהול עומסים. נפיחות חמה ואדומה → שלילת זיהום.',ev:['BL14']},
+  m:'הגנה מלחץ, ניהול עומסים. נפיחות חמה ואדומה → שלילת זיהום.',ev:['BL14','MG26','NT21']},
  {id:'e_ucl',n:'פגיעה ב-UCL',en:'Ulnar collateral ligament injury',
   p:{limb:'a!',region:'b!',e_axis:'a!',e_side:'b!',e_throw:'y',t_mvs:'y!',t_milk:'y'},
   d:'כאב מדיאלי בזורקים בשלב ההאצה, עם ירידה במהירות או בדיוק.',
   t:['Moving valgus stress','Milking maneuver','Valgus stress ב-30°'],
-  m:'מנוחה מזריקה, חיזוק השרשרת הקינטית. חשד לקרע → MRI והפניה.',ev:['OD05','ZW18']},
+  m:'מנוחה מזריקה, חיזוק השרשרת הקינטית. חשד לקרע → MRI והפניה.',ev:['OD05','ZW18','MG26','NT21']},
  {id:'e_plri',n:'אי-יציבות פוסטרו-לטרלית (PLRI)',en:'Posterolateral rotatory instability',
   p:{limb:'a!',region:'b!',e_pivot:'y',e_side:'a',e_trauma:'y',t_chair:'y-'},
   d:'קליקים או חוסר יציבות בקימה מכיסא בעזרת הידיים, לרוב אחרי פריקה או ניתוח לטרלי.',
   t:['Chair push-up','Table-top relocation','Lateral pivot-shift'],
-  m:'הפניה לאורתופד. תרגול ייצוב דינמי.',ev:['RE06']},
+  m:'הפניה לאורתופד. תרגול ייצוב דינמי.',ev:['RE06','MG26','NT21']},
  {id:'e_oa',n:'אוסטאוארתריטיס / גופים חופשיים',en:'Elbow OA / loose bodies',
   p:{limb:'a!',region:'b!',e_lock:'y!',e_age:'b!'},
   d:'נוקשות, אובדן יישור מלא ונעילות, לרוב אחרי עבודה פיזית או ספורט זריקה.',
   t:['טווח פסיבי (חוסר יישור)','צילום','CT לגופים חופשיים'],
-  m:'שמירת טווח וניהול עומסים. נעילות חוזרות → הפניה לארתרוסקופיה.',ev:['ZW18']},
+  m:'שמירת טווח וניהול עומסים. נעילות חוזרות → הפניה לארתרוסקופיה.',ev:['ZW18','MG26','NT21']},
  {id:'e_ocd',n:'OCD של הקפיטלום',en:'Capitellar osteochondritis dissecans',
   p:{limb:'a!',region:'b!',e_age:'a!',e_throw:'y',e_side:'a',e_lock:'y',t_rcc:'y'},
   d:'כאב לטרלי וקליקים בצעירים פעילים: מתעמלים וזורקים.',
   t:['Radiocapitellar compression','צילום / MRI'],
-  m:'מנוחה מעומס, הפניה לאורתופד ספורט / ילדים.',ev:['TA07']},
+  m:'מנוחה מעומס, הפניה לאורתופד ספורט / ילדים.',ev:['TA07','MG26','NT21']},
  /* ---------- ברך ---------- */
  {id:'k_fx',flag:1,n:'שבר',en:'Knee fracture (patella / tibial plateau / fibular head)',
-  p:{limb:'b!',k_trauma:'y!',k_ottawa:'y!'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_trauma:'y!',k_ottawa:'y!'},
   d:'פציעה עם קריטריון חיובי של Ottawa knee rules.',
   t:['צילום ברך','בדיקה נוירו-וסקולרית'],
-  m:'הפניה לצילום / מיון.',ev:['BA04']},
+  m:'הפניה לצילום / מיון.',ev:['BA04','MG26','NT21']},
  {id:'k_inf',flag:1,n:'מפרק זיהומי / דלקת מפרקים',en:'Septic arthritis / inflammatory or crystal arthritis',
-  p:{limb:'b!',k_hot:'y!'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_hot:'y!'},
   d:'ברך חמה, אדומה ונפוחה, עם או בלי חום, בלי טראומה ברורה.',
   t:['שאיבת נוזל','בדיקות דם'],
-  m:'בירור רפואי דחוף.',ev:['MA07']},
+  m:'בירור רפואי דחוף.',ev:['MA07','MG26','NT21']},
  {id:'k_dvt',flag:1,n:'חשד לפקקת ורידים עמוקים (DVT)',en:'Deep vein thrombosis',
-  p:{limb:'b!',k_dvt:'y!'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_dvt:'y!'},
   d:'נפיחות ורגישות בשוק או בחלל הברך עם גורמי סיכון לקריש.',
   t:['Wells score','D-dimer / דופלר'],
-  m:'הפניה דחופה לבירור.',ev:['WE97']},
+  m:'הפניה דחופה לבירור.',ev:['WE97','MG26','NT21']},
  {id:'k_ref',n:'כאב מוחזר מהירך או מהגב',en:'Referred pain (hip OA / lumbar)',
-  p:{limb:'b!',k_hip:'y!',t_hipir:'y+',t_eff:'n',t_jlt:'n'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_hip:'y!',t_hipir:'y+',t_eff:'n',t_jlt:'n'},
   d:'כאב בברך שמקורו בירך או בגב התחתון, בלי ממצאים מקומיים בברך.',
   t:['סיבוב פנימי של הירך','FADIR','בדיקה נוירולוגית L3–L4'],
-  m:'בדיקת הירך והגב, טיפול במקור.',ev:['SU08']},
+  m:'בדיקת הירך והגב, טיפול במקור.',ev:['SU08','MG26','NT21']},
  {id:'k_acl',n:'קרע ברצועה הצולבת הקדמית (ACL)',en:'Anterior cruciate ligament rupture',
-  p:{limb:'b!',k_trauma:'y',k_pop:'y',k_twist:'y',k_giving:'y',k_ant:'n',t_eff:'y',t_lach:'y*',t_pivot:'y+',t_adraw:'y'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_trauma:'y',k_pop:'y',k_twist:'y',k_giving:'y',k_ant:'n',t_eff:'y',t_lach:'y*',t_pivot:'y+',t_adraw:'y'},
   d:'סיבוב על רגל נטועה, "פופ", נפיחות מהירה ותחושת בריחה.',
   t:['Lachman','Pivot shift','Anterior drawer','MRI'],
-  m:'הפניה לאורתופד. שיקום מוקדם לפני החלטה על שחזור.',ev:['BE06','JA03']},
+  m:'הפניה לאורתופד. שיקום מוקדם לפני החלטה על שחזור.',ev:['BE06','JA03','MG26','NT21']},
  {id:'k_pcl',n:'קרע ברצועה הצולבת האחורית (PCL)',en:'Posterior cruciate ligament rupture',
-  p:{limb:'b!',k_trauma:'y!',k_dash:'y',t_pdraw:'y*',t_sag:'y+',t_lach:'n'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_trauma:'y!',k_dash:'y',t_pdraw:'y*',t_sag:'y+',t_lach:'n'},
   d:'מכה בקדמת שוק כפופה או נפילה על ברך כפופה. כאב אחורי ונפיחות קלה.',
   t:['Posterior drawer','Posterior sag','Quadriceps active test'],
-  m:'קרע מבודד → שיקום שמרני. פגיעה משולבת → הפניה.',ev:['KO13','RU94']},
+  m:'קרע מבודד → שיקום שמרני. פגיעה משולבת → הפניה.',ev:['KO13','RU94','MG26','NT21']},
  {id:'k_men',n:'קרע במניסקוס',en:'Meniscal tear',
-  p:{limb:'b!',k_twist:'y',k_lock:'y',k_ant:'n',k_pop:'n',t_jlt:'y-',t_mcm:'y+',t_thes:'y',t_eff:'y'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_twist:'y',k_lock:'y',k_ant:'n',k_pop:'n',t_jlt:'y-',t_mcm:'y+',t_thes:'y',t_eff:'y'},
   d:'סיבוב על רגל כפופה, כאב בקו המפרק, תפיסות ונפיחות מאוחרת. בגיל מבוגר לרוב קרע ניווני.',
   t:['Joint line tenderness','McMurray','Thessaly','MRI'],
-  m:'קרע ניווני → תרגול כקו ראשון. נעילה אמיתית → הפניה מהירה.',ev:['HE07','SM15']},
+  m:'קרע ניווני → תרגול כקו ראשון. נעילה אמיתית → הפניה מהירה.',ev:['HE07','SM15','MG26','NT21']},
  {id:'k_mcl',n:'פגיעה ב-MCL',en:'Medial collateral ligament sprain',
-  p:{limb:'b!',k_trauma:'y',k_ant:'n',k_side:'a!',k_vmech:'y',t_valg:'y*'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_trauma:'y',k_ant:'n',k_side:'a!',k_vmech:'y',t_valg:'y*'},
   d:'מכה או עומס על צד החוץ של הברך, כאב מדיאלי לאורך הרצועה.',
   t:['Valgus stress 30°','Valgus stress 0°','רגישות לאורך הרצועה'],
-  m:'דרגה 1–2 → שיקום וסד לפי הצורך. פתיחה ב-0° → הפניה.',ev:['KA08','JA03']},
+  m:'דרגה 1–2 → שיקום וסד לפי הצורך. פתיחה ב-0° → הפניה.',ev:['KA08','JA03','MG26','NT21']},
  {id:'k_lcl',n:'פגיעה ב-LCL / פינה פוסטרו-לטרלית',en:'Lateral collateral ligament / posterolateral corner',
-  p:{limb:'b!',k_trauma:'y!',k_ant:'n',k_side:'b!',t_var:'y+'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_trauma:'y!',k_ant:'n',k_side:'b!',t_var:'y+'},
   d:'מכה על צד הפנים של הברך, כאב לטרלי. לבדוק את העצב הפרונאלי.',
   t:['Varus stress 30°','Dial test','בדיקת עצב פרונאלי'],
-  m:'הפניה לאורתופד, בעיקר אם יש אי-יציבות או חסר עצבי.',ev:['JA03']},
+  m:'הפניה לאורתופד, בעיקר אם יש אי-יציבות או חסר עצבי.',ev:['JA03','MG26','NT21']},
  {id:'k_pfps',n:'כאב פטלו-פמורלי',en:'Patellofemoral pain',
-  p:{limb:'b!',k_ant:'y!',k_stairs:'y',k_age:'a',k_pop:'n',k_lock:'n',k_inferior:'n',k_tub:'n',t_squat:'y-',t_eff:'n'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_ant:'y!',k_stairs:'y',k_age:'a',k_pop:'n',k_lock:'n',k_inferior:'n',k_tub:'n',t_squat:'y-',t_eff:'n'},
   d:'כאב מפושט סביב או מאחורי הפיקה, בסקוואט, במדרגות ובישיבה ממושכת.',
   t:['Squat','Step-down','שלילת תפליט'],
-  m:'חיזוק ירך וברך, ניהול עומסים, טייפינג ומדרסים לטווח קצר.',ev:['WI19','CR16','NU13']},
+  m:'חיזוק ירך וברך, ניהול עומסים, טייפינג ומדרסים לטווח קצר.',ev:['WI19','CR16','NU13','MG26','NT21']},
  {id:'k_ptend',n:'טנדינופתיה של הפטלה',en:'Patellar tendinopathy',
-  p:{limb:'b!',k_ant:'y!',k_inferior:'y!',k_jump:'y',k_teen:'n',t_dsq:'y'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_ant:'y!',k_inferior:'y!',k_jump:'y',k_teen:'n',t_dsq:'y'},
   d:'כאב נקודתי בקוטב התחתון של הפיקה בספורט קפיצות, תלוי עומס.',
   t:['Single-leg decline squat','מישוש הקוטב התחתון'],
-  m:'תרגול עומס הדרגתי (איזומטרי → איטי וכבד → אנרגיה), ניהול עומסי קפיצה.',ev:['MA15']},
+  m:'תרגול עומס הדרגתי (איזומטרי → איטי וכבד → אנרגיה), ניהול עומסי קפיצה.',ev:['MA15','MG26','NT21']},
  {id:'k_osg',n:'אוסגוד-שלאטר',en:'Osgood–Schlatter disease',
-  p:{limb:'b!',k_ant:'y!',k_teen:'y!',k_tub:'y!',k_jump:'y'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_ant:'y!',k_teen:'y!',k_tub:'y!',k_jump:'y'},
   d:'כאב ובליטה על ה-Tibial tuberosity במתבגרים פעילים בשלב גדילה.',
   t:['מישוש ה-Tibial tuberosity','צילום אם יש סימנים לא טיפוסיים'],
-  m:'הסבר והרגעה, ניהול עומסים, גמישות ארבע-ראשי.',ev:['GH07']},
+  m:'הסבר והרגעה, ניהול עומסים, גמישות ארבע-ראשי.',ev:['GH07','MG26','NT21']},
  {id:'k_oa',n:'אוסטאוארתריטיס של הברך',en:'Knee osteoarthritis',
-  p:{limb:'b!',k_age:'b!',k_stiff:'y',k_trauma:'n',k_pop:'n',k_teen:'n',t_crep:'y'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_age:'b!',k_stiff:'y',k_trauma:'n',k_pop:'n',k_teen:'n',t_crep:'y'},
   d:'כאב מכני ונוקשות בוקר קצרה מגיל 40–50, עם קרפיטציות והגדלה גרמית. אבחנה קלינית.',
   t:['קרפיטציות','הגדלה גרמית','צילום בעמידה (לא חובה לאבחנה)'],
-  m:'תרגול וחיזוק, ירידה במשקל לפי הצורך, הדרכה. NSAIDs מקומיים.',ev:['AL86','BN19']},
+  m:'תרגול וחיזוק, ירידה במשקל לפי הצורך, הדרכה. NSAIDs מקומיים.',ev:['AL86','BN19','MG26','NT21']},
  {id:'k_itb',n:'תסמונת ה-ITB',en:'Iliotibial band syndrome',
-  p:{limb:'b!',k_ant:'n',k_side:'b!',k_run:'y',k_trauma:'n',t_noble:'y',t_jlt:'n'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_ant:'n',k_side:'b!',k_run:'y',k_trauma:'n',t_noble:'y',t_jlt:'n'},
   d:'כאב לטרלי מעל האפיקונדיל בריצה או ברכיבה, שמופיע אחרי מרחק קבוע.',
   t:['Noble compression','Ober','מישוש האפיקונדיל הלטרלי'],
-  m:'ניהול עומסי ריצה, חיזוק ירך, התאמת טכניקה וציוד.',ev:['EL07']},
+  m:'ניהול עומסי ריצה, חיזוק ירך, התאמת טכניקה וציוד.',ev:['EL07','MG26','NT21']},
  {id:'k_pes',n:'תסמונת Pes anserine',en:'Pes anserine bursitis / tendinopathy',
-  p:{limb:'b!',k_ant:'n',k_side:'a!',k_anser:'y!',k_age:'b',k_trauma:'n',t_valg:'n',t_mcm:'n'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_ant:'n',k_side:'a!',k_anser:'y!',k_age:'b',k_trauma:'n',t_valg:'n',t_mcm:'n'},
   d:'כאב מדיאלי מתחת לקו המפרק, שכיח בגיל מבוגר, לעיתים יחד עם OA.',
   t:['מישוש מתחת לקו המפרק המדיאלי','US'],
-  m:'ניהול עומסים, חיזוק, הזרקה לשקול.',ev:['HF10']},
+  m:'ניהול עומסים, חיזוק, הזרקה לשקול.',ev:['HF10','MG26','NT21']},
  {id:'k_baker',n:'ציסטת בייקר',en:"Popliteal (Baker's) cyst",
-  p:{limb:'b!',k_ant:'n',k_post:'y!',k_pswell:'y',t_eff:'y'},
+  p:{limb:'b!',lower:'b!',lj:'a!',k_ant:'n',k_post:'y!',k_pswell:'y',t_eff:'y'},
   d:'נפיחות ומלאות מאחורי הברך, לרוב יחד עם OA או קרע במניסקוס. לשלול DVT.',
   t:['מישוש בחלל הברך','US'],
-  m:'טיפול בבעיה התוך-מפרקית. התפוצצות עם נפיחות שוק → שלילת DVT.',ev:['FN15']},
+  m:'טיפול בבעיה התוך-מפרקית. התפוצצות עם נפיחות שוק → שלילת DVT.',ev:['FN15','MG26','NT21']},
+ /* ---------- קרסול ---------- */
+ {id:'a_fx',flag:1,n:'שבר בקרסול / אמצע כף הרגל',en:'Ankle / midfoot fracture',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_trauma:'y!',a_ottawa:'y!'},
+  d:'נקע או מכה עם קריטריון חיובי של Ottawa ankle & foot rules.',
+  t:['צילום קרסול / כף רגל','בדיקה נוירו-וסקולרית'],
+  m:'הפניה לצילום.',ev:['BA03','MG26','NT21']},
+ {id:'a_inf',flag:1,n:'מפרק זיהומי / גאוט',en:'Septic arthritis / crystal arthritis',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_hot:'y!'},
+  d:'מפרק חם, אדום ונפוח בלי טראומה, עם או בלי חום.',
+  t:['שאיבה','בדיקות דם'],
+  m:'בירור רפואי דחוף.',ev:['MA07','MG26','NT21']},
+ {id:'a_ach',flag:1,n:'קרע בגיד אכילס',en:'Achilles tendon rupture',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_kick:'y!',a_where:'a',a_heel:'y',a_age:'b',t_thomp:'y*'},
+  d:'"בעיטה" בגב העקב בזמן דחיפה, חולשה בדחיפה ושקע בגיד.',
+  t:['Thompson','Matles (זווית מנוחה)','מישוש שקע','US'],
+  m:'הפניה מהירה לאורתופד (תוך ימים) להחלטה שמרני מול ניתוח.',ev:['MF98','MG26','NT21']},
+ {id:'a_back',n:'הקרנה מהגב (L5 / S1)',en:'Lumbar radicular referral',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_back:'y!',a_numb:'y',t_windlass:'n',t_hop:'n'},
+  d:'כאב או נימול בכף הרגל שמקורם בשורש עצב מותני.',
+  t:['SLR / Slump','בדיקת L5 ו-S1'],
+  m:'מעבר לבדיקת גב תחתון.',ev:['VW10','AN13','MG26','NT21']},
+ {id:'a_lat',n:'נקע קרסול לטרלי (ATFL / CFL)',en:'Lateral ankle sprain',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_trauma:'y!',a_inv:'y',a_where:'b',a_side:'a!',t_adrA:'y-',t_squeeze:'n'},
+  d:'נקע בהיפוך עם כאב ונפיחות מתחת ולפני המלאולוס החיצוני.',
+  t:['Anterior drawer (אחרי 4–5 ימים)','מישוש ATFL','Ottawa לשלילת שבר'],
+  m:'תמיכה תפקודית (סד / טייפ), תרגול איזון ופרופריוספציה מוקדם.',ev:['VD96','VU18','DO17','MG26','NT21']},
+ {id:'a_syn',n:'נקע גבוה (סינדסמוזיס)',en:'Syndesmosis (high ankle) sprain',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_trauma:'y!',a_er:'y',a_where:'b',t_squeeze:'y+',t_ert:'y'},
+  d:'סיבוב חיצוני של כף הרגל, כאב מעל הקרסול וקושי לדרוך. החלמה ארוכה מנקע רגיל.',
+  t:['Squeeze','External rotation (Kleiger)','רגישות AITFL','צילום בעמידה / MRI'],
+  m:'חשד לאי-יציבות → הפניה לאורתופד.',ev:['SM13','VU18','MG26','NT21']},
+ {id:'a_cai',n:'אי-יציבות קרסול כרונית',en:'Chronic ankle instability',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_unstable:'y!',a_where:'b',a_side:'a',t_adrA:'y'},
+  d:'נקעים חוזרים ותחושת "בריחה" של הקרסול, לרוב אחרי נקע ראשון שלא שוקם.',
+  t:['Anterior drawer','בדיקות איזון'],
+  m:'תרגול איזון ופרופריוספציה. חוסר הצלחה → הערכה לניתוח.',ev:['VU18','DO17','MG26','NT21']},
+ {id:'a_ocl',n:'פגיעה אוסטאוכונדרלית בטלוס',en:'Osteochondral lesion of the talus',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_persist:'y!',a_trauma:'y',a_where:'b'},
+  d:'כאב עמוק ונפיחות שנמשכים מעבר לצפוי אחרי נקע.',
+  t:['MRI / CT'],
+  m:'הפניה להדמיה ולאורתופד.',ev:['VU18','MG26','NT21']},
+ {id:'a_imp',n:'צביטה קדמית / קדמית-לטרלית',en:'Anterior / anterolateral ankle impingement',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_where:'b',a_ant:'y!',t_molloy:'y',a_trauma:'n'},
+  d:'כאב קדמי בכיפוף גבי בסקוואט, בעלייה ובבעיטה. לעיתים אחרי נקעים חוזרים.',
+  t:['Impingement sign','כיפוף גבי בנשיאת משקל'],
+  m:'ניהול עומסים ותנועתיות. עמיד → הזרקה או ארתרוסקופיה.',ev:['MO03','MG26','NT21']},
+ {id:'a_achT',n:'טנדינופתיה של האכילס',en:'Achilles tendinopathy (midportion / insertional)',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_where:'a!',a_heel:'y!',a_mstiff:'y',a_kick:'n',t_arc2:'y',t_thomp:'n'},
+  d:'כאב ונוקשות בגיד בבוקר ובתחילת פעילות, באמצע הגיד או בחיבור לעקב.',
+  t:['Arc sign','Royal London','מישוש 2–6 ס"מ מעל העקב'],
+  m:'תרגול עומס הדרגתי (איזומטרי → איטי וכבד → פליאומטרי), ניהול עומס ריצה.',ev:['MR18','MG26','NT21']},
+ {id:'a_pf',n:'פסציופתיה פלנטרית',en:'Plantar heel pain / plantar fasciopathy',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_where:'a!',a_heel:'n',a_first:'y!',a_numb:'n',t_windlass:'y+'},
+  d:'כאב חד מתחת לעקב בצעדים הראשונים בבוקר או אחרי ישיבה.',
+  t:['Windlass','מישוש המקור המדיאלי של הפסציה'],
+  m:'מתיחות פסציה ושוק, חיזוק, מדרסים, ניהול עומס. עמיד → ESWT.',ev:['MR14','MG26','NT21']},
+ {id:'a_tts',n:'תסמונת התעלה הטרסלית',en:'Tarsal tunnel syndrome',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_numb:'y!',a_back:'n',t_dfe:'y+',t_tinelT:'y'},
+  d:'נימול וצריבה בכף הרגל התחתונה ובעקב הפנימי, מוחמרים בעמידה ובלילה.',
+  t:['Dorsiflexion–eversion','Tinel טרסלי','EMG'],
+  m:'ניהול עומס, מדרסים, טיפול עצבי. חסר מתקדם → הפניה.',ev:['KI01','MG26','NT21']},
+ {id:'a_ptt',n:'אי-תפקוד של גיד הטיביאליס האחורי',en:'Posterior tibial tendon dysfunction',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_where:'b',a_side:'b!',a_flat:'y',a_age:'b',t_heelr:'y-'},
+  d:'כאב לאורך הצד הפנימי של הקרסול עם שקיעה הדרגתית של הקשת.',
+  t:['Single-leg heel raise','Too many toes'],
+  m:'תרגול טיביאליס אחורי, מדרס תומך. התקדמות → הפניה.',ev:['KG04','MG26','NT21']},
+ {id:'a_per',n:'טנדינופתיה / תת-פריקה של גידי הפרונאוס',en:'Peroneal tendinopathy / subluxation',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_where:'b',a_side:'a!',a_retro:'y!',t_ever:'y'},
+  d:'כאב מאחורי המלאולוס החיצוני, לעיתים עם "קפיצה" של הגידים.',
+  t:['אברסיה נגד התנגדות','מישוש לאורך הגידים','US'],
+  m:'ניהול עומס וחיזוק. תת-פריקה חוזרת → הפניה.',ev:['HK08','MG26','NT21']},
+ {id:'a_sfx',n:'שבר מאמץ (מטטרסל / נביקולרי / טיביה דיסטלית)',en:'Stress fracture',
+  p:{limb:'b!',lower:'b!',lj:'b!',a_stress:'y!',a_trauma:'n',t_hop:'y'},
+  d:'כאב גרמי נקודתי שהתפתח בהדרגה עם עלייה בעומס.',
+  t:['Hop test','מישוש גרמי','MRI'],
+  m:'הורדת עומס. נביקולרי / מטטרסל 5 → סיכון גבוה, הפניה.',ev:['MT16','MG26','NT21']},
+
+ /* ---------- גב תחתון ---------- */
+ {id:'b_ces',flag:1,n:'תסמונת כאודה אקווינה',en:'Cauda equina syndrome',
+  p:{limb:'b!',lower:'a!',b_cauda:'y!'},
+  d:'הפרעת תחושה בחיץ, שינוי בשליטה על סוגרים או חולשה דו-צדדית מתקדמת.',
+  t:['תחושה פרינאלית','בדיקה נוירולוגית מלאה'],
+  m:'הפניה מיידית למיון (MRI דחוף).',ev:['FI20','MG26','NT21']},
+ {id:'b_fxd',flag:1,n:'שבר חולייתי',en:'Vertebral fracture',
+  p:{limb:'b!',lower:'a!',b_fx:'y!'},
+  d:'טראומה משמעותית, או טראומה קלה עם אוסטאופורוזיס, גיל מבוגר או סטרואידים.',
+  t:['צילום / CT'],
+  m:'הפניה להדמיה.',ev:['DW13','FI20','MG26','NT21']},
+ {id:'b_mal',flag:1,n:'ממאירות / זיהום בעמוד השדרה',en:'Malignancy / spinal infection',
+  p:{limb:'b!',lower:'a!',b_ca:'y!'},
+  d:'היסטוריה של סרטן, ירידה במשקל, חום או כאב לילי קבוע.',
+  t:['בדיקות דם','MRI'],
+  m:'הפניה לבירור רפואי.',ev:['DW13','FI20','MG26','NT21']},
+ {id:'b_fem',n:'רדיקולופתיה פמורלית (L2–L3)',en:'Femoral radiculopathy, mid-lumbar (L2–L3)',
+  p:{limb:'b!',lower:'a!',b_rad:'y!',b_both:'n',b_path:'a!',b_below:'n',b_neuro:'y',b_legdom:'y',b_lfcn:'n',t_pkb:'y+',t_l23:'y+',t_slr:'n',t_l5:'n',t_s1:'n'},
+  d:'כאב מהגב למפשעה ולקדמת הירך, עם חולשת כיפוף ירך. מקור חולייתי במסלול העצב הפמורלי.',
+  t:['Femoral nerve stretch','בדיקת L2–L3','שלילת מקור בירך'],
+  m:'טיפול בגב ובעצב. חסר מוטורי מתקדם → הפניה.',ev:['SU11','AN13','MG26','NT21']},
+ {id:'b_l4',n:'רדיקולופתיה L4 (פמורלית + סיאטית)',en:'L4 radiculopathy (femoral and sciatic contribution)',
+  p:{limb:'b!',lower:'a!',b_rad:'y!',b_path:'a',b_below:'y',b_neuro:'y',t_l4:'y+',t_pkb:'y',t_slr:'y',t_l23:'n',t_l5:'n',t_s1:'n'},
+  d:'שורש L4 תורם גם לעצב הפמורלי וגם לסיאטי: כאב בקדמת הירך שיורד לפנים השוק, עם רפלקס ברך ירוד.',
+  t:['Femoral nerve stretch','SLR','בדיקת L4 (רפלקס ברך)'],
+  m:'טיפול בגב ובעצב. חסר מוטורי מתקדם → הפניה.',ev:['SU11','AN13','MG26','NT21']},
+ {id:'b_l5',n:'רדיקולופתיה סיאטית L5',en:'Sciatic radiculopathy L5',
+  p:{limb:'b!',lower:'a!',b_rad:'y!',b_both:'n',b_path:'b!',b_below:'y!',b_legdom:'y',b_neuro:'y',t_slr:'y-',t_slump:'y',t_cslr:'y+',t_l5:'y+',t_s1:'n',t_l4:'n',t_pkb:'n'},
+  d:'כאב מהעכוז לצד הרגל ולגב כף הרגל עד הבוהן הגדולה, עם חולשת EHL ודורסיפלקסיה.',
+  t:['SLR','Slump','Crossed SLR','בדיקת L5'],
+  m:'הדרכה, תנועה, טיפול בעצב. Foot drop מתקדם → הפניה מהירה.',ev:['VW10','MJ08','AN13','MG26','NT21']},
+ {id:'b_s1',n:'רדיקולופתיה סיאטית S1',en:'Sciatic radiculopathy S1',
+  p:{limb:'b!',lower:'a!',b_rad:'y!',b_both:'n',b_path:'b!',b_below:'y!',b_legdom:'y',b_neuro:'y',t_slr:'y-',t_slump:'y',t_cslr:'y+',t_s1:'y+',t_l5:'n',t_l4:'n',t_pkb:'n'},
+  d:'כאב מהעכוז לאחורי השוק ולצד החיצוני של כף הרגל, עם רפלקס אכילס ירוד וחולשת פלנטר-פלקסיה.',
+  t:['SLR','Slump','בדיקת S1 (רפלקס אכילס, קצות אצבעות ×10)'],
+  m:'הדרכה, תנועה, טיפול בעצב. חולשה מתקדמת → הפניה.',ev:['VW10','MJ08','AN13','MG26','NT21']},
+ {id:'b_multi',n:'רדיקולופתיה רב-רמתית (פמורלית וסיאטית)',en:'Multilevel radiculopathy (femoral + sciatic)',
+  p:{limb:'b!',lower:'a!',b_rad:'y!',b_both:'y!',b_age:'b',b_neuro:'y',t_pkb:'y',t_slr:'y'},
+  d:'הקרנה גם בפיזור הפמורלי וגם בסיאטי: מעורבות של כמה שורשים, לרוב על רקע היצרות או בקע גדול.',
+  t:['Femoral nerve stretch','SLR','בדיקה נוירולוגית L2–S1','MRI'],
+  m:'בירור הדמייתי. חסר מתקדם או דו-צדדי → הפניה.',ev:['SU11','KZ08','MG26','NT21']},
+ {id:'b_sten',n:'היצרות תעלת השדרה',en:'Lumbar spinal stenosis',
+  p:{limb:'b!',lower:'a!',b_claud:'y!',b_age:'b!',b_legdom:'y',t_lext:'y',t_slr:'n',b_infl:'n'},
+  d:'כאב או כבדות ברגליים בהליכה ובעמידה, שנרגעים בישיבה ובהתכופפות. בדרך כלל מעל גיל 50.',
+  t:['Lumbar extension test','הליכה עד הופעת תסמינים','שלילת צליעה וסקולרית (דפקים)'],
+  m:'תרגול בכיפוף, הליכה מדורגת, אופניים. חסר מתקדם → הפניה.',ev:['CK11','KZ08','MG26','NT21']},
+ {id:'b_nslbp',n:'כאב גב לא ספציפי (כולל כאב סומטי מוקרן)',en:'Non-specific LBP / somatic referred pain',
+  p:{limb:'b!',lower:'a!',b_below:'n',b_neuro:'n',b_legdom:'n',b_claud:'n!',b_infl:'n',t_slr:'n'},
+  d:'כאב גב מכני בלי סימנים עצביים. אם יש הקרנה, היא עמומה ולרוב מעל הברך (כאב סומטי ולא רדיקולרי).',
+  t:['שלילת דגלים אדומים','שלילת סימנים עצביים'],
+  m:'הדרכה והרגעה, המשך פעילות, תרגול. הדמיה לא נדרשת.',ev:['MH17','OL18','BG09','MG26','NT21']},
+ {id:'b_sijp',n:'כאב במפרק הסקרו-איליאקי',en:'Sacroiliac joint pain',
+  p:{limb:'b!',lower:'a!',b_sij:'y!',b_below:'n',b_neuro:'n',t_laslett:'y*',t_slr:'n'},
+  d:'כאב מתחת ל-L5 סביב ה-PSIS, לעיתים מקרין לעכוז ולירך האחורית.',
+  t:['Laslett cluster','Fortin finger test'],
+  m:'תרגול ייצוב וחיזוק, ניהול עומסים.',ev:['LA05','MG26','NT21']},
+ {id:'b_axs',n:'ספונדילוארתריטיס צירית',en:'Axial spondyloarthritis',
+  p:{limb:'b!',lower:'a!',b_infl:'y!',b_age:'a'},
+  d:'כאב גב דלקתי: התחלה לפני 40, נוקשות בוקר ממושכת, שיפור בתנועה ולא במנוחה.',
+  t:['קריטריוני ASAS','HLA-B27, CRP','MRI אגן'],
+  m:'הפניה לראומטולוג. תרגול קבוע.',ev:['SI09','MG26','NT21']},
+ {id:'b_spon',n:'ספונדילוליזיס / ספונדילוליסטזיס',en:'Spondylolysis / spondylolisthesis',
+  p:{limb:'b!',lower:'a!',b_ext:'y!',b_age:'a!',t_stork:'y'},
+  d:'כאב גב בהטיה לאחור אצל ספורטאים צעירים (התעמלות, קריקט, אמנויות לחימה).',
+  t:['Stork test (ערך אבחוני מוגבל)','MRI / SPECT'],
+  m:'הורדת עומס יישור, ייצוב. הפניה להדמיה.',ev:['GR16','MG26','NT21']},
+ {id:'b_dgs',n:'תסמונת עכוז עמוק (Piriformis)',en:'Deep gluteal / piriformis syndrome',
+  p:{limb:'b!',lower:'a!',b_sit:'y!',t_piri:'y',t_l5:'n',t_s1:'n',t_cslr:'n'},
+  d:'כאב עכוז שמוחמר בישיבה, לעיתים עם הקרנה סיאטית, בלי שחזור בתנועות הגב. לכידה של העצב מחוץ לעמוד השדרה.',
+  t:['FAIR','מישוש עכוז','שלילת מקור חולייתי'],
+  m:'ניהול עומס ישיבה, טיפול רקמה רכה ועצב, חיזוק ירך.',ev:['HP10','MG26','NT21']},
+ {id:'b_mer',n:'מרלגיה פרסתטיקה (LFCN)',en:'Meralgia paresthetica',
+  p:{limb:'b!',lower:'a!',b_lfcn:'y!',t_pkb:'n',t_l23:'n',b_neuro:'y'},
+  d:'נימול או צריבה בצד הקדמי-חיצוני של הירך, בלי חולשה. עצב תחושתי בלבד, לכידה ליד ה-ASIS.',
+  t:['Pelvic compression','Tinel ליד ה-ASIS','שלילת L2–L3'],
+  m:'הסרת לחץ (חגורה, בגדים צמודים), ירידה במשקל לפי הצורך. עמיד → חסם עצב.',ev:['CT13','MG26','NT21']},
 ];
 
 /* ================= ENGINE ================= */
@@ -569,6 +847,7 @@ function nextQuestion(ev){
   const cands=Q.filter(ok);
   const firsts=cands.filter(q=>q.first).sort((a,b)=>a.first-b.first);
   let best=null,bv=0;
+  const hist=answers.filter(([id])=>!QI[id].scope&&QI[id].type!=='pn').length;
   for(const q of [...firsts,...cands.filter(q=>!q.first)]){
     let wY=0,wN=0,nY=0,nN=0;
     for(const r of ev.act){
@@ -581,7 +860,7 @@ function nextQuestion(ev){
     if((nY===0||nN===0)&&neutral===0)continue;
     let v=Math.min(wY,wN)*2+Math.max(wY,wN)*.5;
     if(q.first){ if(v>0)return q; else continue; }
-    if(q.type==='pn')v*=.85;  // אנמנזה קודם, בדיקות אחר כך
+    if(q.type==='pn')v*= hist<6 ? .5 : .85;  // אנמנזה קודם, בדיקות אחר כך
     if(v>bv){bv=v;best=q}
   }
   return best;
@@ -591,7 +870,7 @@ function nextQuestion(ev){
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pub=q=>'https://pubmed.ncbi.nlm.nih.gov/?term='+encodeURIComponent(q);
-const refsHTML=ids=>`<ul class="refs">${ids.map(id=>{const r=R[id];return `<li><span class="rk">${esc(r.k)}</span><a href="${pub(r.q)}" target="_blank" rel="noopener">${esc(r.c)}</a></li>`}).join('')}</ul>`;
+const refsHTML=ids=>`<ul class="refs">${ids.map(id=>{const r=R[id];return `<li><span class="rk">${esc(r.k)}</span><a href="${r.u||pub(r.q)}" target="_blank" rel="noopener">${esc(r.c)}</a></li>`}).join('')}</ul>`;
 
 function testProp(q){
   const codes=DX.map(d=>d.p[q.id]).filter(Boolean).map(mod);
@@ -611,7 +890,7 @@ function render(){
 
 function renderTop(ev,q,done){
   const flags=ev.act.filter(r=>r.d.flag&&r.why.some(w=>w[0]));
-  let h=`<div class="bar"><span class="brand"><span class="logo" aria-hidden="true"></span><b>DD</b><small>כתף · מרפק · ברך</small></span>
+  let h=`<div class="bar"><span class="brand"><span class="logo" aria-hidden="true"></span><b>DD</b><small>כתף · מרפק · ברך · קרסול · גב</small></span>
     <span class="tools">${canInstall()?`<button class="ibtn" id="install" title="התקנה כאפליקציה"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>התקנה</button>`:''}<button class="ibtn" id="share" title="שיתוף"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>שיתוף</button></span></div>
   <div class="bar" style="justify-content:flex-start"><span class="tools"><button class="tbtn" id="undo" ${answers.length?'':'disabled'}>חזרה</button><button class="tbtn" id="reset" ${answers.length?'':'disabled'}>מההתחלה</button></span></div>`;
   if(answers.length)h+=`<div class="trail">${answers.map(([qid,v],i)=>`<button class="chip ${v==='n'?'neg':''}" data-back="${i}" title="חזרה לשאלה זו">${esc(QI[qid].lbl)}: <b>${esc(ansLabel(QI[qid],v))}</b></button>`).join('')}</div>`;
@@ -719,7 +998,7 @@ async function shareOrCopy(data,copyStr,msg){
   if(navigator.share){try{await navigator.share(data);return;}catch(e){if(e&&e.name==='AbortError')return;}}
   copyText(copyStr,msg);
 }
-function shareApp(){const u=appURL();shareOrCopy({title:'DD',text:'DD — אבחנה מבדלת אורטופדית לכתף, מרפק וברך',url:u},u,'הקישור הועתק');}
+function shareApp(){const u=appURL();shareOrCopy({title:'DD',text:'DD — אבחנה מבדלת אורטופדית',url:u},u,'הקישור הועתק');}
 function shareSummary(){
   const ev=evaluate(); if(!ev.act.length)return;
   const lines=['DD · סיכום אבחנה מבדלת',''];
