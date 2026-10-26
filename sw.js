@@ -1,4 +1,4 @@
-const CACHE = 'dd-v4';
+const CACHE = 'dd-v5';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
