@@ -158,6 +158,15 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
 .elbar i{display:block;height:100%;background:var(--ink)}
 .elrow .n{font-variant-numeric:tabular-nums;color:var(--muted);text-align:left}
 .tcmnote{font-size:12px;color:var(--muted)}
+.tblw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:8px}
+.htbl{border-collapse:collapse;font-size:13px;min-width:880px;width:100%}
+.htbl td:first-child{min-width:140px}
+.htbl td:nth-child(5),.htbl td:nth-child(6){min-width:150px}
+.htbl th{font-size:11.5px;color:var(--muted);font-weight:600;text-align:right;padding:7px 8px;border-bottom:1px solid var(--line);background:var(--panel);white-space:nowrap}
+.htbl td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.htbl tr:last-child td{border-bottom:0}
+.htbl td:nth-child(3),.htbl td:nth-child(4){white-space:nowrap}
+.htbl .lat{font-style:italic;color:var(--muted);font-size:12px;direction:ltr;text-align:right}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -183,6 +192,27 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;l
 */
 const Q = [
 
+/* ================= עור ================= */
+ {id:'d_main',cond:{dom:'d'},t:'מה הבעיה בעור?',type:'multi',o:[['rash','פריחה / גרד / קשקשת'],['les','שומה / נגע / פצע שלא מחלים'],['face','פצעונים / אדמומיות בפנים'],['hive','חרלת / בליטות נודדות'],['pain','פריחה כואבת / שלפוחיות / אזור חם']],lbl:'תלונה',first:1.5,scope:1},
+ {id:'d_anaph',t:'נפיחות בשפתיים או בלשון, קוצר נשימה, צרידות או סחרחורת עם הפריחה?',lbl:'סימני אנפילקסיס',first:2},
+ {id:'d_purp',t:'חום עם פריחה מתפשטת שלא מחווירה בלחיצה (בדיקת כוס), או קילוף / שלפוחיות נרחבות עם פצעים בפה?',lbl:'פריחה עם חום',first:2.2},
+ {id:'d_cell',t:'אזור אדום, חם, נפוח וכואב שמתפשט, עם או בלי חום?',lbl:'אזור חם ומתפשט',first:2.4},
+ {id:'d_eye',t:'שלפוחיות סביב העין או בקצה האף?',lbl:'שלפוחיות ליד העין',first:2.6},
+ {id:'d_abcde',t:'הנגע אסימטרי, עם גבולות לא סדירים, כמה צבעים, קוטר מעל 6 מ"מ, או משתנה / מדמם?',h:'ABCDE. גם נגע שונה מכל השומות האחרות ("ugly duckling").',lbl:'ABCDE',first:3},
+ {id:'d_pearly',t:'נגע ורוד-פנינתי עם כלי דם קטנים, או פצע שלא מחלים מעל 4 שבועות באזור חשוף לשמש?',lbl:'נגע פנינתי / פצע לא מחלים',first:3.2},
+ {id:'d_contact',t:'הפריחה במקום שבא במגע עם חומר (תכשיט, שעון, כפפות, קוסמטיקה, חומרי ניקוי, צמח)?',lbl:'מקום המגע',first:6},
+ {id:'d_hands',t:'הפריחה בעיקר בידיים, ומחמירה בעבודה עם מים או חומרים?',lbl:'ידיים / עבודה רטובה'},
+ {id:'d_flex',t:'גרד וקשקשת בקפלי המרפקים והברכיים, עם רקע של אלרגיות / אסתמה או מילדות?',lbl:'קפלים + אטופיה'},
+ {id:'d_plaque',t:'רבדים מוגדרים עם קשקשת כסופה במרפקים, בברכיים, בקרקפת או בגב התחתון?',lbl:'רבדים כסופים'},
+ {id:'d_nails',t:'גומות או היפרדות בציפורניים, או כאבים ונפיחות במפרקים?',lbl:'ציפורניים / מפרקים'},
+ {id:'d_seb',t:'קשקשים שומניים צהבהבים בקרקפת, בגבות ובצידי האף?',lbl:'קשקשים שומניים'},
+ {id:'d_ring',t:'נגע עגול עם שוליים מורמים ומרכז בהיר שמתרחב, או גרד בין אצבעות הרגליים?',lbl:'טבעת מתרחבת'},
+ {id:'d_night',t:'גרד חזק בלילה, בין האצבעות או בפרקי הידיים, ובני בית מגרדים גם?',lbl:'גרד לילי משפחתי'},
+ {id:'d_wheal',t:'בליטות אדומות ומגרדות שזזות ונעלמות תוך פחות מ-24 שעות?',lbl:'בליטות נודדות'},
+ {id:'d_zost',t:'פריחה עם שלפוחיות ברצועה בצד אחד של הגוף, עם כאב או צריבה שהתחילו לפני הפריחה?',lbl:'רצועה חד-צדדית'},
+ {id:'d_crust',t:'פצעים עם קרום בצבע דבש, בעיקר סביב האף והפה?',lbl:'קרום דבש'},
+ {id:'d_comed',t:'פצעונים, ראשים שחורים או לבנים בפנים, בחזה ובגב?',lbl:'פצעונים / ראשים שחורים'},
+ {id:'d_flush',t:'אדמומיות בלחיים ובאף, הסמקות וכלי דם קטנים, מחמירה באלכוהול, שמש או חום?',lbl:'הסמקות'},
 /* ================= צוואר ================= */
  {id:'nk_trauma',t:'הכאב התחיל אחרי תאונה, נפילה או מכה בראש או בצוואר?',lbl:'טראומה',first:2},
  {id:'t_ccr',type:'pn',cond:{nk_trauma:'y'},t:'Canadian C-spine rule',h:'סיכון גבוה: גיל 65+, מנגנון מסוכן (נפילה מגובה 1 מ\' או 5 מדרגות, תאונה במהירות גבוהה, תאונת אופניים) או נימול בגפיים. אם אין סיכון גבוה: בדיקת סיבוב אקטיבי 45° לכל צד.',pos:'קריטריון סיכון גבוה, או חוסר יכולת לסובב 45° לכל צד → הדמיה.',lbl:'Canadian C-spine',first:3},
@@ -379,12 +409,13 @@ const Q = [
  {id:'k_postflex',t:'כיפוף מלא או כריעה מעוררים לחץ או כאב מאחורי הברך?',lbl:'לחץ אחורי בכיפוף'},
  {id:'k_swtime',cond:{k_trauma:'y'},t:'מתי הופיעה הנפיחות אחרי הפציעה?',type:'ab',a:['תוך שעתיים','אחרי כמה שעות / למחרת'],h:'נפיחות מהירה = דימום במפרק (ACL, שבר). נפיחות מאוחרת = נוזל (מניסקוס).',lbl:'זמן נפיחות'},
  {id:'t_foucher',type:'pn',t:"Foucher's sign",h:'מישוש הגוש בחלל הברך ביישור מלא ואז בכיפוף של כ-45°.',pos:'הגוש מתוח וקשה ביישור, ונעשה רך או נעלם בכיפוף.',lbl:'Foucher'},
- {id:'dom',t:'באיזה תחום התלונה?',type:'multi',o:[['o','אורטופדיה ותנועה'],['g','עיכול / בטן'],['w','בריאות האישה'],['n','עצבים וראש'],['i','זיהומים ונשימה']],lbl:'תחום',first:1,scope:1},
+ {id:'dom',t:'באיזה תחום התלונה?',type:'multi',o:[['o','אורטופדיה ותנועה'],['g','עיכול / בטן'],['w','בריאות האישה'],['n','עצבים וראש'],['i','זיהומים ונשימה'],['d','עור']],lbl:'תחום',first:1,scope:1},
  {id:'site',cond:{dom:'o'},t:'איפה הכאב?',type:'multi',o:[['nk','צוואר'],['sh','כתף'],['el','מרפק'],['hw','שורש כף יד / אצבעות'],['lb','גב תחתון / הקרנה לרגל'],['hp','ירך / מפשעה'],['kn','ברך'],['an','קרסול / כף רגל']],lbl:'אזור',first:1.2,scope:1},
 {id:'w_main',cond:{dom:'w'},t:'מה התלונה העיקרית?',type:'multi',o:[['dys','כאבי וסת'],['irr','וסת לא סדירה / היעדר וסת'],['hmb','דימום וסתי כבד'],['pms','תסמינים לפני הווסת'],['meno','גיל המעבר'],['vag','הפרשה / גירוד'],['pel','כאב אגן / בטן תחתונה']],lbl:'תלונה',first:5,scope:1},
  {id:'n_main',cond:{dom:'n'},t:'מה התלונה העיקרית?',type:'multi',o:[['ha','כאב ראש'],['dz','סחרחורת / ורטיגו'],['nb','נימול / חולשה ביד או ברגל'],['face','חולשה / צניחה בפנים']],lbl:'תלונה',first:1.5,scope:1},
  {id:'i_main',cond:{dom:'i'},t:'מה התלונה העיקרית?',type:'multi',o:[['cgh','שיעול'],['st','כאב גרון'],['sin','גודש באף / סינוסים'],['fev','חום ותסמיני שפעת'],['uti','צריבה במתן שתן']],lbl:'תלונה',first:1.5,scope:1},
- {id:'dur',t:'כמה זמן זה כבר ככה?',type:'multi',o:[['a','פחות מ-3 שבועות'],['s','3–8 שבועות'],['m','2–3 חודשים'],['l','מעל 3 חודשים']],h:'משנה את כל התמונה: אקוטי מול כרוני.',lbl:'משך',first:1.9},
+ {id:'age',t:'גיל המטופל',type:'multi',o:[['c','מתחת ל-18'],['y','18–39'],['f','40–49'],['g','50–59'],['o','60 ומעלה']],lbl:'גיל',first:1.85,always:1},
+ {id:'dur',t:'כמה זמן זה כבר ככה?',type:'multi',o:[['a','פחות מ-3 שבועות'],['s','3–8 שבועות'],['m','2–3 חודשים'],['l','מעל 3 חודשים']],h:'משנה את כל התמונה: אקוטי מול כרוני.',lbl:'משך',first:1.9,always:1},
  {id:'sex',t:'מין המטופל',type:'ab',a:['אישה','גבר'],lbl:'מין',first:1.8},
  {id:'gi_main',cond:{dom:'g'},t:'מה הבעיה העיקרית?',type:'multi',o:[['u','בטן עליונה / צרבת / שובע מהיר'],['c','עצירות'],['d','שלשול / יציאות רכות'],['p','נפיחות / גזים / כאב בטן']],lbl:'תלונה',first:5},
 
@@ -589,6 +620,15 @@ const Q = [
  {id:'t_p4',type:'pn',t:'P4 / Posterior pelvic pain provocation',h:'שכיבה על הגב, ירך ב-90°. לחץ צירי דרך הברך לאורך הירך.',pos:'כאב עמוק בעכוז באותו צד.',lbl:'P4'},
 
  /* ---------- גורמים תורמים (נשאלים לפני התוצאה) ---------- */
+/* ---------- פרופיל המטופל (נשאל תמיד, לפני התוצאה) ---------- */
+ {id:'p_act',ctx:1,prof:1,t:'כמה פעילות גופנית?',type:'multi',o:[['n','כמעט לא'],['l','קלה (הליכות)'],['r','סדירה, 2–4 בשבוע'],['h','אינטנסיבית / ספורט תחרותי']],lbl:'פעילות גופנית'},
+ {id:'p_expo',ctx:1,prof:1,t:'חשיפה לחומרים בעבודה או בבית: ממיסים, חומרי ניקוי, צבע, אבק, עובש, חומרי הדברה, מתכות או לטקס?',lbl:'חשיפה לחומרים'},
+ {id:'p_smoke',ctx:1,prof:1,t:'עישון?',type:'multi',o:[['n','לא מעשן'],['x','עישן בעבר'],['y','מעשן']],lbl:'עישון'},
+ {id:'p_alc',ctx:1,prof:1,t:'אלכוהול יותר מ-7 משקאות בשבוע?',lbl:'אלכוהול'},
+ {id:'p_sleep',ctx:1,prof:1,t:'איך השינה?',type:'ab',a:['טובה','גרועה / מתעורר בלילה'],lbl:'שינה'},
+ {id:'p_temp',ctx:1,prof:1,t:'בדרך כלל קר לו או חם לו?',type:'multi',o:[['c','קר לו, מעדיף חום'],['h','חם לו, מעדיף קור'],['n','מאוזן']],lbl:'קור / חום'},
+ {id:'p_body',ctx:1,prof:1,t:'מבנה גוף ואופי כללי?',type:'multi',o:[['v','רזה, עור יבש, נמרץ ולא יציב (ואטה)'],['p','בינוני, חם, חד ותחרותי (פיטה)'],['k','כבד, יציב, איטי ורגוע (קאפה)']],lbl:'מבנה'},
+ {id:'p_emo',ctx:1,prof:1,t:'איך הוא מגיב בדרך כלל ללחץ?',type:'multi',o:[['wood','כעס / תסכול (עץ)'],['fire','חוסר מנוחה / התרגשות (אש)'],['earth','דאגה / מחשבות חוזרות (אדמה)'],['metal','עצב / הסתגרות (מתכת)'],['water','פחד / חרדה (מים)']],lbl:'תגובה ללחץ'},
  {id:'c_neigh',ctx:1,oo:1,t:'יש כאב, הגבלה או בעיה במפרקים הסמוכים (מעל ומתחת לאזור)?',h:'למשל ירך וקרסול בבעיית ברך, צוואר וגב עליון בבעיית כתף.',lbl:'מפרקים סמוכים'},
  {id:'c_trhx',ctx:1,oo:1,t:'היו תאונה, פציעה קשה או שבר בעבר באזור או בשרשרת התנועה שלו?',lbl:'פציעות עבר'},
  {id:'c_surg',ctx:1,t:'עבר ניתוח בעבר באזור, בבטן או באגן (כולל ניתוח קיסרי)?',lbl:'ניתוחים בעבר'},
@@ -764,6 +804,21 @@ XMI12:{k:'סקירה שיטתית',c:'Michaleff ZA et al. Accuracy of the Canadi
  XHR15:{k:'מטא-אנליזה',c:'Haroon S et al. Diagnostic accuracy of screening tests for COPD: a systematic review and meta-analysis. BMJ Open 2015;5:e008133.',q:'Haroon 2015 diagnostic accuracy screening tests COPD meta-analysis'},
  XGOLD:{k:'הנחיה (GOLD)',c:'Global Initiative for Chronic Obstructive Lung Disease. Global Strategy for the Diagnosis, Management, and Prevention of COPD. GOLD report.',q:'',u:'https://goldcopd.org/'},
  XMO20:{k:'הנחיה (ERS)',c:'Morice AH et al. ERS guidelines on the diagnosis and treatment of chronic cough in adults and children. Eur Respir J 2020;55:1901136.',q:'Morice 2020 ERS guidelines chronic cough adults children'},
+XBR08:{k:'סקירה שיטתית',c:'Brenninkmeijer EEA et al. Diagnostic criteria for atopic dermatitis: a systematic review. Br J Dermatol 2008;158:754–65.',q:'Brenninkmeijer 2008 diagnostic criteria atopic dermatitis systematic review'},
+ XJO15:{k:'הנחיה (ESCD)',c:'Johansen JD et al. European Society of Contact Dermatitis guideline for diagnostic patch testing. Contact Dermatitis 2015;73:195–221.',q:'Johansen 2015 European Society Contact Dermatitis guideline patch testing'},
+ XGF21:{k:'סקירה',c:'Griffiths CEM, Armstrong AW, Gudjonsson JE, Barker JNWN. Psoriasis. Lancet 2021;397:1301–15.',q:'Griffiths Armstrong 2021 psoriasis Lancet'},
+ XCL15:{k:'סקירה',c:'Clark GW, Pope SM, Jaboori KA. Diagnosis and treatment of seborrheic dermatitis. Am Fam Physician 2015;91:185–90.',q:'Clark Pope Jaboori 2015 seborrheic dermatitis'},
+ XRY24:{k:'הנחיה (AAD)',c:'Reynolds RV et al. Guidelines of care for the management of acne vulgaris. J Am Acad Dermatol 2024;90:1006.e1–30.',q:'Reynolds 2024 guidelines of care management acne vulgaris'},
+ XGA18:{k:'קונצנזוס (NRS)',c:'Gallo RL et al. Standard classification and pathophysiology of rosacea: the 2017 update by the National Rosacea Society Expert Committee. J Am Acad Dermatol 2018;78:148–55.',q:'Gallo 2018 rosacea classification National Rosacea Society'},
+ XZU22:{k:'הנחיה בינלאומית',c:'Zuberbier T et al. The international EAACI/GA²LEN/EuroGuiDerm/APAAACI guideline for the definition, classification, diagnosis, and management of urticaria. Allergy 2022;77:734–66.',q:'Zuberbier 2022 international guideline urticaria'},
+ XEL14:{k:'סקירה',c:'Ely JW, Rosenfeld S, Seabury Stone M. Diagnosis and management of tinea infections. Am Fam Physician 2014;90:702–10.',q:'Ely 2014 diagnosis management tinea infections'},
+ XEN20:{k:'קריטריונים (IACS)',c:'Engelman D et al. The 2020 International Alliance for the Control of Scabies Consensus Criteria for the Diagnosis of Scabies. Br J Dermatol 2020;183:808–20.',q:'Engelman 2020 consensus criteria diagnosis scabies'},
+ XCO13:{k:'סקירה',c:'Cohen JI. Herpes zoster. N Engl J Med 2013;369:255–63.',q:'Cohen 2013 herpes zoster NEJM'},
+ XKO12:{k:'סקירת Cochrane',c:'Koning S et al. Interventions for impetigo. Cochrane Database Syst Rev 2012;CD003261.',q:'Koning 2012 interventions impetigo Cochrane'},
+ XRK16:{k:'סקירה',c:'Raff AB, Kroshinsky D. Cellulitis: a review. JAMA 2016;316:325–37.',q:'Raff Kroshinsky 2016 cellulitis review JAMA'},
+ XSH20:{k:'הנחיה + סקירה שיטתית (GRADE)',c:'Shaker MS et al. Anaphylaxis—a 2020 practice parameter update, systematic review, and GRADE analysis. J Allergy Clin Immunol 2020;145:1082–123.',q:'Shaker 2020 anaphylaxis practice parameter update systematic review'},
+ XDN18a:{k:'סקירת Cochrane',c:'Dinnes J et al. Visual inspection for diagnosing cutaneous melanoma in adults. Cochrane Database Syst Rev 2018;CD013194.',q:'Dinnes 2018 visual inspection diagnosing cutaneous melanoma Cochrane'},
+ XDN18b:{k:'סקירת Cochrane',c:'Dinnes J et al. Visual inspection and dermoscopy, alone or in combination, for diagnosing keratinocyte skin cancers in adults. Cochrane Database Syst Rev 2018;CD011901.',q:'Dinnes 2018 visual inspection dermoscopy keratinocyte skin cancers Cochrane'},
  XAD04:{k:'מטא-אנליזה',c:'Andersson RE. Meta-analysis of the clinical and laboratory diagnosis of appendicitis. Br J Surg 2004;91:28–37.',q:'Andersson 2004 meta-analysis clinical laboratory diagnosis appendicitis'},
  MT14:{k:'ספר',c:"Hengeveld E, Banks K. Maitland's Peripheral Manipulation, 5th ed. Elsevier, 2014.",q:'',u:'https://www.google.com/search?q=Maitland%27s+Peripheral+Manipulation+Hengeveld+Banks'},
  MG26:{k:'ספר מוביל',c:"Manske RC et al. Magee's Orthopedic Physical Assessment, 8th ed. Elsevier, 2026.",q:'',u:'https://shop.elsevier.com/books/magee-s-orthopedic-physical-assessment/manske/978-0-443-12864-6'},
@@ -888,6 +943,79 @@ const DX = [
   d:'כאב בנקודה קטנה בדופן הבטן, שמחמיר בתנועה ובכיווץ שרירים ולא קשור לאוכל או ליציאות. מקור שרירי או עצבי.',
   t:["Carnett's sign",'מישוש נקודתי','בדיקת עמוד שדרה חזי'],
   m:'טיפול ידני ושיקום, טיפול בעמוד השדרה החזי, חסם עצב מקומי במקרים עמידים.',ev:['CS04']},
+/* ================= עור ================= */
+ {id:'d_ana',flag:1,n:'אנפילקסיס / אנגיואדמה',en:'Anaphylaxis / angioedema',
+  p:{dom:'d!',d_anaph:'y!'},
+  d:'פריחה עם נפיחות בשפתיים או בלשון, קוצר נשימה או סחרחורת.',
+  t:['סימנים חיוניים'],m:'מד"א 101. אפיפן אם קיים.',ev:['XSH20']},
+ {id:'d_emerg',flag:1,n:'פריחה עם חום (חשד למנינגוקוק / תגובה תרופתית קשה)',en:'Febrile petechial rash / SJS–TEN',
+  p:{dom:'d!',d_purp:'y!'},
+  d:'פריחה שלא מחווירה בלחיצה עם חום, או קילוף ושלפוחיות נרחבים עם פצעים בפה.',
+  t:['בדיקת כוס','סימנים חיוניים'],m:'מיון מיד.',ev:['XAT99']},
+ {id:'d_cellD',flag:1,n:'צלוליטיס / זיהום עור חיידקי',en:'Cellulitis',
+  p:{dom:'d!',d_cell:'y!',d_main:'pain|rash'},
+  d:'אזור אדום, חם, נפוח וכואב שמתפשט.',
+  t:['סימון גבולות האודם','חום'],m:'פנייה לרופא היום לטיפול אנטיביוטי. חום גבוה או התפשטות מהירה → מיון.',ev:['XRK16']},
+ {id:'d_zoeye',flag:1,n:'שלבקת חוגרת סביב העין',en:'Herpes zoster ophthalmicus',
+  p:{dom:'d!',d_eye:'y!'},
+  d:'שלפוחיות סביב העין או בקצה האף: סיכון לפגיעה בעין.',
+  t:['בדיקת עיניים'],m:'רופא היום לטיפול אנטי-ויראלי והפניה לרופא עיניים.',ev:['XCO13']},
+ {id:'d_mel',flag:1,n:'חשד למלנומה',en:'Suspected melanoma',
+  p:{dom:'d!',d_main:'les!',d_abcde:'y!'},
+  d:'שומה או נגע עם מאפייני ABCDE, או נגע שמשתנה ושונה מהאחרים.',
+  t:['ABCDE','Ugly duckling','דרמוסקופיה'],m:'הפניה לרופא עור בהקדם (שבועיים).',ev:['XDN18a','XNG12']},
+ {id:'d_bcc',n:'חשד לסרטן עור לא-מלנומה (BCC / SCC)',en:'Suspected keratinocyte skin cancer',
+  p:{dom:'d!',d_main:'les!',d_pearly:'y!',d_abcde:'n',age:'g|o'},
+  d:'נגע ורוד-פנינתי עם כלי דם, או פצע שלא מחלים מעל 4 שבועות באזור חשוף לשמש.',
+  t:['דרמוסקופיה','ביופסיה'],m:'הפניה לרופא עור.',ev:['XDN18b','XNG12']},
+ {id:'d_benign',n:'נגע שפיר (שומה / קרטוזיס סבוראית)',en:'Benign naevus / seborrhoeic keratosis',
+  p:{dom:'d!',d_main:'les!',d_abcde:'n!',d_pearly:'n!'},
+  d:'נגע יציב, סימטרי וחד-גוני בלי סימני אזהרה.',
+  t:['מעקב ותיעוד בצילום'],m:'מעקב. כל שינוי → בדיקה.',ev:['XDN18a']},
+ {id:'d_atop',n:'אטופיק דרמטיטיס (אקזמה)',en:'Atopic dermatitis',
+  p:{dom:'d!',d_main:'rash!',d_flex:'y+',d_contact:'n',d_plaque:'n',d_ring:'n',d_night:'n',d_seb:'n',age:'c|y'},
+  d:'גרד וקשקשת בקפלים, עם רקע אטופי או התחלה בילדות.',
+  t:['קריטריוני UK Working Party'],m:'לחות יומית, הימנעות מגירויים, טיפול אנטי-דלקתי מקומי לפי רופא.',ev:['XBR08']},
+ {id:'d_cont',n:'דרמטיטיס ממגע (אלרגית / גירוי)',en:'Contact dermatitis (allergic / irritant)',
+  p:{dom:'d!',d_main:'rash!',d_contact:'y!',d_hands:'y',d_plaque:'n',d_ring:'n'},
+  d:'פריחה מגרדת באזור המגע עם חומר. בידיים: לרוב גירוי מעבודה רטובה.',
+  t:['זיהוי החומר','Patch test'],m:'הימנעות מהחומר, כפפות, לחות. Patch test לבירור אלרגיה.',ev:['XJO15']},
+ {id:'d_pso',n:'פסוריאזיס',en:'Psoriasis',
+  p:{dom:'d!',d_main:'rash!',d_plaque:'y!',d_nails:'y+',d_flex:'n',d_ring:'n'},
+  d:'רבדים מוגדרים עם קשקשת כסופה. שינויים בציפורניים או כאבי מפרקים מעלים חשד לדלקת מפרקים פסוריאטית.',
+  t:['בדיקת ציפורניים ומפרקים','PEST שאלון'],m:'הפניה לרופא עור. כאבי מפרקים → ראומטולוג. ירידה במשקל, הפסקת עישון.',ev:['XGF21']},
+ {id:'d_sebD',n:'דרמטיטיס סבוראית',en:'Seborrhoeic dermatitis',
+  p:{dom:'d!',d_main:'rash|face!',d_seb:'y!',d_plaque:'n'},
+  d:'קשקשים שומניים צהבהבים בקרקפת, בגבות ובצידי האף.',
+  t:['אבחנה קלינית'],m:'שמפו אנטי-פטרייתי, טיפול מקומי לפי רופא.',ev:['XCL15']},
+ {id:'d_tin',n:'פטרת עור (טיניאה)',en:'Tinea (dermatophyte infection)',
+  p:{dom:'d!',d_main:'rash!',d_ring:'y!',d_plaque:'n',d_flex:'n'},
+  d:'נגע עגול עם שוליים מורמים ומרכז בהיר, או גרד בין אצבעות הרגליים.',
+  t:['גרידה לבדיקה מיקרוסקופית / KOH'],m:'טיפול אנטי-פטרייתי מקומי לפי רופא או רוקח.',ev:['XEL14']},
+ {id:'d_scab',n:'גרדת (Scabies)',en:'Scabies',
+  p:{dom:'d!',d_main:'rash!',d_night:'y!',d_ring:'n'},
+  d:'גרד חזק בלילה בין האצבעות ובפרקי הידיים, עם בני בית מגרדים.',
+  t:['קריטריוני IACS 2020'],m:'פנייה לרופא. טיפול לכל בני הבית בו זמנית וכביסת מצעים.',ev:['XEN20']},
+ {id:'d_urt',n:'חרלת (אורטיקריה)',en:'Urticaria',
+  p:{dom:'d!',d_main:'hive|rash!',d_wheal:'y!',d_anaph:'n'},
+  d:'בליטות אדומות ומגרדות שנעלמות תוך פחות מ-24 שעות. מעל 6 שבועות: חרלת כרונית.',
+  t:['אבחנה קלינית','זיהוי טריגרים'],m:'אנטיהיסטמינים לפי רופא. כרונית → בירור.',ev:['XZU22']},
+ {id:'d_zost',n:'שלבקת חוגרת (הרפס זוסטר)',en:'Herpes zoster',
+  p:{dom:'d!',d_main:'pain|rash!',d_zost:'y!',dur:'a'},
+  d:'שלפוחיות ברצועה בצד אחד, לאחר כאב או צריבה באותו אזור.',
+  t:['אבחנה קלינית'],m:'רופא תוך 72 שעות לטיפול אנטי-ויראלי. מעל 50: שקילת חיסון.',ev:['XCO13']},
+ {id:'d_imp',n:'אימפטיגו (זיהום עור חיידקי)',en:'Impetigo',
+  p:{dom:'d!',d_main:'rash|face|pain!',d_crust:'y!'},
+  d:'פצעים עם קרום בצבע דבש סביב האף והפה.',
+  t:['אבחנה קלינית'],m:'פנייה לרופא לטיפול. היגיינה ומניעת הדבקה.',ev:['XKO12']},
+ {id:'d_acne',n:'אקנה',en:'Acne vulgaris',
+  p:{dom:'d!',d_main:'face!',d_comed:'y!',d_flush:'n',age:'c|y'},
+  d:'פצעונים וראשים שחורים או לבנים בפנים, בחזה ובגב.',
+  t:['דירוג חומרה'],m:'טיפול מקומי (בנזואיל פרוקסיד, רטינואידים) לפי רופא או רוקח.',ev:['XRY24']},
+ {id:'d_ros',n:'רוזציאה',en:'Rosacea',
+  p:{dom:'d!',d_main:'face!',d_flush:'y!',d_comed:'n',age:'f|g|o|y'},
+  d:'אדמומיות והסמקות בלחיים ובאף עם כלי דם קטנים, מחמירה באלכוהול, שמש וחום.',
+  t:['קריטריוני NRS'],m:'הגנה משמש, הימנעות מטריגרים, טיפול מקומי לפי רופא.',ev:['XGA18']},
 /* ================= צוואר ================= */
  {id:'nk_fx',flag:1,n:'פגיעה בעמוד השדרה הצווארי',en:'Cervical spine injury',
   p:{dom:'o!',site:'nk!',nk_trauma:'y!',t_ccr:'y!'},
@@ -1798,6 +1926,13 @@ const TAG={
  a_fx:'FRAC',a_inf:'INF',a_ach:'RUPT',a_back:'NEURAL',a_lat:'LIG',a_syn:'LIG',a_cai:'INSTAB',a_ocl:'INTRA',a_imp:'MECH',a_achT:'TENDINO',a_pf:'TENDINO',a_tts:'ENTRAP',a_ptt:'TENDINO',a_per:'TENDINO',a_sfx:'STRESS',
  b_ces:'CES',b_fxd:'FRAC',b_mal:'MAL',b_fem:'NEURAL',b_l4:'NEURAL',b_l5:'NEURAL',b_s1:'NEURAL',b_multi:'NEURAL',b_sten:'STEN',b_nslbp:'SOMATIC',b_sijp:'SOMATIC',b_axs:'INFLAM',b_spon:'MECH',b_dgs:'ENTRAP',b_mer:'ENTRAP',
 };
+const CTX1={
+ p_act:{hp_sfx:'h',a_sfx:'h',w_hyp:'h',k_ptend:'h',a_achT:'h|r',hp_add:'h|r',hp_fai:'h|r',e_ucl:'h',k_pfps:'r|h',k_oa:'n|l',hp_oa:'n|l',b_sten:'n|l'},
+ p_expo:{i_asth:'y',i_copd:'y',i_crc:'y',d_cont:'y',d_ecz:'y',w_cand:'n'},
+ p_smoke:{i_copd:'y',i_lca:'y',b_sten:'y|x',s_rct:'y|x',d_bcc:'y|x',gi_pud:'y'},
+ p_alc:{n_pn:'y',gi_pud:'y',hp_avn:'y',d_ros:'y',d_pso:'y'},
+ p_sleep:{n_tth:'b',n_mig:'b',w_pms:'b',w_peri:'b',b_nslbp:'b',s_froz:'b'},
+};
 const CTX0={
  c_stress:{gi_ibsc:'y',gi_ibsd:'y',gi_fd:'y',w_pms:'y',w_pmdd:'y',w_hyp:'y',n_tth:'y',n_mig:'y',nk_mob:'y',nk_wad:'y'},
  c_baby:{hw_dq:'y',gi_dys:'y',gi_fc:'y'},
@@ -1818,7 +1953,7 @@ const CTX={
  c_ster:{s_fx:'y+',e_fx:'y+',k_fx:'y+',a_fx:'y+',b_fxd:'y+',s_inf:'y',k_inf:'y',e_inf:'y',a_inf:'y',b_mal:'y'},
  c_fq:{a_ach:'y+',a_achT:'y+'},
 };
-[CTX0,CTX0_OLD].forEach(C=>DX.forEach(d=>{for(const q in C){const v=C[q][d.id]; if(v&&!(q in d.p)) d.p[q]=v;}}));
+[CTX1,CTX0,CTX0_OLD].forEach(C=>DX.forEach(d=>{for(const q in C){const v=C[q][d.id]; if(v&&!(q in d.p)) d.p[q]=v;}}));
 DX.forEach(d=>{for(const q in CTX){const v=CTX[q][d.id]; if(v&&!(q in d.p)) d.p[q]=v;}});
 DX.forEach(d=>{const g=GEN[TAG[d.id]]; if(g) for(const k in g) if(!(k in d.p)) d.p[k]=g[k];});
 
@@ -1837,10 +1972,21 @@ const mod = e => '!+-*'.includes(e[e.length-1])&&e.length>1 ? e[e.length-1] : ''
 const vals = e => (mod(e)?e.slice(0,-1):e).split('|');
 const weightOf = e => ({'!':2,'*':2,'+':1.5,'-':1.5})[mod(e)]||1;
 
+const AGE_MAP={
+ c:{s_age:'a',e_age:'a',k_age:'a',a_age:'a',b_age:'a',nk_age:'a',hp_age:'a',gi_age:'a',w_age:'y'},
+ y:{s_age:'a',e_age:'b',k_age:'a',a_age:'a',b_age:'a',nk_age:'a',hp_age:'a',gi_age:'a',i_age3:'b',k_teen:'n',hp_teen:'n'},
+ f:{s_age:'b',e_age:'b',k_age:'b',a_age:'b',b_age:'a',nk_age:'a',gi_age:'a',i_age3:'b',k_teen:'n',hp_teen:'n'},
+ g:{s_age:'b',e_age:'b',k_age:'b',a_age:'b',b_age:'b',nk_age:'b',hp_age:'b',gi_age:'b',w_age:'o',i_age3:'b',k_teen:'n',hp_teen:'n'},
+ o:{s_age:'b',e_age:'b',k_age:'b',a_age:'b',b_age:'b',nk_age:'b',hp_age:'b',gi_age:'b',w_age:'o',i_age3:'b',k_teen:'n',hp_teen:'n'},
+};
 const DUR_MAP={a:{i_dur:'a',g_dur:'a',gi_dur3:'n'},s:{i_dur:'s',gi_dur3:'n',i_sdur:'b'},m:{i_dur:'c',g_dur:'b',gi_dur3:'n',i_sdur:'b'},l:{i_dur:'c',g_dur:'b',gi_dur3:'y',i_sdur:'b'}};
 function allAns(){
-  const A=Object.fromEntries(answers), d=DUR_MAP[A.dur], extra=[];
-  if(d) for(const k in d) if(!(k in A)) extra.push([k,d[k]]);
+  const A=Object.fromEntries(answers), extra=[];
+  const add=m=>{if(m)for(const k in m)if(!(k in A)&&!extra.some(e=>e[0]===k))extra.push([k,m[k]]);};
+  add(DUR_MAP[A.dur]); add(AGE_MAP[A.age]);
+  if(A.p_smoke&&A.p_smoke!=='?')add({i_smoke:A.p_smoke==='n'?'n':'y'});
+  if(A.i_smoke&&A.i_smoke!=='?')add({p_smoke:A.i_smoke==='y'?'y':'n'});
+  if(A.p_expo==='y')add({d_contact:'y'});
   return answers.concat(extra);
 }
 function evaluate(){
@@ -1870,6 +2016,7 @@ function nextQuestion(ev){
   let best=null,bv=0;
   const hist=answers.filter(([id])=>!QI[id].scope&&QI[id].type!=='pn').length;
   for(const q of [...firsts,...cands.filter(q=>!q.first)]){
+    if(q.always&&ev.A.dom)return q;
     if(q.type==='multi'){
       const seen=new Set(); let n=0;
       for(const r of ev.act){const e=r.d.p[q.id]; if(e){n++; vals(e).forEach(x=>seen.add(x));}}
@@ -1915,14 +2062,14 @@ function testProp(q){
 }
 
 function nextCtx(ev){
-  const asked=new Set(answers.map(a=>a[0]));
-  return Q.find(q=>q.ctx&&!(q.oo&&ev.A.dom!=='o')&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v)));
+  const asked=new Set(Object.keys(ev.A));
+  return Q.find(q=>q.ctx&&!(q.oo&&ev.A.dom!=='o')&&!(q.id==='c_baby'&&ev.A.sex==='b')&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v)));
 }
 function render(){
   const ev=evaluate(); let q=nextQuestion(ev); const top=ev.act[0];
   const confident=top&&top.pct>=.9&&top.s>=3&&answers.filter(a=>!QI[a[0]].scope).length>=4&&!(q&&q.first);
   let done=forceDone||!q||ev.act.length<=1||(confident&&!keepAsking);
-  if(done&&!forceDone&&ev.act.length){const c=nextCtx(ev)||(tcmOn?nextTcm(ev):null); if(c){q=c;done=false;}}
+  if(done&&!forceDone&&ev.act.length){const c=nextCtx(ev); if(c){q=c;done=false;}}
   renderTop(ev,q,done); renderDD(ev);
 }
 const CTXNOTE={
@@ -1969,7 +2116,7 @@ function renderTop(ev,q,done){
     const L=q.type==='multi'?q.o.map(o=>o[1]):q.type==='ab'?q.a:isT?['חיובי','שלילי']:['כן','לא'];
     const V=q.type==='multi'?q.o.map(o=>o[0]):q.type==='ab'?['a','b']:['y','n'];
     const prop=isT?testProp(q):'';
-    h+=`<div class="qcard"><span class="qnum">${isT?'<span class="kind">בדיקה קלינית</span>':''}${q.ctx?'<span class="kind">גורמים תורמים</span>':''}${q.tcm?'<span class="kind">חמשת האלמנטים</span>':''}שאלה ${answers.length+1}</span>
+    h+=`<div class="qcard"><span class="qnum">${isT?'<span class="kind">בדיקה קלינית</span>':''}${q.ctx?'<span class="kind">גורמים תורמים</span>':''}${q.prof?'<span class="kind">פרופיל המטופל</span>':''}שאלה ${answers.length+1}</span>
       <h1 class="qtext ${isT?'test':''}">${esc(q.t)}</h1>
       ${q.h?`<p class="qhint">${esc(q.h)}</p>`:''}
       ${q.pos?`<p class="qpos"><b>חיובי:</b> ${esc(q.pos)}</p>`:''}
@@ -1987,9 +2134,10 @@ function renderTop(ev,q,done){
       <p>${esc(d.d)}</p>
       ${sinHTML()}
       ${ctxHTML()}
-      ${tcmHTML(d)}
+      ${profHTML()}
       <div class="sec"><h3>מבחנים לאישור</h3><div class="tags">${d.t.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>
       <div class="sec"><h3>כיוון טיפולי</h3><p>${esc(d.m)}</p></div>
+      ${herbsHTML(d)}
       ${ev.act[1]?`<div class="sec"><h3>לשקול גם</h3><p>${ev.act.slice(1,3).map(x=>esc(x.d.n)+' ('+Math.round(x.pct*100)+'%)').join(' · ')}</p></div>`:''}
       <div class="sec"><h3>מקורות</h3>${refsHTML(d.ev)}</div>
       <div class="row">${more?'<button class="ghost" id="more">המשך לשאול</button>':''}<button class="ghost" id="shareRes">שיתוף סיכום</button><button class="primary" id="reset2">מטופל חדש</button></div></div>`;
@@ -2066,66 +2214,120 @@ document.addEventListener('keydown',e=>{
   const i={'1':0,'2':1,'3':2,'4':3,'5':4}[e.key]; if(i!==undefined){const b=box.querySelectorAll('.ans')[i];b&&b.click();}
 });
 
-/* ================= חמשת האלמנטים (שכבה מסורתית, לא משנה את הדירוג) ================= */
-let tcmOn=true; try{const v=localStorage.getItem('dd_tcm'); if(v!==null)tcmOn=v==='1';}catch(e){}
-const TCMQ=[
- {id:'tcm_wood1',el:'wood',t:'נטייה לעצבנות, תסכול או כעס, או שהתסמינים מחמירים בסטרס?',lbl:'סטרס / כעס'},
- {id:'tcm_wood2',el:'wood',t:'אנחות תכופות, מתח בצד הצלעות, או רגישות בשדיים לפני הווסת?',lbl:'מתח בצלעות'},
- {id:'tcm_wood3',el:'wood',t:'התכווצויות שרירים, נוקשות בגידים, ציפורניים שבירות או עיניים יבשות?',lbl:'גידים / עיניים'},
- {id:'tcm_fire1',el:'fire',t:'דפיקות לב, חרדה, או קושי להירדם עם חלומות רבים?',lbl:'לב / שינה'},
- {id:'tcm_fire2',el:'fire',t:'תחושת חום בפנים, צמא, או כיבים בפה?',lbl:'חום עליון'},
- {id:'tcm_earth1',el:'earth',t:'עייפות אחרי אוכל, נפיחות, יציאות רכות או כבדות בגפיים?',lbl:'עייפות אחרי אוכל'},
- {id:'tcm_earth2',el:'earth',t:'נטייה לדאגה ומחשבות חוזרות, או חשק למתוק?',lbl:'דאגה / מתוק'},
- {id:'tcm_metal1',el:'metal',t:'הצטננויות חוזרות, קוצר נשימה קל או עור יבש?',lbl:'ריאות / עור'},
- {id:'tcm_metal2',el:'metal',t:'עצב או קושי לשחרר, או עצירות עם צואה יבשה?',lbl:'עצב / צואה יבשה'},
- {id:'tcm_water1',el:'water',t:'חולשה או כאב בגב התחתון ובברכיים, טנטון, או השתנה בלילה?',lbl:'גב / ברכיים / לילה'},
- {id:'tcm_water2',el:'water',t:'נטייה לפחד, ידיים ורגליים קרות, ושיפור בחום?',lbl:'קור / פחד'},
- {id:'tcm_temp',type:'ab',a:['משתפר בחום','משתפר בקור'],t:'התסמינים משתפרים בחום או בקור?',lbl:'חום / קור'},
-];
-TCMQ.forEach(q=>{q.tcm=1;Q.push(q);QI[q.id]=q;});
-const ELN={wood:'עץ (כבד / כיס מרה)',fire:'אש (לב / מעי דק)',earth:'אדמה (טחול / קיבה)',metal:'מתכת (ריאות / מעי גס)',water:'מים (כליות / שלפוחית)'};
-const ELS={wood:'עץ',fire:'אש',earth:'אדמה',metal:'מתכת',water:'מים'};
-const COMPLAINT_EL={
- site:{nk:['wood','water'],sh:['metal','fire'],el:['wood'],hw:['wood'],lb:['water'],hp:['wood'],kn:['water','wood'],an:['water','wood']},
- gi_main:{u:['earth'],c:['metal','earth'],d:['earth'],p:['earth','wood']},
- w_main:{dys:['wood'],irr:['water','earth'],hmb:['earth'],pms:['wood'],meno:['water','fire'],vag:['earth','water'],pel:['wood']},
- n_main:{ha:['wood'],dz:['wood','water'],nb:['wood','earth'],face:['wood','metal']},
- i_main:{cgh:['metal'],st:['metal','fire'],sin:['metal'],fev:['metal'],uti:['water']},
+
+/* ================= צמחים (מערבי / סיני / הודי) ================= */
+const H={
+ turmeric:{he:'כורכום',lat:'Curcuma longa',en:'Turmeric',zh:'Jiang Huang 姜黄',sa:'Haridra हरिद्रा',ev:'MA (OA)',warn:'נוגדי קרישה, אבני מרה'},
+ boswellia:{he:'לבונה הודית (בוסווליה)',lat:'Boswellia serrata',en:'Indian frankincense',zh:'Ru Xiang 乳香 (מין קרוב)',sa:'Shallaki शल्लकी',ev:'MA (OA)',warn:'הריון'},
+ ginger:{he:"ג'ינג'ר",lat:'Zingiber officinale',en:'Ginger',zh:'Sheng Jiang 生姜 / Gan Jiang 干姜',sa:'Shunthi शुण्ठी',ev:'MA (OA, כאבי וסת, בחילה)',warn:'נוגדי קרישה, רפלוקס'},
+ devilsclaw:{he:'טופר השטן',lat:'Harpagophytum procumbens',en:"Devil's claw",zh:'—',sa:'—',ev:'Cochrane (גב תחתון)',warn:'כיב קיבה, נוגדי קרישה'},
+ willow:{he:'ערבה לבנה (קליפה)',lat:'Salix alba',en:'White willow bark',zh:'—',sa:'—',ev:'Cochrane (גב תחתון)',warn:'רגישות לאספירין, נוגדי קרישה'},
+ arnica:{he:'ארניקה (חיצוני)',lat:'Arnica montana',en:'Arnica',zh:'—',sa:'—',ev:'RCT (חיצוני)',warn:'לא לבליעה, לא על פצע פתוח'},
+ comfrey:{he:'סינפיטון (חיצוני)',lat:'Symphytum officinale',en:'Comfrey',zh:'—',sa:'—',ev:'RCT (נקעים, חיצוני)',warn:'רק חיצוני, לא על עור פגוע'},
+ sanqi:{he:'סאן צ\'י (ג\'ינסנג נוטו)',lat:'Panax notoginseng',en:'Notoginseng',zh:'San Qi 三七',sa:'—',ev:'מסורתי',warn:'הריון, נוגדי קרישה'},
+ capsicum:{he:'פלפל חריף / קפסאיצין (חיצוני)',lat:'Capsicum annuum',en:'Cayenne / capsaicin',zh:'La Jiao 辣椒',sa:'Lal mirch लाल मिर्च',ev:'Cochrane (כאב נוירופתי, חיצוני)',warn:'צריבה מקומית, להרחיק מעיניים'},
+ jixueteng:{he:'ג\'י שואה טנג',lat:'Spatholobus suberectus',en:'Spatholobus',zh:'Ji Xue Teng 鸡血藤',sa:'—',ev:'מסורתי',warn:'הריון'},
+ ashwagandha:{he:'אשווגנדה',lat:'Withania somnifera',en:'Ashwagandha',zh:'—',sa:'Ashwagandha अश्वगन्धा',ev:'MA (סטרס, שינה)',warn:'תריס, הריון, תרופות הרגעה'},
+ gotukola:{he:'גוטו קולה',lat:'Centella asiatica',en:'Gotu kola',zh:'Ji Xue Cao 积雪草',sa:'Mandukaparni मण्डूकपर्णी',ev:'RCT (ריפוי עור, ורידים)',warn:'מחלת כבד'},
+ psyllium:{he:'פסיליום (זרעי פשתה הודית)',lat:'Plantago ovata',en:'Psyllium',zh:'Che Qian Zi 车前子 (מין קרוב)',sa:'Isabgol इसबगोल',ev:'MA (עצירות)',warn:'לשתות הרבה, להפריד מתרופות בשעתיים'},
+ flax:{he:'זרעי פשתה',lat:'Linum usitatissimum',en:'Flaxseed',zh:'Ya Ma Zi 亚麻子',sa:'Alasi अलसी',ev:'RCT (עצירות)',warn:'לשתות הרבה'},
+ senna:{he:'סנה',lat:'Senna alexandrina',en:'Senna',zh:'Fan Xie Ye 番泻叶',sa:'Svarnapatri स्वर्णपत्री',ev:'RCT (משלשל ממריץ)',warn:'לטווח קצר, הריון, מחלות מעי דלקתיות'},
+ hemp:{he:'זרעי קנבוס (מא זי רן)',lat:'Cannabis sativa (זרעים)',en:'Hemp seed',zh:'Huo Ma Ren 火麻仁',sa:'—',ev:'RCT (עצירות, פורמולה סינית)',warn:'—'},
+ prune:{he:'שזיף מיובש',lat:'Prunus domestica',en:'Prune',zh:'—',sa:'—',ev:'RCT (עצירות)',warn:'גזים'},
+ peppermint:{he:'מנטה חריפה (שמן)',lat:'Mentha × piperita',en:'Peppermint',zh:'Bo He 薄荷 (מין קרוב)',sa:'Pudina पुदीना',ev:'MA (מעי רגיז)',warn:'רפלוקס (להעדיף כמוסות מצופות)'},
+ fennel:{he:'שומר',lat:'Foeniculum vulgare',en:'Fennel',zh:'Xiao Hui Xiang 小茴香',sa:'Mishreya / Saunf सौंफ',ev:'RCT (נפיחות, כאבי וסת)',warn:'הריון, רגישות לאסטרוגן'},
+ chamomile:{he:'קמומיל (בבונג)',lat:'Matricaria chamomilla',en:'Chamomile',zh:'—',sa:'—',ev:'RCT קטנים',warn:'אלרגיה למורכבים'},
+ licorice:{he:'שוש (ליקוריץ)',lat:'Glycyrrhiza glabra / uralensis',en:'Licorice',zh:'Gan Cao 甘草',sa:'Yashtimadhu यष्टिमधु',ev:'RCT (דיספפסיה)',warn:'לחץ דם, אשלגן; להעדיף DGL'},
+ aloe:{he:'אלוורה',lat:'Aloe vera',en:'Aloe',zh:'Lu Hui 芦荟',sa:'Kumari कुमारी',ev:'RCT (רפלוקס, ריפוי עור)',warn:'הלטקס משלשל; הריון'},
+ marshmallow:{he:'חטמית (שורש)',lat:'Althaea officinalis',en:'Marshmallow root',zh:'—',sa:'Khatmi खत्मी',ev:'מסורתי',warn:'להפריד מתרופות'},
+ slipperyelm:{he:'בוקיצה אדומה',lat:'Ulmus rubra',en:'Slippery elm',zh:'—',sa:'—',ev:'מסורתי',warn:'להפריד מתרופות'},
+ cinnamon:{he:'קינמון',lat:'Cinnamomum cassia / verum',en:'Cinnamon',zh:'Rou Gui 肉桂',sa:'Tvak त्वक्',ev:'RCT (כאבי וסת)',warn:'מחלת כבד (קסיה)'},
+ fenugreek:{he:'חילבה',lat:'Trigonella foenum-graecum',en:'Fenugreek',zh:'Hu Lu Ba 胡芦巴',sa:'Methi मेथी',ev:'RCT (כאבי וסת)',warn:'הריון, סוכרת'},
+ dangqui:{he:'דאנג גווי',lat:'Angelica sinensis',en:'Dong quai',zh:'Dang Gui 当归',sa:'—',ev:'מסורתי',warn:'נוגדי קרישה, הריון'},
+ vitex:{he:'שיח אברהם (ויטקס)',lat:'Vitex agnus-castus',en:'Chaste tree',zh:'Man Jing Zi 蔓荆子 (מין קרוב)',sa:'Nirgundi निर्गुण्डी (מין קרוב)',ev:'MA (PMS)',warn:'גלולות, טיפולי פוריות'},
+ saffron:{he:'זעפרן',lat:'Crocus sativus',en:'Saffron',zh:'Xi Hong Hua 西红花',sa:'Kumkuma कुङ्कुम',ev:'RCT (PMS, מצב רוח)',warn:'הריון (מינון גבוה)'},
+ chaihu:{he:"צ'אי הו",lat:'Bupleurum chinense',en:'Bupleurum',zh:'Chai Hu 柴胡',sa:'—',ev:'מסורתי',warn:'מחלת כבד'},
+ primrose:{he:'נר הלילה (שמן)',lat:'Oenothera biennis',en:'Evening primrose',zh:'—',sa:'—',ev:'ראיות חלשות',warn:'אפילפסיה, נוגדי קרישה'},
+ blackcohosh:{he:'קוהוש שחור',lat:'Actaea racemosa',en:'Black cohosh',zh:'Sheng Ma 升麻 (מין קרוב)',sa:'—',ev:'Cochrane (ראיות לא חד-משמעיות)',warn:'מחלת כבד'},
+ redclover:{he:'תלתן אדום',lat:'Trifolium pratense',en:'Red clover',zh:'—',sa:'—',ev:'MA (השפעה קטנה על גלי חום)',warn:'רגישות לאסטרוגן'},
+ sage:{he:'מרווה',lat:'Salvia officinalis',en:'Sage',zh:'—',sa:'—',ev:'RCT קטנים (הזעה)',warn:'אפילפסיה, הריון'},
+ shatavari:{he:'שאטווארי',lat:'Asparagus racemosus',en:'Shatavari',zh:'Tian Men Dong 天门冬 (מין קרוב)',sa:'Shatavari शतावरी',ev:'מסורתי',warn:'—'},
+ rehmannia:{he:'רהמניה',lat:'Rehmannia glutinosa',en:'Rehmannia',zh:'Shu Di Huang 熟地黄',sa:'—',ev:'מסורתי',warn:'שלשול'},
+ teatree:{he:'עץ התה (שמן, חיצוני)',lat:'Melaleuca alternifolia',en:'Tea tree',zh:'—',sa:'—',ev:'RCT (אקנה, פטרת)',warn:'רק חיצוני ומדולל'},
+ calendula:{he:'ציפורני חתול',lat:'Calendula officinalis',en:'Calendula',zh:'Jin Zhan Ju 金盏菊',sa:'—',ev:'RCT קטנים (עור)',warn:'אלרגיה למורכבים'},
+ neem:{he:'נים',lat:'Azadirachta indica',en:'Neem',zh:'—',sa:'Nimba निम्ब',ev:'מסורתי',warn:'הריון, ילדים (שמן)'},
+ garlic:{he:'שום',lat:'Allium sativum',en:'Garlic',zh:'Da Suan 大蒜',sa:'Lashuna लशुन',ev:'RCT קטנים',warn:'נוגדי קרישה'},
+ feverfew:{he:'חרציתית (פברפיו)',lat:'Tanacetum parthenium',en:'Feverfew',zh:'—',sa:'—',ev:'Cochrane (השפעה קטנה)',warn:'הריון, נוגדי קרישה'},
+ chuanxiong:{he:"צ'ואן שיונג",lat:'Ligusticum chuanxiong',en:'Szechuan lovage',zh:'Chuan Xiong 川芎',sa:'—',ev:'מסורתי',warn:'הריון, דימום'},
+ tianma:{he:'טיאן מא',lat:'Gastrodia elata',en:'Gastrodia',zh:'Tian Ma 天麻',sa:'—',ev:'מסורתי',warn:'—'},
+ ginkgo:{he:'גינקו',lat:'Ginkgo biloba',en:'Ginkgo',zh:'Yin Xing Ye 银杏叶',sa:'—',ev:'MA (ורטיגו, ראיות מעורבות)',warn:'נוגדי קרישה, ניתוח'},
+ brahmi:{he:'ברהמי',lat:'Bacopa monnieri',en:'Bacopa',zh:'—',sa:'Brahmi ब्राह्मी',ev:'MA (קוגניציה)',warn:'תריס'},
+ andrographis:{he:'אנדרוגרפיס',lat:'Andrographis paniculata',en:'Andrographis',zh:'Chuan Xin Lian 穿心莲',sa:'Kalmegh कालमेघ',ev:'MA (זיהומי דרכי נשימה)',warn:'הריון, נוגדי קרישה'},
+ elder:{he:'סמבוק שחור',lat:'Sambucus nigra',en:'Elderberry',zh:'Jie Gu Mu 接骨木 (מין קרוב)',sa:'—',ev:'MA (שפעת, צינון)',warn:'פרי לא מבושל רעיל'},
+ echinacea:{he:'אכינצאה',lat:'Echinacea purpurea',en:'Echinacea',zh:'—',sa:'—',ev:'Cochrane (השפעה קטנה)',warn:'אלרגיה למורכבים, מחלות אוטואימוניות'},
+ pelargonium:{he:'פלרגוניום',lat:'Pelargonium sidoides',en:'Umckaloabo',zh:'—',sa:'—',ev:'Cochrane (ברונכיטיס)',warn:'מחלת כבד'},
+ tulsi:{he:'ריחן קדוש (טולסי)',lat:'Ocimum tenuiflorum',en:'Holy basil',zh:'—',sa:'Tulsi तुलसी',ev:'מסורתי',warn:'נוגדי קרישה'},
+ ivy:{he:'קיסוס (עלים)',lat:'Hedera helix',en:'Ivy leaf',zh:'Chang Chun Teng 常春藤',sa:'—',ev:'RCT (שיעול)',warn:'—'},
+ thyme:{he:'טימין',lat:'Thymus vulgaris',en:'Thyme',zh:'—',sa:'—',ev:'RCT (שיעול, עם קיסוס)',warn:'—'},
+ vasaka:{he:'וסאקה',lat:'Justicia adhatoda',en:'Malabar nut',zh:'—',sa:'Vasaka वासक',ev:'מסורתי',warn:'הריון'},
+ cranberry:{he:'חמוציות',lat:'Vaccinium macrocarpon',en:'Cranberry',zh:'—',sa:'—',ev:'Cochrane (מניעת דלקות חוזרות)',warn:'וורפרין'},
+ uvaursi:{he:'ענבי דב',lat:'Arctostaphylos uva-ursi',en:'Bearberry',zh:'—',sa:'—',ev:'מסורתי',warn:'עד שבוע, הריון, כליות'},
+ gokshura:{he:'גוקשורה (טריבולוס)',lat:'Tribulus terrestris',en:'Puncture vine',zh:'Ji Li 蒺藜',sa:'Gokshura गोक्षुर',ev:'מסורתי',warn:'—'},
+ cheqianzi:{he:"צ'ה צ'יאן זי (זרעי לחך)",lat:'Plantago asiatica',en:'Plantain seed',zh:'Che Qian Zi 车前子',sa:'—',ev:'מסורתי',warn:'—'},
+ punarnava:{he:'פונרנווה',lat:'Boerhavia diffusa',en:'Punarnava',zh:'—',sa:'Punarnava पुनर्नवा',ev:'מסורתי',warn:'—'},
+ oat:{he:'שיבולת שועל קולואידית',lat:'Avena sativa',en:'Colloidal oatmeal',zh:'—',sa:'—',ev:'RCT (אקזמה, חיצוני)',warn:'—'},
+ greentea:{he:'תה ירוק (חיצוני)',lat:'Camellia sinensis',en:'Green tea',zh:'Lü Cha 绿茶',sa:'—',ev:'RCT (אקנה, חיצוני)',warn:'—'},
 };
-const CYCLE=[
- [['wood','earth'],'עץ שולט באדמה: סטרס ותסכול שמשבשים את העיכול.'],
- [['water','wood'],'מים לא מזינים את העץ: חולשה לצד מתח, גידים נוקשים או כאבי ראש.'],
- [['fire','water'],'חוסר איזון לב–כליות: שינה, חרדה וגלי חום.'],
- [['earth','metal'],'אדמה לא מזינה מתכת: ליחה, הצטננויות חוזרות ועייפות.'],
- [['metal','wood'],'מתכת ועץ: עצב או מתח לצד נשימה שטוחה ומתח שרירי.'],
- [['earth','water'],'אדמה שולטת במים: לחות, נפיחות ובצקות.'],
- [['fire','metal'],'אש פוגעת במתכת: יובש בגרון ושיעול יבש.'],
-];
-function nextTcm(ev){const A=ev.A; return TCMQ.find(q=>!(q.id in A));}
-function tcmScores(){
-  const A=Object.fromEntries(answers), sc={wood:0,fire:0,earth:0,metal:0,water:0}; let any=false;
-  TCMQ.forEach(q=>{if(q.el&&A[q.id]==='y'){sc[q.el]++;} if(q.id in A&&A[q.id]!=='?')any=true;});
-  const comp=[]; for(const k in COMPLAINT_EL){const v=A[k]; if(v&&COMPLAINT_EL[k][v]) comp.push(...COMPLAINT_EL[k][v]);}
-  return {sc,any,comp:[...new Set(comp)],temp:A.tcm_temp};
+const HG={
+ JOINT:['turmeric','boswellia','ginger','devilsclaw','willow'],
+ TRAUMA:['arnica','comfrey','sanqi','turmeric','ginger'],
+ NERVE:['capsicum','turmeric','jixueteng','ashwagandha','gotukola'],
+ CONST:['psyllium','flax','hemp','senna','prune'],
+ BOWEL:['peppermint','fennel','ginger','chamomile','licorice'],
+ UPPER:['licorice','aloe','chamomile','marshmallow','slipperyelm'],
+ DYSMEN:['ginger','fennel','cinnamon','fenugreek','dangqui'],
+ PMS:['vitex','saffron','chaihu','dangqui','primrose'],
+ MENO:['blackcohosh','redclover','sage','shatavari','rehmannia'],
+ FUNG:['teatree','calendula','neem','garlic','aloe'],
+ HEAD:['feverfew','peppermint','ginger','chuanxiong','tianma'],
+ DIZZY:['ginger','ginkgo','tianma','brahmi','ashwagandha'],
+ VIRAL:['andrographis','elder','echinacea','pelargonium','tulsi'],
+ COUGH:['ivy','thyme','licorice','marshmallow','vasaka'],
+ UTI:['cranberry','uvaursi','gokshura','cheqianzi','punarnava'],
+ ECZ:['oat','calendula','licorice','chamomile','aloe'],
+ ACNE:['teatree','greentea','neem','turmeric','aloe'],
+};
+const HG_DX={
+ b_gi:'CONST',gi_fc:'CONST',gi_dys:'CONST',gi_medcon:'CONST',gi_ibsc:'BOWEL',gi_ibsd:'BOWEL',gi_lac:'BOWEL',gi_div:'BOWEL',gi_endo:'DYSMEN',
+ gi_gerd:'UPPER',gi_fd:'UPPER',gi_pud:'UPPER',gi_bil:'UPPER',i_gerdc:'UPPER',
+ b_gyn:'DYSMEN',b_pgp:'DYSMEN',w_pd:'DYSMEN',w_endo:'DYSMEN',w_ibs:'BOWEL',w_pms:'PMS',w_pmdd:'PMS',w_peri:'MENO',w_gsm:'MENO',
+ w_cand:'FUNG',w_bv:'FUNG',d_tin:'FUNG',w_uti:'UTI',i_cyst:'UTI',
+ n_mig:'HEAD',n_miga:'HEAD',n_mmig:'HEAD',n_tth:'HEAD',n_cgh:'HEAD',nk_cgh:'HEAD',
+ n_bppv:'DIZZY',n_vn:'DIZZY',n_meni:'DIZZY',n_cdz:'DIZZY',n_oh:'DIZZY',
+ n_pn:'NERVE',n_cts:'NERVE',n_cub:'NERVE',n_crad:'NERVE',n_lrad:'NERVE',
+ i_urti:'VIRAL',i_bron:'VIRAL',i_fluD:'VIRAL',i_cov:'VIRAL',i_vph:'VIRAL',i_vrs:'VIRAL',i_monoD:'VIRAL',
+ i_asth:'COUGH',i_uacs:'COUGH',i_crc:'COUGH',i_copd:'COUGH',i_ar:'COUGH',i_pert:'COUGH',
+ d_atop:'ECZ',d_cont:'ECZ',d_pso:'ECZ',d_sebD:'FUNG',d_acne:'ACNE',d_ros:'ACNE',
+};
+function herbGroup(d){
+  if(!d||d.flag)return null;
+  if(HG_DX[d.id])return HG_DX[d.id];
+  if((d.p.dom||'').startsWith('o')){const t=TAG[d.id]; if(t==='NEURAL'||t==='ENTRAP')return 'NERVE'; if(t==='LIG'||t==='RUPT'||t==='FRAC')return 'TRAUMA'; return 'JOINT';}
+  return null;
 }
-function tcmText(){
-  const {sc,any,comp,temp}=tcmScores(); if(!any&&!comp.length)return [];
-  const out=[];
-  if(comp.length)out.push('התלונה קשורה לאלמנט '+comp.map(e=>ELN[e]).join(' ו-'));
-  const top=Object.entries(sc).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
-  if(top.length)out.push('בולט בשאלון: '+top.slice(0,2).map(([e,v])=>ELS[e]+' ('+v+')').join(', '));
-  const strong=new Set([...top.filter(([,v])=>v>=2).map(([e])=>e),...(top[0]?[top[0][0]]:[]),...comp]);
-  CYCLE.forEach(([pair,t])=>{if(pair.every(e=>strong.has(e))&&pair.some(e=>sc[e]>0))out.push(t);});
-  if(temp==='a')out.push('תבנית קור (משתפר בחום).'); if(temp==='b')out.push('תבנית חום (משתפר בקור).');
+function herbsFor(r){const g=r&&herbGroup(r.d);return g?HG[g].map(k=>H[k]):[];}
+function herbsHTML(d){
+  const g=herbGroup(d);
+  if(!g)return d&&d.flag?'':`<div class="sec"><h3>צמחים</h3><p class="tcmnote">אין המלצה לצמחים באבחנה הזו. הטיפול הוא רפואי או ממוקד.</p></div>`;
+  const rows=HG[g].map(k=>{const h=H[k];return `<tr><td><b>${esc(h.he)}</b><div class="lat">${esc(h.lat)}</div></td><td>${esc(h.en)}</td><td>${esc(h.zh)}</td><td>${esc(h.sa)}</td><td>${esc(h.ev)}</td><td>${esc(h.warn)}</td></tr>`}).join('');
+  return `<div class="sec"><h3>5 צמחים לשקול</h3><div class="tblw"><table class="htbl"><thead><tr><th>עברית / לטינית</th><th>מערבי</th><th>סיני</th><th>הודי (איורוודה)</th><th>ראיות</th><th>זהירות</th></tr></thead><tbody>${rows}</tbody></table></div><span class="tcmnote">לבדוק אינטראקציות עם תרופות, הריון והנקה לפני שימוש. "מין קרוב" = הצמח המקביל ברפואה הזו הוא מין אחר מאותו סוג.</span></div>`;
+}
+function profLines(){
+  const AA=Object.fromEntries(answers), out=[];
+  ['age','dur','p_act','p_expo','p_smoke','p_alc','p_sleep','p_temp','p_body','p_emo'].forEach(k=>{const v=AA[k]; if(v&&v!=='?'){const q=QI[k]; out.push(q.lbl+': '+ansLabel(q,v));}});
   return out;
 }
-function tcmHTML(){
-  const {sc,any,comp}=tcmScores(); if(!any)return '';
-  const max=Math.max(1,...Object.values(sc));
-  const rows=Object.keys(sc).map(e=>`<div class="elrow"><span>${ELS[e]}${comp.includes(e)?' ●':''}</span><span class="elbar"><i style="width:${sc[e]/max*100}%"></i></span><span class="n">${sc[e]}</span></div>`).join('');
-  const tx=tcmText();
-  return `<div class="sec"><h3>חמשת האלמנטים (רפואה סינית)</h3><div class="el">${rows}</div>${tx.length?`<ul class="why">${tx.map(t=>`<li>• ${esc(t)}</li>`).join('')}</ul>`:''}<span class="tcmnote">● = האלמנט של אזור התלונה. שכבה מסורתית להשלמת התמונה. לא משנה את אחוזי האבחנה המבדלת.</span></div>`;
-}
+function profHTML(){const l=profLines(); return l.length?`<div class="sec"><h3>פרופיל המטופל</h3><p>${l.map(esc).join(' · ')}</p></div>`:'';}
 
 /* ================= חיפוש סימפטום ================= */
 const ENTRIES=[
@@ -2177,6 +2379,18 @@ const ENTRIES=[
  ['נימול ביד','נימול עקצוץ יד ידיים',{dom:'n',n_main:'nb',n_where:'a'}],
  ['נימול או צריבה ברגליים','נימול רגליים כפות רגליים צריבה נוירופתיה',{dom:'n',n_main:'nb',n_where:'b'}],
  ['צניחת פנים / שיתוק פנים','פנים שיתוק בל צניחה',{dom:'n',n_main:'face'}],
+ ['פריחה מגרדת','פריחה גרד אקזמה אדמומיות rash',{dom:'d',d_main:'rash'}],
+ ['אקזמה','אקזמה אטופיק דרמטיטיס eczema',{dom:'d',d_main:'rash',d_flex:'y'}],
+ ['פסוריאזיס','פסוריאזיס ספחת psoriasis רבדים',{dom:'d',d_main:'rash',d_plaque:'y'}],
+ ['פריחה ממגע / אלרגיה לחומר','מגע אלרגיה ניקל קוסמטיקה כפפות',{dom:'d',d_main:'rash',d_contact:'y'}],
+ ['שומה / נגע חדש בעור','שומה נקודה נגע מלנומה כתם סרטן עור',{dom:'d',d_main:'les'}],
+ ['פצעונים / אקנה','אקנה פצעונים חצ\'קונים acne',{dom:'d',d_main:'face',d_comed:'y'}],
+ ['אדמומיות בפנים','אדמומיות פנים רוזציאה הסמקה',{dom:'d',d_main:'face',d_flush:'y'}],
+ ['חרלת','חרלת סרפדת אורטיקריה בליטות',{dom:'d',d_main:'hive'}],
+ ['פטרייה בעור','פטרייה טיניאה רגל אתלט',{dom:'d',d_main:'rash',d_ring:'y'}],
+ ['שלבקת חוגרת','שלבקת חוגרת זוסטר הרפס שלפוחיות',{dom:'d',d_main:'pain',d_zost:'y'}],
+ ['גרד בלילה','גרד לילה גרדת סקביאס',{dom:'d',d_main:'rash',d_night:'y'}],
+ ['קשקשים בקרקפת','קשקשים קרקפת סבוריאה',{dom:'d',d_main:'rash',d_seb:'y'}],
  ['שיעול','שיעול ליחה כחה cough',{dom:'i',i_main:'cgh'}],
  ['שיעול ממושך (מעל 8 שבועות)','שיעול כרוני ממושך',{dom:'i',i_main:'cgh',i_dur:'c'}],
  ['כאב גרון','גרון שקדים אנגינה',{dom:'i',i_main:'st'}],
@@ -2188,9 +2402,9 @@ const ENTRIES=[
  ['קוצר נשימה','קוצר נשימה נשימה',{dom:'i',i_main:'cgh'}],
  ['נזלת ועיטושים (אלרגיה)','אלרגיה עיטושים נזלת',{dom:'i',i_main:'sin',i_allerg:'y'}],
 ].map(([t,k,a])=>({t,k,a}));
-const DOMN={o:'אורטופדיה ותנועה',g:'עיכול',w:'בריאות האישה',n:'עצבים וראש',i:'זיהומים ונשימה'};
+const DOMN={o:'אורטופדיה ותנועה',g:'עיכול',w:'בריאות האישה',n:'עצבים וראש',i:'זיהומים ונשימה',d:'עור'};
 const norm=x=>String(x).toLowerCase().replace(/[֑-ׇ]/g,'').replace(/[ךםןףץ]/g,c=>({'ך':'כ','ם':'מ','ן':'נ','ף':'פ','ץ':'צ'}[c])).replace(/["'׳״\-–\/(),.:]/g,' ').replace(/\s+/g,' ').trim();
-const SCOPEK=['dom','site','gi_main','w_main','n_main','i_main'];
+const SCOPEK=['dom','site','gi_main','w_main','n_main','i_main','d_main'];
 function presetFromDx(d){const a={};SCOPEK.forEach(k=>{const e=d.p[k]; if(e&&e.endsWith('!'))a[k]=vals(e)[0];});return a;}
 function crumb(a){const parts=[DOMN[a.dom]];SCOPEK.slice(1).forEach(k=>{if(a[k]){const q=QI[k];const o=q.o.find(o=>o[0]===a[k]);if(o)parts.push(o[1]);}});return parts.filter(Boolean).join(' › ');}
 let SR=[];
@@ -2206,11 +2420,8 @@ function searchFor(qs){
 const SE=document.createElement('div'); SE.className='search';
 SE.innerHTML=`<label class="sl" for="sq">חיפוש סימפטום או אבחנה</label>
 <div class="sbox"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="sq" type="search" placeholder="למשל: שיעול, כאב בכתף, עצירות, וסת" autocomplete="off" enterkeyhint="search"></div>
-<div class="sres" id="sres" role="list"></div>
-<label class="tcmt"><input type="checkbox" id="tcmOn"> לשלב שאלות חמשת האלמנטים (רפואה סינית)</label>`;
-const SQ=SE.querySelector('#sq'), SRES=SE.querySelector('#sres'), TCB=SE.querySelector('#tcmOn');
-TCB.checked=tcmOn;
-TCB.addEventListener('change',()=>{tcmOn=TCB.checked;try{localStorage.setItem('dd_tcm',tcmOn?'1':'0');}catch(e){}});
+<div class="sres" id="sres" role="list"></div>`;
+const SQ=SE.querySelector('#sq'), SRES=SE.querySelector('#sres');
 function renderSearch(){
   const v=SQ.value.trim(); const ti=document.getElementById('topInner');
   if(!v){SRES.innerHTML='';ti.classList.remove('searching');return;}
@@ -2240,7 +2451,8 @@ function shareSummary(){
   ev.act.slice(0,3).forEach((r,i)=>lines.push(`${i+1}. ${r.d.n} (${r.d.en}) — ${Math.round(r.pct*100)}%`));
   const cx=ctxHTML().replace(/<[^>]+>/g,'\n').split('\n').map(x=>x.trim()).filter(x=>x&&x!=='[מקור]'&&x!=='גורמים תורמים');
   if(cx.length){lines.push('','גורמים תורמים:');cx.forEach(x=>lines.push(x.startsWith('•')?x:'• '+x));}
-  const tx=tcmText(); if(tx.length){lines.push('','חמשת האלמנטים:');tx.forEach(x=>lines.push('• '+x));}
+  const pf=profLines(); if(pf.length){lines.push('','פרופיל המטופל:');pf.forEach(x=>lines.push('• '+x));}
+  const hb=herbsFor(evaluate().act[0]); if(hb.length){lines.push('','צמחים לשקול:');hb.forEach(h=>lines.push('• '+h.he+' — '+h.lat+' | '+h.zh+' | '+h.sa));}
   lines.push('','ממצאים:');
   answers.filter(([q,v])=>v!=='?'&&!QI[q].scope).forEach(([q,v])=>lines.push(`• ${QI[q].lbl}: ${ansLabel(QI[q],v)}`));
   const t=lines.join('\n');
