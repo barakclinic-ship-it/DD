@@ -308,6 +308,7 @@ const Q = [
  {id:'i_ca',t:'שיעול דם, ירידה במשקל, או שיעול חדש מעל 3 שבועות אצל מעשן מעל גיל 40?',lbl:'דגלי ממאירות',first:2.4},
  {id:'i_drool',t:'קושי לבלוע רוק, ריור, קול "עמום" או קושי לפתוח את הפה?',lbl:'חסימת דרכי אוויר',first:2.6},
  {id:'i_sepsis',t:'חום גבוה עם ירידה במצב הכללי, הקאות, או כאב מותני עם חום?',lbl:'מצב כללי ירוד',first:2.8},
+ {id:'i_smoke',first:6.4,t:'מעשן או עישן בעבר (10 שנות-קופסה ומעלה)?',lbl:'עישון'},
  {id:'i_reflux',t:'צרבת או החזר חומצי, או שיעול שמחמיר אחרי ארוחה או בשכיבה?',lbl:'רפלוקס',first:6},
  {id:'i_acei',t:'נוטל תרופה ללחץ דם ממשפחת מעכבי ACE (אנלפריל, רמיפריל וכו\')?',lbl:'מעכבי ACE',first:6.1},
  {id:'i_pnd',t:'טפטוף מהאף לגרון, ניקוי גרון תכוף או גודש באף?',lbl:'טפטוף אחורי',first:6.2},
@@ -316,8 +317,8 @@ const Q = [
  {id:'i_fever',t:'חום מעל 38°?',lbl:'חום'},
  {id:'i_vital',t:'דופק מעל 100 או נשימה מעל 24 בדקה?',lbl:'דופק / נשימה מהירים'},
  {id:'t_chest',type:'pn',t:'Chest auscultation',h:'האזנה לריאות, מישוש והקשה.',pos:'חרחורים מוקדיים, נשימה ברונכיאלית או עמימות בהקשה.',lbl:'האזנה לריאות'},
- {id:'i_whoop',t:'התקפי שיעול עם "שאיפה מצפצפת", הקאה אחרי השיעול, או שיעול התקפי מעל שבועיים בלי חום?',lbl:'שיעול התקפי'},
- {id:'i_wheeze',t:'צפצופים, לחץ בחזה, שיעול בלילה, במאמץ או בקור, או אלרגיות?',lbl:'צפצופים / אסתמה'},
+ {id:'i_whoop',first:6.6,t:'התקפי שיעול עם "שאיפה מצפצפת", הקאה אחרי השיעול, או שיעול התקפי מעל שבועיים בלי חום?',lbl:'שיעול התקפי'},
+ {id:'i_wheeze',first:6.5,t:'צפצופים, לחץ בחזה, שיעול בלילה, במאמץ או בקור, או אלרגיות?',lbl:'צפצופים / אסתמה'},
  {id:'i_flu',t:'התחלה פתאומית עם חום, כאבי שרירים וכאב ראש, בעונת השפעת?',lbl:'תמונת שפעת'},
  {id:'i_smell',t:'אובדן ריח או טעם, או מגע עם חולה קורונה?',lbl:'אובדן ריח / מגע'},
  {id:'i_runny',first:5.6,t:'נזלת, עיטושים וכאב גרון קל, בלי חום גבוה?',lbl:'נזלת וצינון'},
@@ -383,6 +384,7 @@ const Q = [
 {id:'w_main',cond:{dom:'w'},t:'מה התלונה העיקרית?',type:'multi',o:[['dys','כאבי וסת'],['irr','וסת לא סדירה / היעדר וסת'],['hmb','דימום וסתי כבד'],['pms','תסמינים לפני הווסת'],['meno','גיל המעבר'],['vag','הפרשה / גירוד'],['pel','כאב אגן / בטן תחתונה']],lbl:'תלונה',first:5,scope:1},
  {id:'n_main',cond:{dom:'n'},t:'מה התלונה העיקרית?',type:'multi',o:[['ha','כאב ראש'],['dz','סחרחורת / ורטיגו'],['nb','נימול / חולשה ביד או ברגל'],['face','חולשה / צניחה בפנים']],lbl:'תלונה',first:1.5,scope:1},
  {id:'i_main',cond:{dom:'i'},t:'מה התלונה העיקרית?',type:'multi',o:[['cgh','שיעול'],['st','כאב גרון'],['sin','גודש באף / סינוסים'],['fev','חום ותסמיני שפעת'],['uti','צריבה במתן שתן']],lbl:'תלונה',first:1.5,scope:1},
+ {id:'dur',t:'כמה זמן זה כבר ככה?',type:'multi',o:[['a','פחות מ-3 שבועות'],['s','3–8 שבועות'],['m','2–3 חודשים'],['l','מעל 3 חודשים']],h:'משנה את כל התמונה: אקוטי מול כרוני.',lbl:'משך',first:1.9},
  {id:'sex',t:'מין המטופל',type:'ab',a:['אישה','גבר'],lbl:'מין',first:1.8},
  {id:'gi_main',cond:{dom:'g'},t:'מה הבעיה העיקרית?',type:'multi',o:[['u','בטן עליונה / צרבת / שובע מהיר'],['c','עצירות'],['d','שלשול / יציאות רכות'],['p','נפיחות / גזים / כאב בטן']],lbl:'תלונה',first:5},
 
@@ -759,6 +761,9 @@ XMI12:{k:'סקירה שיטתית',c:'Michaleff ZA et al. Accuracy of the Canadi
  XIR17:{k:'מטא-אנליזה',c:'Irvine AJ, Chey WD, Ford AC. Screening for celiac disease in irritable bowel syndrome: an updated systematic review and meta-analysis. Am J Gastroenterol 2017;112:65–76.',q:'Irvine Chey Ford 2017 celiac disease irritable bowel syndrome meta-analysis'},
  XVS22:{k:'מטא-אנליזה',c:'van der Schoot A et al. The effect of fiber supplementation on chronic constipation in adults: an updated systematic review and meta-analysis of randomized controlled trials. Am J Clin Nutr 2022;116:953–69.',q:'van der Schoot 2022 fiber supplementation chronic constipation meta-analysis'},
  XFS11:{k:'מטא-אנליזה',c:'Ford AC, Suares NC. Effect of laxatives and pharmacological therapies in chronic idiopathic constipation: systematic review and meta-analysis. Gut 2011;60:209–18.',q:'Ford Suares 2011 laxatives chronic idiopathic constipation meta-analysis'},
+ XHR15:{k:'מטא-אנליזה',c:'Haroon S et al. Diagnostic accuracy of screening tests for COPD: a systematic review and meta-analysis. BMJ Open 2015;5:e008133.',q:'Haroon 2015 diagnostic accuracy screening tests COPD meta-analysis'},
+ XGOLD:{k:'הנחיה (GOLD)',c:'Global Initiative for Chronic Obstructive Lung Disease. Global Strategy for the Diagnosis, Management, and Prevention of COPD. GOLD report.',q:'',u:'https://goldcopd.org/'},
+ XMO20:{k:'הנחיה (ERS)',c:'Morice AH et al. ERS guidelines on the diagnosis and treatment of chronic cough in adults and children. Eur Respir J 2020;55:1901136.',q:'Morice 2020 ERS guidelines chronic cough adults children'},
  XAD04:{k:'מטא-אנליזה',c:'Andersson RE. Meta-analysis of the clinical and laboratory diagnosis of appendicitis. Br J Surg 2004;91:28–37.',q:'Andersson 2004 meta-analysis clinical laboratory diagnosis appendicitis'},
  MT14:{k:'ספר',c:"Hengeveld E, Banks K. Maitland's Peripheral Manipulation, 5th ed. Elsevier, 2014.",q:'',u:'https://www.google.com/search?q=Maitland%27s+Peripheral+Manipulation+Hengeveld+Banks'},
  MG26:{k:'ספר מוביל',c:"Manske RC et al. Magee's Orthopedic Physical Assessment, 8th ed. Elsevier, 2026.",q:'',u:'https://shop.elsevier.com/books/magee-s-orthopedic-physical-assessment/manske/978-0-443-12864-6'},
@@ -913,7 +918,7 @@ const DX = [
   d:'כאב צוואר מקומי שקשור לתנוחה ולתנועה, בלי סימנים עצביים.',
   t:['טווח תנועה','בדיקה סגמנטלית'],m:'טיפול ידני, תרגול תנועתיות וחיזוק, ארגונומיה.',ev:['XBL17','MT14','MG26','NT21']},
  {id:'nk_wry',n:'צוואר תפוס חריף',en:'Acute wry neck',
-  p:{dom:'o!',site:'nk!',nk_lock:'y!',nk_trauma:'n',nk_rad:'n'},
+  p:{dom:'o!',site:'nk!',dur:'a',nk_lock:'y!',nk_trauma:'n',nk_rad:'n'},
   d:'הגבלה חדה ופתאומית לצד אחד, לרוב בבוקר.',
   t:['טווח תנועה','שלילת סימנים עצביים'],m:'הרגעה, תנועה עדינה, טיפול ידני. חולף בדרך כלל תוך ימים.',ev:['XBL17','MT14','MG26','NT21']},
  {id:'nk_wad',n:'צליפת שוט (WAD)',en:'Whiplash-associated disorder',
@@ -1061,7 +1066,7 @@ const DX = [
   d:'שינוי בווסת עם עייפות, רגישות לקור, עלייה במשקל או נשירת שיער.',
   t:['TSH'],m:'הפניה לבדיקת דם.',ev:['XCH17']},
  {id:'w_pcos',n:'שחלות פוליציסטיות (PCOS)',en:'Polycystic ovary syndrome',
-  p:{dom:'w!',w_main:'irr!',w_cyc:'y!',w_hirs:'y+',w_infert:'y',w_age:'y|m',w_ath:'n'},
+  p:{dom:'w!',w_main:'irr!',dur:'m|l',w_cyc:'y!',w_hirs:'y+',w_infert:'y',w_age:'y|m',w_ath:'n'},
   d:'מחזורים נדירים עם סימני אנדרוגנים (שיעור, אקנה) ולעיתים קושי בפוריות.',
   t:['קריטריוני Rotterdam','בדיקות הורמונים','US'],m:'הפניה לגינקולוג / אנדוקרינולוג. פעילות גופנית ותזונה הם חלק מהטיפול.',ev:['XTE23']},
  {id:'w_hyp',n:'היעדר וסת על רקע אנרגיה נמוכה (REDs)',en:'Functional hypothalamic amenorrhoea / REDs',
@@ -1077,7 +1082,7 @@ const DX = [
   d:'תסמינים רגשיים קשים לפני הווסת שפוגעים בתפקוד.',
   t:['יומן תסמינים פרוספקטיבי (2 מחזורים)'],m:'הפניה לרופא. קיימים טיפולים יעילים.',ev:['XYO08']},
  {id:'w_peri',n:'פרי-מנופאוזה / גיל המעבר',en:'Perimenopause / menopause',
-  p:{dom:'w!',w_main:'meno|irr!',w_age:'o!',w_hot:'y+',w_lmp:'y',w_mood:'y'},
+  p:{dom:'w!',w_main:'meno|irr!',dur:'m|l',w_age:'o!',w_hot:'y+',w_lmp:'y',w_mood:'y'},
   d:'גלי חום, הזעות לילה, שינוי בווסת ושינויים במצב הרוח מגיל 45.',
   t:['אבחנה קלינית מגיל 45 (בלי בדיקות דם)'],m:'הדרכה, פעילות גופנית, שינה. התייעצות עם רופא על טיפול הורמונלי.',ev:['XNG23','XNA22']},
  {id:'w_gsm',n:'תסמונת גניטו-אורינרית של גיל המעבר',en:'Genitourinary syndrome of menopause',
@@ -1159,7 +1164,7 @@ const DX = [
   d:'סחרחורת סיבובית קצרה בשינוי תנוחת הראש.',
   t:['Dix-Hallpike','Supine roll test'],m:'תמרון Epley (יעיל לפי Cochrane).',ev:['XBH17','XHI14']},
  {id:'n_vn',n:'דלקת עצב וסטיבולרי',en:'Vestibular neuritis / labyrinthitis',
-  p:{dom:'n!',n_main:'dz!',n_vacute:'y!',n_viral:'y',t_hints:'n',n_pos:'n'},
+  p:{dom:'n!',n_main:'dz!',dur:'a|s',n_vacute:'y!',n_viral:'y',t_hints:'n',n_pos:'n'},
   d:'סחרחורת מתמשכת חריפה אחרי מחלה ויראלית, עם HINTS היקפי.',
   t:['HINTS','בדיקת שמיעה'],m:'שיקום וסטיבולרי מוקדם. לשלול שבץ.',ev:['XTA11','XOH20']},
  {id:'n_cent',flag:1,n:'סחרחורת ממקור מרכזי (שבץ בגזע המוח)',en:'Central vertigo (posterior circulation stroke)',
@@ -1199,7 +1204,7 @@ const DX = [
   d:'נימול או חולשה ברגל עם כאב גב מקרין.',
   t:['SLR','Slump','בדיקה נוירולוגית L4–S1'],m:'מעבר לבדיקת גב תחתון.',ev:['VW10','AN13']},
  {id:'n_bell',n:'שיתוק פנים היקפי (Bell\'s palsy)',en:"Bell's palsy",
-  p:{dom:'n!',n_main:'face!',n_forehead:'n!',n_ear:'y'},
+  p:{dom:'n!',n_main:'face!',dur:'a',n_forehead:'n!',n_ear:'y'},
   d:'חולשה בכל צד הפנים כולל המצח, לעיתים עם כאב מאחורי האוזן.',
   t:['בדיקת עצב הפנים','שלילת שבץ'],m:'פנייה לרופא תוך 72 שעות (סטרואידים יעילים לפי Cochrane). הגנה על העין.',ev:['XMD16']},
  {id:'n_cface',flag:1,n:'צניחת פנים מרכזית (חשד לשבץ)',en:'Central facial palsy',
@@ -1237,27 +1242,27 @@ const DX = [
   d:'שיעול (עם או בלי ליחה) עד 3 שבועות, בלי סימנים לדלקת ריאות.',
   t:['שלילת דלקת ריאות'],m:'אנטיביוטיקה לא מועילה ברוב המקרים (Cochrane). שתייה, דבש, מנוחה.',ev:['XSB17','XMR19']},
  {id:'i_pna',n:'דלקת ריאות (חיידקית)',en:'Community-acquired pneumonia',
-  p:{dom:'i!',i_main:'cgh|fev!',i_fever:'y+',i_vital:'y+',t_chest:'y*',i_dur:'a',i_runny:'n'},
+  p:{dom:'i!',i_main:'cgh|fev!',i_fever:'y+',i_vital:'y+',t_chest:'y*',i_dur:'a|s!',i_runny:'n'},
   d:'שיעול עם חום, דופק ונשימה מהירים וממצא מוקד בהאזנה.',
   t:['האזנה לריאות','סימנים חיוניים','צילום חזה / CRP'],m:'פנייה לרופא לטיפול אנטיביוטי.',ev:['XMR19','XME97']},
  {id:'i_fluD',n:'שפעת (ויראלית)',en:'Influenza',
-  p:{dom:'i!',i_main:'fev|cgh!',i_flu:'y+',i_fever:'y',i_smell:'n',t_chest:'n'},
+  p:{dom:'i!',i_main:'fev|cgh!',dur:'a!',i_flu:'y+',i_fever:'y',i_smell:'n',t_chest:'n'},
   d:'התחלה פתאומית עם חום, כאבי שרירים וכאב ראש בעונת השפעת.',
   t:['אבחנה קלינית','בדיקה מהירה לפי הצורך'],m:'מנוחה ושתייה. קבוצות סיכון → רופא לגבי טיפול אנטי-ויראלי.',ev:['XCA05']},
  {id:'i_cov',n:'COVID-19 (ויראלי)',en:'COVID-19',
-  p:{dom:'i!',i_main:'fev|cgh|st!',i_smell:'y+',i_fever:'y'},
+  p:{dom:'i!',i_main:'fev|cgh|st!',dur:'a|s!',i_smell:'y+',i_fever:'y'},
   d:'חום, שיעול ואובדן ריח או טעם, או חשיפה לחולה.',
   t:['בדיקה ביתית / PCR'],m:'בידוד לפי ההנחיות, מעקב אחר קוצר נשימה.',ev:['XST22']},
  {id:'i_pert',n:'שעלת (חיידקית)',en:'Pertussis',
-  p:{dom:'i!',i_main:'cgh!',i_whoop:'y!',i_fever:'n',i_dur:'s|c'},
+  p:{dom:'i!',i_main:'cgh!',i_whoop:'y!',i_fever:'n',i_dur:'s|c',dur:'s|m'},
   d:'התקפי שיעול עם שאיפה מצפצפת או הקאה, בלי חום, מעל שבועיים.',
   t:['PCR מהאף'],m:'פנייה לרופא לטיפול. מגע עם תינוקות → חשוב במיוחד.',ev:['XEB17']},
  {id:'i_asth',n:'אסתמה / שיעול אסתמטי',en:'Asthma / cough-variant asthma',
-  p:{dom:'i!',i_main:'cgh!',i_wheeze:'y!',i_dur:'s|c',i_fever:'n'},
+  p:{dur:'s|m|l',dom:'i!',i_main:'cgh!',i_wheeze:'y!',i_dur:'s|c',i_fever:'n'},
   d:'שיעול כרוני עם צפצופים, מחמיר בלילה, במאמץ או בקור.',
   t:['ספירומטריה'],m:'הפניה לרופא לבירור וטיפול.',ev:['XIR18']},
  {id:'i_gerdc',n:'שיעול על רקע רפלוקס',en:'Reflux cough',
-  p:{dom:'i!',i_main:'cgh!',i_reflux:'y!',i_dur:'s|c',i_fever:'n'},
+  p:{dur:'s|m|l',dom:'i!',i_main:'cgh!',i_reflux:'y!',i_dur:'s|c',i_fever:'n'},
   d:'שיעול כרוני שמחמיר אחרי ארוחות או בשכיבה, לעיתים עם צרבת.',
   t:['תגובה לשינוי אורח חיים'],m:'ארוחות קטנות, לא לאכול לפני שינה, הגבהת ראש המיטה.',ev:['XKA16','KZ22']},
  {id:'i_acec',n:'שיעול מתרופה (מעכבי ACE)',en:'ACE-inhibitor cough',
@@ -1265,31 +1270,39 @@ const DX = [
   d:'שיעול יבש מתמשך אצל מי שנוטל מעכבי ACE.',
   t:['רשימת תרופות'],m:'פנייה לרופא להחלפת תרופה. אין להפסיק לבד.',ev:['XDI06']},
  {id:'i_uacs',n:'טפטוף אחורי (UACS)',en:'Upper airway cough syndrome',
-  p:{dom:'i!',i_main:'cgh!',i_pnd:'y!',i_fever:'n',i_dur:'s|c'},
+  p:{dur:'s|m|l',dom:'i!',i_main:'cgh!',i_pnd:'y!',i_fever:'n',i_dur:'s|c'},
   d:'שיעול כרוני עם טפטוף מהאף לגרון וניקוי גרון תכוף.',
   t:['בדיקת אף וגרון'],m:'שטיפות אף, טיפול באלרגיה לפי רופא.',ev:['XPR06']},
  {id:'i_chf',flag:1,n:'אי-ספיקת לב',en:'Heart failure',
   p:{dom:'i!',i_main:'cgh!',i_hf:'y!'},
   d:'שיעול וקוצר נשימה בשכיבה, עם נפיחות ברגליים.',
   t:['בדיקה רפואית','BNP, אקו'],m:'הפניה לרופא.',ev:['XWA05']},
+ {id:'i_copd',n:'COPD / ברונכיטיס כרונית',en:'COPD / chronic bronchitis',
+  p:{dom:'i!',i_main:'cgh!',dur:'l!',i_smoke:'y!',i_wheeze:'y',i_fever:'n'},
+  d:'שיעול כרוני עם ליחה וקוצר נשימה במאמץ אצל מעשן או מעשן לשעבר.',
+  t:['ספירומטריה (FEV1/FVC < 0.7)'],m:'הפניה לרופא לספירומטריה. הפסקת עישון ושיקום ריאתי.',ev:['XHR15','XGOLD']},
+ {id:'i_crc',n:'שיעול כרוני עמיד (רגישות-יתר של רפלקס השיעול)',en:'Chronic refractory cough / cough hypersensitivity',
+  p:{dom:'i!',i_main:'cgh!',dur:'m|l!',i_dur:'c!',i_reflux:'n!',i_acei:'n!',i_pnd:'n!',i_wheeze:'n!',i_smoke:'n',i_fever:'n',i_whoop:'n!'},
+  d:'שיעול מעל 8 שבועות בלי סיבה מזוהה, לעיתים עם גירוי בגרון מטריגרים כמו דיבור, אוויר קר או ריחות.',
+  t:['שלילת אסתמה, רפלוקס, טפטוף אחורי ותרופות','צילום חזה, ספירומטריה'],m:'הפניה לרופא ריאות. טיפול בדיבור ובנשימה (שיקום שיעול) יעיל לחלק מהמטופלים.',ev:['XMO20','XIR18']},
  {id:'i_strep',n:'דלקת גרון חיידקית (סטרפטוקוק)',en:'Streptococcal pharyngitis',
-  p:{dom:'i!',i_main:'st!',i_fever:'y',t_tons:'y+',i_nodes:'y+',i_nocough:'y+',i_age3:'a',i_runny:'n'},
+  p:{dom:'i!',i_main:'st!',dur:'a!',i_fever:'y',t_tons:'y+',i_nodes:'y+',i_nocough:'y+',i_age3:'a',i_runny:'n'},
   d:'חום, מוגלה על השקדים, בלוטות קדמיות רגישות ובלי שיעול (Centor 3–4).',
   t:['Centor / McIsaac','משטח גרון'],m:'משטח לפני אנטיביוטיקה. פנייה לרופא.',ev:['XAA11','XSP13']},
  {id:'i_vph',n:'דלקת גרון ויראלית',en:'Viral pharyngitis',
-  p:{dom:'i!',i_main:'st!',i_nocough:'n',i_runny:'y+',i_fever:'n',t_tons:'n',i_nodes:'n'},
+  p:{dom:'i!',i_main:'st!',dur:'a!',i_nocough:'n',i_runny:'y+',i_fever:'n',t_tons:'n',i_nodes:'n'},
   d:'כאב גרון עם שיעול ונזלת, בלי מוגלה על השקדים (Centor 0–1).',
   t:['Centor'],m:'אין צורך באנטיביוטיקה. טיפול בתסמינים.',ev:['XAA11','XSP13']},
  {id:'i_monoD',n:'מונונוקלאוזיס (EBV)',en:'Infectious mononucleosis',
-  p:{dom:'i!',i_main:'st|fev!',i_mono:'y+',t_tons:'y',i_nodes:'y'},
+  p:{dom:'i!',i_main:'st|fev!',dur:'a|s!',i_mono:'y+',t_tons:'y',i_nodes:'y'},
   d:'כאב גרון ממושך עם עייפות קשה ובלוטות אחוריות, בעיקר בצעירים.',
   t:['ספירת דם','Monospot / סרולוגיה'],m:'מנוחה. הימנעות מספורט מגע 3–4 שבועות (סיכון לטחול).',ev:['XEB16']},
  {id:'i_vrs',n:'סינוסיטיס ויראלית',en:'Viral rhinosinusitis',
-  p:{dom:'i!',i_main:'sin!',i_sdur:'a',i_double:'n',i_purul:'n',i_runny:'y',i_allerg:'n'},
+  p:{dom:'i!',i_main:'sin!',dur:'a!',i_sdur:'a',i_double:'n',i_purul:'n',i_runny:'y',i_allerg:'n'},
   d:'גודש ונזלת פחות מ-10 ימים, בלי החמרה שנייה.',
   t:['אבחנה קלינית'],m:'שטיפות אף, טיפול בתסמינים. אנטיביוטיקה לא נדרשת.',ev:['XEB19','XLE18']},
  {id:'i_abrs',n:'סינוסיטיס חיידקית',en:'Acute bacterial rhinosinusitis',
-  p:{dom:'i!',i_main:'sin!',i_sdur:'b+',i_double:'y+',i_purul:'y+'},
+  p:{dom:'i!',i_main:'sin!',dur:'a|s!',i_sdur:'b+',i_double:'y+',i_purul:'y+'},
   d:'תסמינים מעל 10 ימים, החמרה אחרי שיפור, או מוגלה עם כאב חד-צדדי בפנים.',
   t:['אבחנה קלינית'],m:'פנייה לרופא. התועלת מאנטיביוטיקה קטנה (Cochrane).',ev:['XEB19','XLE18']},
  {id:'i_ar',n:'נזלת אלרגית',en:'Allergic rhinitis',
@@ -1297,7 +1310,7 @@ const DX = [
   d:'עיטושים, גירוד ונזלת בעונות מסוימות או בחשיפה לאלרגן.',
   t:['אבחנה קלינית','תבחיני אלרגיה'],m:'הימנעות מחשיפה, שטיפות אף, טיפול לפי רופא.',ev:['XBR17']},
  {id:'i_cyst',n:'דלקת שלפוחית (UTI לא מסובך)',en:'Uncomplicated cystitis',
-  p:{dom:'i!',i_main:'uti!',sex:'a',i_freq:'y+',i_disch:'n-',i_flank:'n'},
+  p:{dom:'i!',i_main:'uti!',dur:'a!',sex:'a',i_freq:'y+',i_disch:'n-',i_flank:'n'},
   d:'צריבה ותכיפות במתן שתן, בלי הפרשה נרתיקית. צריבה + תכיפות בלי הפרשה: סבירות גבוהה מאוד.',
   t:['סטיק שתן / תרבית'],m:'פנייה לרופא לטיפול. שתייה מרובה.',ev:['XBE02','XGI10']},
  {id:'i_pyelo',flag:1,n:'דלקת כליה (פיאלונפריטיס)',en:'Pyelonephritis',
@@ -1824,11 +1837,17 @@ const mod = e => '!+-*'.includes(e[e.length-1])&&e.length>1 ? e[e.length-1] : ''
 const vals = e => (mod(e)?e.slice(0,-1):e).split('|');
 const weightOf = e => ({'!':2,'*':2,'+':1.5,'-':1.5})[mod(e)]||1;
 
+const DUR_MAP={a:{i_dur:'a',g_dur:'a',gi_dur3:'n'},s:{i_dur:'s',gi_dur3:'n',i_sdur:'b'},m:{i_dur:'c',g_dur:'b',gi_dur3:'n',i_sdur:'b'},l:{i_dur:'c',g_dur:'b',gi_dur3:'y',i_sdur:'b'}};
+function allAns(){
+  const A=Object.fromEntries(answers), d=DUR_MAP[A.dur], extra=[];
+  if(d) for(const k in d) if(!(k in A)) extra.push([k,d[k]]);
+  return answers.concat(extra);
+}
 function evaluate(){
-  const A=Object.fromEntries(answers);
+  const AA=allAns(), A=Object.fromEntries(AA);
   const res=DX.map(d=>{
     let s=0, elim=null, elimQ=null, why=[];
-    for(const [qid,v] of answers){
+    for(const [qid,v] of AA){
       const e=d.p[qid]; if(!e||v==='?')continue;
       const m=mod(e), xs=vals(e), q=QI[qid], txt=q.lbl+': '+ansLabel(q,v);
       if(xs.includes(v)){ s += m==='!'?(qid[0]==='g'&&qid[1]==='_'?1:(d.flag&&!q.scope?6:2)): (m==='+'||m==='*')?3:1; if(!q.scope)why.push([1,txt]); }
@@ -1844,7 +1863,7 @@ function evaluate(){
 }
 
 function nextQuestion(ev){
-  const asked=new Set(answers.map(a=>a[0]));
+  const asked=new Set(Object.keys(ev.A));
   const ok=q=>!q.ctx&&!q.tcm&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v));
   const cands=Q.filter(ok);
   const firsts=cands.filter(q=>q.first).sort((a,b)=>a.first-b.first);
