@@ -233,12 +233,12 @@ const Q = [
  {id:'hp_trauma',t:'הכאב התחיל אחרי נפילה או מכה?',lbl:'טראומה',first:2},
  {id:'hp_fxq',cond:{hp_trauma:'y'},t:'גיל 65+ או אוסטאופורוזיס, עם חוסר יכולת לדרוך, או רגל מקוצרת ומסובבת החוצה?',lbl:'חשד לשבר',first:3},
  {id:'hp_hot',t:'כאב חזק מאוד בירך עם חום, או חוסר יכולת להזיז את הירך בכלל?',lbl:'ירך חמה',first:4},
- {id:'hp_teen',t:'מתבגר (9–16) עם צליעה וכאב בירך או בברך?',h:'חשד ל-SCFE: כאב ירך מוחזר לברך.',lbl:'מתבגר צולע',first:4.2},
+ {id:'hp_teen',excl:{age:['y','f','g','o']},t:'מתבגר (9–16) עם צליעה וכאב בירך או בברך?',h:'חשד ל-SCFE: כאב ירך מוחזר לברך.',lbl:'מתבגר צולע',first:4.2},
  {id:'hp_avn',t:'סטרואידים לאורך זמן או צריכת אלכוהול גבוהה, עם כאב עמוק במפשעה שמחמיר גם במנוחה?',lbl:'סיכון לנמק',first:4.4},
  {id:'hp_run',t:'כאב במפשעה שהתפתח בהדרגה עם עלייה בעומס ריצה, וכאב בדריכה?',lbl:'עומס ריצה',first:4.6},
  {id:'hp_hernia',t:'בליטה במפשעה שמופיעה בשיעול או במאמץ ונעלמת בשכיבה?',lbl:'בליטה במפשעה',first:6},
  {id:'hp_back',t:'כאב גב, או שתנועות הגב משחזרות את כאב הירך?',lbl:'קשר לגב',first:6.1},
- {id:'hp_pelvic',cond:{sex:'a'},t:'כאב באגן או במפשעה שקשור למחזור, או הפרשה / כאב ביחסים?',lbl:'קשר גינקולוגי',first:6.2},
+ {id:'hp_pelvic',excl:{age:['o']},cond:{sex:'a'},t:'כאב באגן או במפשעה שקשור למחזור, או הפרשה / כאב ביחסים?',lbl:'קשר גינקולוגי',first:6.2},
  {id:'hp_uro',t:'כאב גלי מהמותן למפשעה, או דם בשתן?',lbl:'כאב גלי / דם בשתן',first:6.3},
  {id:'hp_where',t:'איפה הכאב בעיקר?',type:'ab',a:['מפשעה / קדמת הירך','צד הירך / עכוז'],lbl:'מיקום'},
  {id:'hp_age',t:'גיל המטופל',type:'ab',a:['מתחת ל-45','45 ומעלה'],lbl:'גיל'},
@@ -260,7 +260,7 @@ const Q = [
  {id:'hw_numb',t:'נימול או עקצוץ באצבעות 1–3, שמעיר בלילה ומשתפר בניעור היד?',lbl:'נימול מדיאני'},
  {id:'hw_thumb',t:'כאב בצד האגודל של שורש כף היד, מוחמר בהרמת תינוק או בסגירת אגרוף?',lbl:'כאב צד האגודל'},
  {id:'hw_lock',t:'אצבע "נתקעת" בכיפוף ומשתחררת בקפיצה?',lbl:'אצבע קופצת'},
- {id:'hw_base',t:'כאב בבסיס האגודל בצביטה או בפתיחת צנצנות, מעל גיל 50?',lbl:'בסיס האגודל'},
+ {id:'hw_base',excl:{age:['c']},t:'כאב בבסיס האגודל בצביטה או בפתיחת צנצנות, מעל גיל 50?',lbl:'בסיס האגודל'},
  {id:'hw_lump',t:'גוש רך ותחום בגב שורש כף היד או בצד כף היד?',lbl:'גוש בשורש כף היד'},
  {id:'t_phalen',type:'pn',t:'Phalen',h:'כיפוף מלא של שורשי כפות הידיים, גב אל גב, 60 שניות.',pos:'נימול באצבעות 1–3.',lbl:'Phalen'},
  {id:'t_tinelC',type:'pn',t:'Tinel (carpal tunnel)',h:'הקשה על העצב המדיאני בשורש כף היד.',pos:'עקצוץ באצבעות 1–3.',lbl:'Tinel קרפלי'},
@@ -268,28 +268,28 @@ const Q = [
  {id:'t_grind',type:'pn',t:'CMC grind test',h:'לחץ צירי וסיבוב של עצם המסרק של האגודל.',pos:'כאב או קרפיטציות בבסיס האגודל.',lbl:'CMC grind'},
 
  /* ================= בריאות האישה ================= */
- {id:'w_preg',t:'ייתכן הריון (איחור במחזור, מבחן חיובי)?',lbl:'אפשרות להריון',first:2},
- {id:'w_ectop',cond:{w_preg:'y'},t:'כאב בבטן התחתונה, דימום וגינלי, או סחרחורת / עילפון?',lbl:'כאב / דימום בהריון',first:2.5},
+ {id:'w_preg',excl:{age:['g','o'],w_main:['meno']},t:'ייתכן הריון (איחור במחזור, מבחן חיובי)?',lbl:'אפשרות להריון',first:2},
+ {id:'w_ectop',excl:{age:['g','o']},cond:{w_preg:'y'},t:'כאב בבטן התחתונה, דימום וגינלי, או סחרחורת / עילפון?',lbl:'כאב / דימום בהריון',first:2.5},
  {id:'w_acute',t:'כאב אגן חד ופתאומי, עם בחילות והקאות או חום?',lbl:'כאב אגן חריף',first:3},
- {id:'w_pmb',t:'דימום אחרי גיל המעבר (שנה ומעלה בלי וסת), או דימום אחרי יחסים?',lbl:'דימום חריג',first:3.5},
+ {id:'w_pmb',excl:{age:['c']},t:'דימום אחרי גיל המעבר (שנה ומעלה בלי וסת), או דימום אחרי יחסים?',lbl:'דימום חריג',first:3.5},
  {id:'w_fever',t:'חום, הפרשה עם ריח רע, וכאב באגן או ביחסים?',lbl:'סימני זיהום באגן',first:4},
- {id:'w_gi',t:'עצירות, נפיחות או שינוי ביציאות שמחמירים סביב הווסת?',lbl:'עיכול סביב הווסת',first:6},
- {id:'w_back',t:'כאב גב תחתון שמחמיר סביב הווסת?',lbl:'גב סביב הווסת',first:6.1},
+ {id:'w_gi',excl:{age:['o']},t:'עצירות, נפיחות או שינוי ביציאות שמחמירים סביב הווסת?',lbl:'עיכול סביב הווסת',first:6},
+ {id:'w_back',excl:{age:['o']},t:'כאב גב תחתון שמחמיר סביב הווסת?',lbl:'גב סביב הווסת',first:6.1},
  {id:'w_thy',t:'עייפות, רגישות לקור, עלייה במשקל, עצירות או נשירת שיער?',lbl:'סימני תריס',first:6.2},
  {id:'w_age',t:'גיל המטופלת',type:'multi',o:[['y','מתחת ל-25'],['m','25–45'],['o','45 ומעלה']],lbl:'גיל'},
- {id:'w_onsetdys',t:'כאבי הווסת התחילו כבר מהמחזורים הראשונים, בגיל ההתבגרות?',lbl:'מגיל ההתבגרות'},
+ {id:'w_onsetdys',excl:{age:['g','o']},t:'כאבי הווסת התחילו כבר מהמחזורים הראשונים, בגיל ההתבגרות?',lbl:'מגיל ההתבגרות'},
  {id:'w_worse',t:'הכאבים מחמירים משנה לשנה, או מתחילים כמה ימים לפני הווסת ונמשכים אחריה?',lbl:'החמרה הדרגתית'},
  {id:'w_dysp',t:'כאב עמוק ביחסים, או כאב ביציאות / במתן שתן בזמן הווסת?',lbl:'כאב ביחסים / ביציאות'},
  {id:'w_heavy',t:'דימום כבד: החלפה כל שעה–שעתיים, קרישים גדולים או דליפה בלילה?',lbl:'דימום כבד'},
- {id:'w_infert',t:'קושי להרות שנה ומעלה?',lbl:'קושי בפוריות'},
+ {id:'w_infert',excl:{age:['c','g','o']},t:'קושי להרות שנה ומעלה?',lbl:'קושי בפוריות'},
  {id:'w_hirs',t:'שיעור יתר בפנים או בגוף, אקנה, או עלייה במשקל?',lbl:'סימני אנדרוגנים'},
- {id:'w_cyc',t:'מחזור כל יותר מ-35 יום, או פחות מ-8 מחזורים בשנה?',lbl:'מחזורים נדירים'},
- {id:'w_ath',t:'פעילות גופנית רבה, דיאטה, ירידה במשקל או סטרס משמעותי?',lbl:'אנרגיה נמוכה / ספורט'},
- {id:'w_pms1',t:'תסמינים (עצבנות, דיכאון, נפיחות, רגישות בשדיים) שמופיעים בשבוע–שבועיים לפני הווסת ונעלמים עם תחילתה?',lbl:'תסמינים מחזוריים'},
- {id:'w_pms2',t:'התסמינים הרגשיים קשים ופוגעים בעבודה או ביחסים?',lbl:'פגיעה תפקודית'},
- {id:'w_hot',t:'גלי חום, הזעות לילה או קשיי שינה?',lbl:'גלי חום'},
- {id:'w_lmp',t:'הווסת הפכה לא סדירה, או שלא הייתה וסת 12 חודשים ומעלה?',lbl:'שינוי בווסת'},
- {id:'w_gsm',t:'יובש בנרתיק, כאב ביחסים, או דחיפות / צריבה במתן שתן?',lbl:'יובש / תסמיני שתן'},
+ {id:'w_cyc',excl:{age:['g','o']},t:'מחזור כל יותר מ-35 יום, או פחות מ-8 מחזורים בשנה?',lbl:'מחזורים נדירים'},
+ {id:'w_ath',excl:{age:['o']},t:'פעילות גופנית רבה, דיאטה, ירידה במשקל או סטרס משמעותי?',lbl:'אנרגיה נמוכה / ספורט'},
+ {id:'w_pms1',excl:{age:['o']},t:'תסמינים (עצבנות, דיכאון, נפיחות, רגישות בשדיים) שמופיעים בשבוע–שבועיים לפני הווסת ונעלמים עם תחילתה?',lbl:'תסמינים מחזוריים'},
+ {id:'w_pms2',excl:{age:['o']},t:'התסמינים הרגשיים קשים ופוגעים בעבודה או ביחסים?',lbl:'פגיעה תפקודית'},
+ {id:'w_hot',excl:{age:['c']},t:'גלי חום, הזעות לילה או קשיי שינה?',lbl:'גלי חום'},
+ {id:'w_lmp',excl:{age:['c','y']},t:'הווסת הפכה לא סדירה, או שלא הייתה וסת 12 חודשים ומעלה?',lbl:'שינוי בווסת'},
+ {id:'w_gsm',excl:{age:['c']},t:'יובש בנרתיק, כאב ביחסים, או דחיפות / צריבה במתן שתן?',lbl:'יובש / תסמיני שתן'},
  {id:'w_mood',t:'שינויים במצב הרוח, ירידה בריכוז או כאבי מפרקים חדשים?',lbl:'מצב רוח / מפרקים'},
  {id:'w_itch',t:'גירוד וצריבה בפות, עם הפרשה לבנה סמיכה (כמו גבינה)?',lbl:'הפרשה סמיכה + גירוד'},
  {id:'w_fishy',t:'הפרשה דלילה ואפורה עם ריח של דגים, בעיקר אחרי יחסים?',lbl:'ריח דגים'},
@@ -300,10 +300,10 @@ const Q = [
  {id:'n_stroke',t:'חולשה או נימול פתאומיים בזרוע או ברגל בצד אחד, קושי בדיבור, או אובדן ראייה — עכשיו או בשעות האחרונות?',lbl:'סימני שבץ',first:2},
  {id:'n_thunder',t:'כאב ראש פתאומי וחזק ביותר שהגיע לשיא תוך דקה ("הכי גרוע שהיה")?',lbl:'כאב רעם',first:2.2},
  {id:'n_mening',t:'חום עם צוואר נוקשה, פריחה, או בלבול?',lbl:'חום + צוואר נוקשה',first:2.4},
- {id:'n_gca',t:'גיל 50+ עם כאב ראש חדש ברקה, כאב בלעיסה, או הפרעת ראייה?',lbl:'חשד GCA',first:2.6},
+ {id:'n_gca',excl:{age:['c','y']},t:'גיל 50+ עם כאב ראש חדש ברקה, כאב בלעיסה, או הפרעת ראייה?',lbl:'חשד GCA',first:2.6},
  {id:'n_snoop',t:'כאב ראש חדש מעל גיל 50, מחמיר בהדרגה, מעיר משינה, מחמיר בשיעול או במאמץ, או עם היסטוריה של סרטן / דיכוי חיסוני?',h:'דגלי SNNOOP10.',lbl:'דגלי כאב ראש',first:3},
  {id:'n_neck',t:'כאב צוואר, או שתנועות הצוואר מעוררות את כאב הראש / הסחרחורת?',lbl:'קשר לצוואר',first:6},
- {id:'n_mens',cond:{sex:'a'},t:'כאב הראש קשור למחזור (יומיים לפני עד 3 ימים אחרי תחילת הווסת)?',lbl:'קשור לווסת',first:6.1},
+ {id:'n_mens',excl:{age:['c','o']},cond:{sex:'a'},t:'כאב הראש קשור למחזור (יומיים לפני עד 3 ימים אחרי תחילת הווסת)?',lbl:'קשור לווסת',first:6.1},
  {id:'n_meds',t:'משככי כאבים 10–15 ימים ומעלה בחודש, לאורך 3 חודשים?',lbl:'שימוש יתר במשככים',first:6.2},
  {id:'n_sleep',t:'שינה לא מספקת, נחירות, או סטרס משמעותי?',lbl:'שינה / סטרס',first:6.3},
  {id:'n_uni',t:'הכאב בצד אחד של הראש?',lbl:'חד-צדדי'},
@@ -355,7 +355,7 @@ const Q = [
  {id:'t_tons',type:'pn',t:'Tonsillar exam',h:'בדיקת השקדים עם פנס.',pos:'נפיחות או מוגלה על השקדים.',lbl:'מוגלה על השקדים'},
  {id:'i_nodes',t:'בלוטות לימפה נפוחות ורגישות בקדמת הצוואר?',lbl:'בלוטות קדמיות'},
  {id:'i_nocough',t:'אין שיעול?',h:'היעדר שיעול הוא אחד מקריטריוני Centor.',lbl:'בלי שיעול'},
- {id:'i_age3',t:'גיל המטופל',type:'ab',a:['3–14','15 ומעלה'],lbl:'גיל'},
+ {id:'i_age3',excl:{age:['y','f','g','o']},t:'גיל המטופל',type:'ab',a:['3–14','15 ומעלה'],lbl:'גיל'},
  {id:'i_mono',t:'עייפות קשה, בלוטות בעורף או בבית השחי, או צעיר עם כאב גרון שנמשך מעל שבוע?',lbl:'חשד למונו'},
  {id:'i_sdur',cond:{i_main:'sin'},first:5.5,t:'כמה זמן התסמינים באף?',type:'ab',a:['פחות מ-10 ימים','10 ימים ומעלה'],lbl:'משך'},
  {id:'i_double',t:'היה שיפור ואז החמרה מחודשת ("מחלה כפולה")?',lbl:'החמרה שנייה'},
@@ -366,7 +366,7 @@ const Q = [
  {id:'i_flank',t:'כאב במותן (צד הגב) או חום?',lbl:'כאב מותני / חום'},
 
  /* ================= עיכול: קשר לווסת ================= */
- {id:'gi_cyc',cond:{sex:'a'},t:'התסמינים מחמירים באופן קבוע סביב הווסת?',lbl:'קשור לווסת',first:6},
+ {id:'gi_cyc',excl:{age:['o']},cond:{sex:'a'},t:'התסמינים מחמירים באופן קבוע סביב הווסת?',lbl:'קשור לווסת',first:6},
 /* ---------- עיכול ---------- */
  {id:'gi_alarm',t:'דם ביציאות או יציאה שחורה, ירידה במשקל לא מוסברת, אנמיה, או שינוי חדש בהרגלי היציאות אחרי גיל 50?',h:'סימני אזעקה לפי Rome IV.',lbl:'סימני אזעקה',first:2},
  {id:'gi_upal',t:'קושי בבליעה, הקאות חוזרות, הקאה דמית, או צרבת חדשה עם ירידה במשקל?',lbl:'אזעקה עליונה',first:3},
@@ -415,6 +415,82 @@ const Q = [
  {id:'n_main',cond:{dom:'n'},t:'מה התלונה העיקרית?',type:'multi',o:[['ha','כאב ראש'],['dz','סחרחורת / ורטיגו'],['nb','נימול / חולשה ביד או ברגל'],['face','חולשה / צניחה בפנים']],lbl:'תלונה',first:1.5,scope:1},
  {id:'i_main',cond:{dom:'i'},t:'מה התלונה העיקרית?',type:'multi',o:[['cgh','שיעול'],['st','כאב גרון'],['sin','גודש באף / סינוסים'],['fev','חום ותסמיני שפעת'],['uti','צריבה במתן שתן']],lbl:'תלונה',first:1.5,scope:1},
  {id:'age',t:'גיל המטופל',type:'multi',o:[['c','מתחת ל-18'],['y','18–39'],['f','40–49'],['g','50–59'],['o','60 ומעלה']],lbl:'גיל',first:1.85,always:1},
+/* ---------- בדיקות שכבר נעשו ---------- */
+ {id:'img_any',t:'כבר נעשו בדיקות לבעיה הזו? (צילום, US, MRI / CT, EMG, בדיקות דם, משטח)',h:'אם כן, נשאל רק על הממצאים שרלוונטיים. ממצא שנשלל בבדיקה מוציא אבחנות מהרשימה.',lbl:'בדיקות קודמות',first:1.95,always:1},
+ /* כתף */
+ {id:'im_sh_fx',type:'fd',cond:{img_any:'y'},t:'שבר או פריקה בצילום',lbl:'צילום: שבר',first:1.96},
+ {id:'im_sh_rct',type:'fd',cond:{img_any:'y'},t:'קרע מלא בשרוול המסובב (US / MRI)',h:'קרעים נמצאים גם אצל אנשים בלי כאב, בעיקר מעל 60. חשוב לבדוק שהממצא מתאים לבדיקה הגופנית.',lbl:'הדמיה: קרע בשרוול',first:1.96},
+ {id:'im_sh_tend',type:'fd',cond:{img_any:'y'},t:'טנדינופתיה / עיבוי גיד השרוול או בורסיטיס תת-אקרומיאלית',lbl:'הדמיה: טנדינופתיה',first:1.96},
+ {id:'im_sh_bic',type:'fd',cond:{img_any:'y'},t:'נוזל סביב גיד הביספס / טנוסינוביטיס של הראש הארוך',lbl:'הדמיה: נוזל סביב הביספס',first:1.96},
+ {id:'im_sh_calc',type:'fd',cond:{img_any:'y'},t:'הסתיידות בגיד (צילום / US)',lbl:'הדמיה: הסתיידות',first:1.96},
+ {id:'im_sh_oa',type:'fd',cond:{img_any:'y'},t:'שינויים ניווניים במפרק הכתף (OA)',lbl:'הדמיה: OA כתף',first:1.96},
+ {id:'im_sh_lab',type:'fd',cond:{img_any:'y'},t:'קרע בלברום (MRI / MR-ארתרוגרפיה)',lbl:'הדמיה: לברום',first:1.96},
+ {id:'im_sh_ac',type:'fd',cond:{img_any:'y'},t:'שינויים במפרק ה-AC',lbl:'הדמיה: AC',first:1.96},
+ /* מרפק */
+ {id:'im_el_fx',type:'fd',cond:{img_any:'y'},t:'שבר בצילום',lbl:'צילום: שבר',first:1.96},
+ {id:'im_el_ten',type:'fd',cond:{img_any:'y'},t:'טנדינוזיס במוצא המיישרים או המכופפים (US)',lbl:'US: טנדינוזיס',first:1.96},
+ {id:'im_el_bic',type:'fd',cond:{img_any:'y'},t:'קרע בביספס הדיסטלי (US / MRI)',lbl:'הדמיה: ביספס דיסטלי',first:1.96},
+ {id:'im_el_ucl',type:'fd',cond:{img_any:'y'},t:'קרע ב-UCL (MRI)',lbl:'MRI: UCL',first:1.96},
+ {id:'im_el_oa',type:'fd',cond:{img_any:'y'},t:'שינויים ניווניים / גופים חופשיים',lbl:'הדמיה: OA מרפק',first:1.96},
+ /* שורש כף יד */
+ {id:'im_hw_fx',type:'fd',cond:{img_any:'y'},t:'שבר (צילום / MRI)',lbl:'הדמיה: שבר',first:1.96},
+ {id:'im_hw_oa',type:'fd',cond:{img_any:'y'},t:'שינויים ניווניים בבסיס האגודל / ביד',lbl:'צילום: OA',first:1.96},
+ {id:'im_hw_gang',type:'fd',cond:{img_any:'y'},t:'גנגליון (US)',lbl:'US: גנגליון',first:1.96},
+ {id:'im_hw_dq',type:'fd',cond:{img_any:'y'},t:'טנוסינוביטיס בתא הראשון של שורש כף היד (US)',lbl:'US: דה-קרוון',first:1.96},
+ /* צוואר / גב */
+ {id:'im_sp_fx',type:'fd',cond:{img_any:'y'},t:'שבר בעמוד השדרה',lbl:'הדמיה: שבר חולייתי',first:1.96},
+ {id:'im_sp_disc',type:'fd',cond:{img_any:'y'},t:'פריצת דיסק עם לחץ על שורש עצב (MRI / CT)',h:'פריצות דיסק בלי לחץ על עצב שכיחות מאוד גם בלי כאב. רק לחץ על שורש שמתאים לתסמינים נחשב.',lbl:'MRI: לחץ על שורש',first:1.96},
+ {id:'im_sp_cord',type:'fd',cond:{img_any:'y'},t:'לחץ על חוט השדרה (MRI)',lbl:'MRI: לחץ על חוט השדרה',first:1.96},
+ {id:'im_sp_sten',type:'fd',cond:{img_any:'y'},t:'היצרות של תעלת השדרה',lbl:'MRI: היצרות',first:1.96},
+ {id:'im_sp_spon',type:'fd',cond:{img_any:'y'},t:'ספונדילוליזיס / ספונדילוליסטזיס',lbl:'הדמיה: ספונדילוליזיס',first:1.96},
+ {id:'im_sp_sij',type:'fd',cond:{img_any:'y'},t:'דלקת במפרקי העצה (סקרואיליאיטיס) ב-MRI',lbl:'MRI: סקרואיליאיטיס',first:1.96},
+ /* ירך */
+ {id:'im_hp_fx',type:'fd',cond:{img_any:'y'},t:'שבר / שבר מאמץ',lbl:'הדמיה: שבר',first:1.96},
+ {id:'im_hp_oa',type:'fd',cond:{img_any:'y'},t:'שינויים ניווניים במפרק הירך',lbl:'צילום: OA ירך',first:1.96},
+ {id:'im_hp_lab',type:'fd',cond:{img_any:'y'},t:'FAI / קרע בלברום',lbl:'הדמיה: FAI / לברום',first:1.96},
+ {id:'im_hp_glut',type:'fd',cond:{img_any:'y'},t:'טנדינופתיה של הגלוטאוס / בורסיטיס טרוכנטרית',lbl:'US / MRI: גלוטאוס',first:1.96},
+ {id:'im_hp_avn',type:'fd',cond:{img_any:'y'},t:'נמק אווסקולרי של ראש הירך (MRI)',lbl:'MRI: נמק',first:1.96},
+ {id:'im_hp_hern',type:'fd',cond:{img_any:'y'},t:'בקע מפשעתי (US)',lbl:'US: בקע',first:1.96},
+ /* ברך */
+ {id:'im_kn_fx',type:'fd',cond:{img_any:'y'},t:'שבר בצילום',lbl:'צילום: שבר',first:1.96},
+ {id:'im_kn_acl',type:'fd',cond:{img_any:'y'},t:'קרע ב-ACL (MRI)',lbl:'MRI: ACL',first:1.96},
+ {id:'im_kn_men',type:'fd',cond:{img_any:'y'},t:'קרע במניסקוס (MRI)',h:'קרעים ניווניים שכיחים גם בלי כאב אחרי גיל 50.',lbl:'MRI: מניסקוס',first:1.96},
+ {id:'im_kn_col',type:'fd',cond:{img_any:'y'},t:'פגיעה ב-MCL / LCL',lbl:'הדמיה: רצועה צדדית',first:1.96},
+ {id:'im_kn_oa',type:'fd',cond:{img_any:'y'},t:'שינויים ניווניים בברך (OA)',lbl:'צילום: OA ברך',first:1.96},
+ {id:'im_kn_cyst',type:'fd',cond:{img_any:'y'},t:'ציסטה (בייקר / מניסקלית) או בורסיטיס',lbl:'US: ציסטה / בורסה',first:1.96},
+ {id:'im_kn_pt',type:'fd',cond:{img_any:'y'},t:'טנדינופתיה של גיד הפיקה',lbl:'US: גיד הפיקה',first:1.96},
+ /* קרסול */
+ {id:'im_an_fx',type:'fd',cond:{img_any:'y'},t:'שבר / שבר מאמץ',lbl:'הדמיה: שבר',first:1.96},
+ {id:'im_an_ach',type:'fd',cond:{img_any:'y'},t:'קרע בגיד אכילס',lbl:'US: קרע אכילס',first:1.96},
+ {id:'im_an_achT',type:'fd',cond:{img_any:'y'},t:'טנדינופתיה של אכילס (עיבוי / שינוי מבני)',lbl:'US: טנדינופתיה אכילס',first:1.96},
+ {id:'im_an_lig',type:'fd',cond:{img_any:'y'},t:'קרע ב-ATFL / רצועות הקרסול',lbl:'US / MRI: רצועות',first:1.96},
+ {id:'im_an_syn',type:'fd',cond:{img_any:'y'},t:'פגיעה בסינדסמוזיס',lbl:'MRI: סינדסמוזיס',first:1.96},
+ {id:'im_an_ocl',type:'fd',cond:{img_any:'y'},t:'פגיעה אוסטאוכונדרלית בטלוס',lbl:'MRI: OCL',first:1.96},
+ {id:'im_an_pf',type:'fd',cond:{img_any:'y'},t:'עיבוי של הפסציה הפלנטרית (US)',lbl:'US: פסציה',first:1.96},
+ /* עצבים */
+ {id:'im_emg',type:'fd',cond:{img_any:'y'},t:'EMG / בדיקת הולכה עצבית חריגה',lbl:'EMG',first:1.96},
+ {id:'im_brain',type:'fd',cond:{img_any:'y'},t:'CT / MRI של המוח הראה ממצא',lbl:'הדמיית מוח',first:1.96},
+ /* עיכול */
+ {id:'im_gi_scope',type:'fd',cond:{img_any:'y'},t:'קולונוסקופיה / גסטרוסקופיה הראתה דלקת, כיב או גידול',lbl:'אנדוסקופיה',first:1.96},
+ {id:'im_gi_cel',type:'fd',cond:{img_any:'y'},t:'נוגדני צליאק חיוביים',lbl:'צליאק בדם',first:1.96},
+ {id:'im_gi_hp',type:'fd',cond:{img_any:'y'},t:'הליקובקטר פילורי חיובי',lbl:'H. pylori',first:1.96},
+ {id:'im_gi_gs',type:'fd',cond:{img_any:'y'},t:'אבני מרה ב-US',lbl:'US: אבני מרה',first:1.96},
+ {id:'im_gi_calp',type:'fd',cond:{img_any:'y'},t:'קלפרוטקטין בצואה גבוה',lbl:'קלפרוטקטין',first:1.96},
+ /* נשים */
+ {id:'im_w_endo',type:'fd',cond:{img_any:'y'},t:'אנדומטריומה / אדנומיוזיס (US / MRI)',lbl:'US: אנדומטריוזיס',first:1.96},
+ {id:'im_w_pco',type:'fd',cond:{img_any:'y'},t:'שחלות פוליציסטיות או הורמונים זכריים גבוהים',lbl:'PCOS בבדיקות',first:1.96},
+ {id:'im_w_fib',type:'fd',cond:{img_any:'y'},t:'מיומות / פוליפים ברחם',lbl:'US: מיומות',first:1.96},
+ {id:'im_tsh',type:'fd',cond:{img_any:'y'},t:'TSH (תריס) חריג',lbl:'TSH',first:1.96},
+ /* זיהומים */
+ {id:'im_i_cxr',type:'fd',cond:{img_any:'y'},t:'תסנין בצילום חזה',lbl:'צילום חזה',first:1.96},
+ {id:'im_i_strep',type:'fd',cond:{img_any:'y'},t:'משטח גרון / בדיקה מהירה לסטרפטוקוק',lbl:'משטח גרון',first:1.96},
+ {id:'im_i_cov',type:'fd',cond:{img_any:'y'},t:'בדיקת קורונה',lbl:'בדיקת קורונה',first:1.96},
+ {id:'im_i_urine',type:'fd',cond:{img_any:'y'},t:'סטיק / תרבית שתן',lbl:'בדיקת שתן',first:1.96},
+ {id:'im_i_spiro',type:'fd',cond:{img_any:'y'},t:'ספירומטריה: חסימה',lbl:'ספירומטריה',first:1.96},
+ /* עור */
+ {id:'im_d_koh',type:'fd',cond:{img_any:'y'},t:'גרידה / תרבית: פטרייה',lbl:'בדיקת פטרייה',first:1.96},
+ {id:'im_d_patch',type:'fd',cond:{img_any:'y'},t:'Patch test חיובי',lbl:'Patch test',first:1.96},
+ {id:'im_d_bx',type:'fd',cond:{img_any:'y'},t:'ביופסיה / דרמוסקופיה: חשד לממאירות',lbl:'ביופסיה',first:1.96},
  {id:'dur',t:'כמה זמן זה כבר ככה?',type:'multi',o:[['a','פחות מ-3 שבועות'],['s','3–8 שבועות'],['m','2–3 חודשים'],['l','מעל 3 חודשים']],h:'משנה את כל התמונה: אקוטי מול כרוני.',lbl:'משך',first:1.9,always:1},
  {id:'sex',t:'מין המטופל',type:'ab',a:['אישה','גבר'],lbl:'מין',first:1.8},
  {id:'gi_main',cond:{dom:'g'},t:'מה הבעיה העיקרית?',type:'multi',o:[['u','בטן עליונה / צרבת / שובע מהיר'],['c','עצירות'],['d','שלשול / יציאות רכות'],['p','נפיחות / גזים / כאב בטן']],lbl:'תלונה',first:5},
@@ -502,7 +578,7 @@ const Q = [
  {id:'k_dvt',t:'נפיחות ורגישות בשוק, עם גורם סיכון לקריש (ניתוח, קיבוע, טיסה ארוכה)?',h:'לחשב Wells.',lbl:'חשד ל-DVT',first:5},
  {id:'k_hip',t:'תנועות הירך או הגב משחזרות את הכאב בברך?',h:'בעיקר סיבוב פנימי של הירך. כאב ירך מוחזר לברך שכיח בגיל מבוגר ובילדים.',lbl:'ירך / גב',first:6},
  {id:'k_age',t:'גיל המטופל',type:'ab',a:['מתחת ל-40','40 ומעלה'],lbl:'גיל'},
- {id:'k_teen',cond:{k_age:'a'},t:'מתבגר בשלב גדילה (בערך 10–15)?',lbl:'גיל גדילה'},
+ {id:'k_teen',excl:{age:['y','f','g','o']},cond:{k_age:'a'},t:'מתבגר בשלב גדילה (בערך 10–15)?',lbl:'גיל גדילה'},
  {id:'k_ant',t:'הכאב בעיקר בקדמת הברך, סביב או מתחת לפיקה?',lbl:'כאב קדמי'},
  {id:'k_side',cond:{k_ant:'n'},t:'באיזה צד?',type:'ab',a:['פנימי (מדיאלי)','חיצוני (לטרלי)'],lbl:'צד'},
  {id:'k_post',cond:{k_ant:'n'},t:'הכאב בעיקר מאחורי הברך?',lbl:'כאב אחורי'},
@@ -610,12 +686,12 @@ const Q = [
  {id:'t_stork',type:'pn',t:'One-leg hyperextension (Stork)',h:'עמידה על רגל אחת עם הטיית גב לאחור, לכל צד.',pos:'כאב גב באותו צד.',lbl:'Stork'},
  {id:'t_piri',type:'pn',t:'Seated piriformis stretch / FAIR',h:'ישיבה או שכיבה על הצד: כיפוף, אדוקציה וסיבוב פנימי של הירך.',pos:'שחזור כאב בעכוז האחורי.',lbl:'FAIR'},
  /* ---------- גב תחתון: מקורות לא אורטופדיים ---------- */
- {id:'c_aaa',t:'גיל מעל 60 ומעשן, עם כאב עמוק בבטן או בגב שלא משתנה בתנועה, או תחושת פעימה בבטן?',lbl:'חשד AAA',first:4.5},
+ {id:'c_aaa',excl:{age:['c','y','f']},t:'גיל מעל 60 ומעשן, עם כאב עמוק בבטן או בגב שלא משתנה בתנועה, או תחושת פעימה בבטן?',lbl:'חשד AAA',first:4.5},
  {id:'c_uro',t:'צריבה או דם בשתן, כאב גלי בצד (מותן), או חום?',lbl:'תסמיני שתן / מותן',first:4.6},
  {id:'c_gi',first:6,t:'עצירות, נפיחות בבטן או שינוי בהרגלי היציאות?',lbl:'עצירות / בטן'},
  {id:'c_gi2',first:6.05,cond:{c_gi:'y'},t:'הכאב משתנה עם ארוחות או יציאות יותר מאשר עם תנועה?',lbl:'קשור ליציאות'},
  {id:'c_pfloor',first:6.2,t:'דליפת שתן, תחושת כובד באגן, או עצירת נשימה במאמץ?',lbl:'רצפת אגן / נשימה'},
- {id:'c_cycle',first:6.1,cond:{sex:'a'},t:'הכאב מחמיר באופן קבוע סביב המחזור החודשי?',lbl:'קשור למחזור'},
+ {id:'c_cycle',excl:{age:['o']},first:6.1,cond:{sex:'a'},t:'הכאב מחמיר באופן קבוע סביב המחזור החודשי?',lbl:'קשור למחזור'},
  {id:'t_aslr',type:'pn',t:'Active straight leg raise (ASLR)',h:'שכיבה על הגב, הרמת רגל ישרה 20 ס"מ. אפשר לחזור עם דחיסת אגן ידנית.',pos:'קושי, כבדות או כאב, שמשתפרים עם דחיסת האגן.',lbl:'ASLR'},
  {id:'t_p4',type:'pn',t:'P4 / Posterior pelvic pain provocation',h:'שכיבה על הגב, ירך ב-90°. לחץ צירי דרך הברך לאורך הירך.',pos:'כאב עמוק בעכוז באותו צד.',lbl:'P4'},
 
@@ -634,7 +710,7 @@ const Q = [
  {id:'c_surg',ctx:1,t:'עבר ניתוח בעבר באזור, בבטן או באגן (כולל ניתוח קיסרי)?',lbl:'ניתוחים בעבר'},
  {id:'c_work',ctx:1,oo:1,t:'איזה סוג עבודה?',type:'ab',a:['ישיבה ממושכת / מחשב','עבודה פיזית / תנועות חוזרות'],lbl:'עבודה'},
  {id:'c_stress',ctx:1,t:'יש סטרס משמעותי, שינה גרועה, או חשש שתנועה תזיק?',h:'דגלים צהובים: גורמים פסיכו-סוציאליים שמעלים סיכון לכאב מתמשך.',lbl:'סטרס / שינה'},
- {id:'c_baby',ctx:1,t:'הריון כרגע, לידה בשנה האחרונה, או תינוק חדש בבית (נשיאה, הנקה, שינה מקוטעת)?',lbl:'הריון / תינוק'},
+ {id:'c_baby',excl:{age:['c','g','o'],sex:['b']},ctx:1,t:'הריון כרגע, לידה בשנה האחרונה, או תינוק חדש בבית (נשיאה, הנקה, שינה מקוטעת)?',lbl:'הריון / תינוק'},
  {id:'c_meds',ctx:1,t:'נוטל תרופות באופן קבוע או לאחרונה?',lbl:'תרופות'},
  {id:'c_ster',ctx:1,cond:{c_meds:'y'},t:'סטרואידים (פרדניזון וכו\') לאורך זמן?',lbl:'סטרואידים'},
  {id:'c_fq',ctx:1,cond:{c_meds:'y'},t:'אנטיביוטיקה מקבוצת הקווינולונים (סיפרו, לבופלוקסצין) בחודשים האחרונים?',lbl:'קווינולונים'},
@@ -819,6 +895,8 @@ XBR08:{k:'סקירה שיטתית',c:'Brenninkmeijer EEA et al. Diagnostic crite
  XSH20:{k:'הנחיה + סקירה שיטתית (GRADE)',c:'Shaker MS et al. Anaphylaxis—a 2020 practice parameter update, systematic review, and GRADE analysis. J Allergy Clin Immunol 2020;145:1082–123.',q:'Shaker 2020 anaphylaxis practice parameter update systematic review'},
  XDN18a:{k:'סקירת Cochrane',c:'Dinnes J et al. Visual inspection for diagnosing cutaneous melanoma in adults. Cochrane Database Syst Rev 2018;CD013194.',q:'Dinnes 2018 visual inspection diagnosing cutaneous melanoma Cochrane'},
  XDN18b:{k:'סקירת Cochrane',c:'Dinnes J et al. Visual inspection and dermoscopy, alone or in combination, for diagnosing keratinocyte skin cancers in adults. Cochrane Database Syst Rev 2018;CD011901.',q:'Dinnes 2018 visual inspection dermoscopy keratinocyte skin cancers Cochrane'},
+ XBJ15:{k:'סקירה שיטתית',c:'Brinjikji W et al. Systematic literature review of imaging features of spinal degeneration in asymptomatic populations. AJNR Am J Neuroradiol 2015;36:811–6.',q:'Brinjikji 2015 imaging features spinal degeneration asymptomatic populations'},
+ XTE14:{k:'סקירה שיטתית',c:'Teunis T et al. A systematic review and pooled analysis of the prevalence of rotator cuff disease with increasing age. J Shoulder Elbow Surg 2014;23:1913–21.',q:'Teunis 2014 prevalence rotator cuff disease increasing age systematic review'},
  XAD04:{k:'מטא-אנליזה',c:'Andersson RE. Meta-analysis of the clinical and laboratory diagnosis of appendicitis. Br J Surg 2004;91:28–37.',q:'Andersson 2004 meta-analysis clinical laboratory diagnosis appendicitis'},
  MT14:{k:'ספר',c:"Hengeveld E, Banks K. Maitland's Peripheral Manipulation, 5th ed. Elsevier, 2014.",q:'',u:'https://www.google.com/search?q=Maitland%27s+Peripheral+Manipulation+Hengeveld+Banks'},
  MG26:{k:'ספר מוביל',c:"Manske RC et al. Magee's Orthopedic Physical Assessment, 8th ed. Elsevier, 2026.",q:'',u:'https://shop.elsevier.com/books/magee-s-orthopedic-physical-assessment/manske/978-0-443-12864-6'},
@@ -862,7 +940,7 @@ const DX = [
   p:{dom:'g!',gi_alarm:'y!',gi_noct:'y'},
   d:'דם ביציאות, ירידה במשקל, אנמיה או שינוי חדש בהרגלי יציאות אחרי גיל 50. מחייב בירור רפואי לפני טיפול פונקציונלי.',
   t:['ספירת דם, CRP','קלפרוטקטין בצואה','קולונוסקופיה לפי הצורך'],
-  m:'הפניה לרופא / גסטרואנטרולוג.',ev:['LC16','LB19','MT14','MG26','NT21','XAS11']},
+  m:'הפניה לרופא / גסטרואנטרולוג.',ev:['LC16','LB19','MT14','MG26','NT21','XAS11','XBJ15']},
  {id:'gi_upf',flag:1,n:'דגל אדום במערכת העיכול העליונה',en:'Upper GI alarm features',
   p:{dom:'g!',gi_upal:'y!'},
   d:'קושי בבליעה, הקאות חוזרות, הקאה דמית או צרבת חדשה עם ירידה במשקל.',
@@ -1504,7 +1582,7 @@ const DX = [
   p:{dom:'o!',site:'sh!',s_weak:'y',s_age:'b',s_prom:'n',s_neck:'n',t_erls:'y+',t_drop:'y+',t_belly:'y+',t_jobe:'y',t_arc:'y',t_hk:'y'},
   d:'חולשה בולטת בהרמה או בסיבוב חיצוני, לרוב מעל גיל 40, לעיתים אחרי טראומה קלה.',
   t:['External rotation lag sign','Drop arm','Belly press / Lift-off','Painful arc עם חולשה'],
-  m:'US או MRI. קרע טראומטי חריף במטופל צעיר או פעיל → הפניה מוקדמת. קרע ניווני → תרגול כקו ראשון.',ev:['HE13','H12','PK05','MT14','MG26','NT21']},
+  m:'US או MRI. קרע טראומטי חריף במטופל צעיר או פעיל → הפניה מוקדמת. קרע ניווני → תרגול כקו ראשון.',ev:['HE13','H12','PK05','MT14','MG26','NT21','XTE14']},
  {id:'s_froz',n:'כתף קפואה',en:'Adhesive capsulitis',
   p:{dom:'o!',site:'sh!',s_prom:'y!',s_age:'b',s_dm:'y',s_crep:'n',s_trauma:'n',s_weak:'n',t_arc:'n'},
   d:'הגבלה פסיבית גלובלית, בולטת בסיבוב חיצוני, עם כאב לילי. שכיחה בגילאי 40–60 ובסוכרת או תריס.',
@@ -1830,17 +1908,17 @@ const DX = [
   p:{dom:'o!',site:'lb!',b_rad:'y!',b_path:'a',b_below:'y',b_neuro:'y',t_l4:'y+',t_pkb:'y',t_slr:'y',t_l23:'n',t_l5:'n',t_s1:'n'},
   d:'שורש L4 תורם גם לעצב הפמורלי וגם לסיאטי: כאב בקדמת הירך שיורד לפנים השוק, עם רפלקס ברך ירוד.',
   t:['Femoral nerve stretch','SLR','בדיקת L4 (רפלקס ברך)'],
-  m:'טיפול בגב ובעצב. חסר מוטורי מתקדם → הפניה.',ev:['SU11','AN13','MT14','MG26','NT21']},
+  m:'טיפול בגב ובעצב. חסר מוטורי מתקדם → הפניה.',ev:['SU11','AN13','MT14','MG26','NT21','XBJ15']},
  {id:'b_l5',n:'רדיקולופתיה סיאטית L5',en:'Sciatic radiculopathy L5',
   p:{dom:'o!',site:'lb!',b_rad:'y!',b_both:'n',b_path:'b!',b_below:'y!',b_legdom:'y',b_neuro:'y',t_slr:'y-',t_slump:'y',t_cslr:'y+',t_l5:'y+',t_s1:'n',t_l4:'n',t_pkb:'n'},
   d:'כאב מהעכוז לצד הרגל ולגב כף הרגל עד הבוהן הגדולה, עם חולשת EHL ודורסיפלקסיה.',
   t:['SLR','Slump','Crossed SLR','בדיקת L5'],
-  m:'הדרכה, תנועה, טיפול בעצב. Foot drop מתקדם → הפניה מהירה.',ev:['VW10','MJ08','AN13','MT14','MG26','NT21']},
+  m:'הדרכה, תנועה, טיפול בעצב. Foot drop מתקדם → הפניה מהירה.',ev:['VW10','MJ08','AN13','MT14','MG26','NT21','XBJ15']},
  {id:'b_s1',n:'רדיקולופתיה סיאטית S1',en:'Sciatic radiculopathy S1',
   p:{dom:'o!',site:'lb!',b_rad:'y!',b_both:'n',b_path:'b!',b_below:'y!',b_legdom:'y',b_neuro:'y',t_slr:'y-',t_slump:'y',t_cslr:'y+',t_s1:'y+',t_l5:'n',t_l4:'n',t_pkb:'n'},
   d:'כאב מהעכוז לאחורי השוק ולצד החיצוני של כף הרגל, עם רפלקס אכילס ירוד וחולשת פלנטר-פלקסיה.',
   t:['SLR','Slump','בדיקת S1 (רפלקס אכילס, קצות אצבעות ×10)'],
-  m:'הדרכה, תנועה, טיפול בעצב. חולשה מתקדמת → הפניה.',ev:['VW10','MJ08','AN13','MT14','MG26','NT21']},
+  m:'הדרכה, תנועה, טיפול בעצב. חולשה מתקדמת → הפניה.',ev:['VW10','MJ08','AN13','MT14','MG26','NT21','XBJ15']},
  {id:'b_multi',n:'רדיקולופתיה רב-רמתית (פמורלית וסיאטית)',en:'Multilevel radiculopathy (femoral + sciatic)',
   p:{dom:'o!',site:'lb!',b_rad:'y!',b_both:'y!',b_age:'b',b_neuro:'y',t_pkb:'y',t_slr:'y'},
   d:'הקרנה גם בפיזור הפמורלי וגם בסיאטי: מעורבות של כמה שורשים, לרוב על רקע היצרות או בקע גדול.',
@@ -1926,6 +2004,72 @@ const TAG={
  a_fx:'FRAC',a_inf:'INF',a_ach:'RUPT',a_back:'NEURAL',a_lat:'LIG',a_syn:'LIG',a_cai:'INSTAB',a_ocl:'INTRA',a_imp:'MECH',a_achT:'TENDINO',a_pf:'TENDINO',a_tts:'ENTRAP',a_ptt:'TENDINO',a_per:'TENDINO',a_sfx:'STRESS',
  b_ces:'CES',b_fxd:'FRAC',b_mal:'MAL',b_fem:'NEURAL',b_l4:'NEURAL',b_l5:'NEURAL',b_s1:'NEURAL',b_multi:'NEURAL',b_sten:'STEN',b_nslbp:'SOMATIC',b_sijp:'SOMATIC',b_axs:'INFLAM',b_spon:'MECH',b_dgs:'ENTRAP',b_mer:'ENTRAP',
 };
+/* ---------- ממצאי בדיקות → אבחנות ---------- */
+const IMG={
+ im_sh_fx:{s_fx:'y!'},
+ im_sh_rct:{s_rct:'y!'},
+ im_sh_tend:{s_saps:'y+',s_rct:'y'},
+ im_sh_bic:{s_lhb:'y+'},
+ im_sh_calc:{s_calc:'y!'},
+ im_sh_oa:{s_oa:'y!',s_froz:'n'},
+ im_sh_lab:{s_slap:'y+',s_inst:'y'},
+ im_sh_ac:{s_ac:'y+'},
+ im_el_fx:{e_fx:'y!'},
+ im_el_ten:{e_lat:'y+',e_med:'y+'},
+ im_el_bic:{e_bic:'y!'},
+ im_el_ucl:{e_ucl:'y!'},
+ im_el_oa:{e_oa:'y!',e_ocd:'y'},
+ im_hw_fx:{hw_fx:'y!'},
+ im_hw_oa:{hw_oa:'y!'},
+ im_hw_gang:{hw_gang:'y!'},
+ im_hw_dq:{hw_dq:'y+'},
+ im_sp_fx:{b_fxd:'y!',nk_fx:'y!'},
+ im_sp_disc:{b_l4:'y',b_l5:'y',b_s1:'y',b_fem:'y',b_multi:'y',nk_rad:'y',s_c5:'y',s_c6:'y',s_c7:'y',hw_cerv:'y',n_crad:'y',n_lrad:'y',e_cerv:'y'},
+ im_sp_cord:{nk_myel:'y!'},
+ im_sp_sten:{b_sten:'y+',b_multi:'y'},
+ im_sp_spon:{b_spon:'y!'},
+ im_sp_sij:{b_axs:'y+'},
+ im_hp_fx:{hp_fx:'y!',hp_sfx:'y!'},
+ im_hp_oa:{hp_oa:'y!'},
+ im_hp_lab:{hp_fai:'y+'},
+ im_hp_glut:{hp_gtps:'y+'},
+ im_hp_avn:{hp_avn:'y!'},
+ im_hp_hern:{hp_hern:'y!'},
+ im_kn_fx:{k_fx:'y!'},
+ im_kn_acl:{k_acl:'y!'},
+ im_kn_men:{k_men:'y+',k_mcyst:'y'},
+ im_kn_col:{k_mcl:'y+',k_lcl:'y+'},
+ im_kn_oa:{k_oa:'y!'},
+ im_kn_cyst:{k_baker:'y+',k_mcyst:'y+',k_bursa:'y+'},
+ im_kn_pt:{k_ptend:'y+'},
+ im_an_fx:{a_fx:'y!',a_sfx:'y!'},
+ im_an_ach:{a_ach:'y!'},
+ im_an_achT:{a_achT:'y+'},
+ im_an_lig:{a_lat:'y+',a_cai:'y'},
+ im_an_syn:{a_syn:'y!'},
+ im_an_ocl:{a_ocl:'y!'},
+ im_an_pf:{a_pf:'y+'},
+ im_emg:{n_pn:'y+',n_cts:'y+',n_cub:'y+',hw_cts:'y+',e_cub:'y+',a_tts:'y+'},
+ im_brain:{n_sec:'y+',n_strk:'y',n_cent:'y'},
+ im_gi_scope:{gi_org:'y!',gi_ibd:'y+',gi_pud:'y+'},
+ im_gi_cel:{gi_cel:'y!'},
+ im_gi_hp:{gi_pud:'y+'},
+ im_gi_gs:{gi_bil:'y!',s_gb:'y!'},
+ im_gi_calp:{gi_ibd:'y+',gi_ibsc:'n',gi_ibsd:'n-'},
+ im_w_endo:{w_endo:'y+',gi_endo:'y+',b_gyn:'y+'},
+ im_w_pco:{w_pcos:'y+'},
+ im_w_fib:{w_hmb:'y+'},
+ im_tsh:{w_thyr:'y!',gi_medcon:'y'},
+ im_i_cxr:{i_pna:'y!'},
+ im_i_strep:{i_strep:'y!',i_vph:'n-'},
+ im_i_cov:{i_cov:'y!'},
+ im_i_urine:{i_cyst:'y+',w_uti:'y+',i_pyelo:'y'},
+ im_i_spiro:{i_copd:'y+',i_asth:'y+',i_crc:'n'},
+ im_d_koh:{d_tin:'y!',w_cand:'y'},
+ im_d_patch:{d_cont:'y+'},
+ im_d_bx:{d_mel:'y+',d_bcc:'y+',d_benign:'n!'},
+};
+DX.forEach(d=>{for(const q in IMG){const v=IMG[q][d.id]; if(v&&!(q in d.p)) d.p[q]=v;}});
 const CTX1={
  p_act:{hp_sfx:'h',a_sfx:'h',w_hyp:'h',k_ptend:'h',a_achT:'h|r',hp_add:'h|r',hp_fai:'h|r',e_ucl:'h',k_pfps:'r|h',k_oa:'n|l',hp_oa:'n|l',b_sten:'n|l'},
  p_expo:{i_asth:'y',i_copd:'y',i_crc:'y',d_cont:'y',d_ecz:'y',w_cand:'n'},
@@ -1961,11 +2105,13 @@ const QI = Object.fromEntries(Q.map(q=>[q.id,q]));
 let answers = [];
 let forceDone=false, keepAsking=false, open=new Set(), showElim=false, prevActive=new Set(DX.map(d=>d.id));
 
+const isEx=(q,A)=>q.excl&&Object.entries(q.excl).some(([k,vs])=>vs.includes(A[k]));
 function ansLabel(q,v){
   if(v==='?')return 'דילוג';
   if(q.type==='ab')return q.a[v==='a'?0:1];
   if(q.type==='multi'){const o=q.o.find(o=>o[0]===v);return o?o[1]:v;}
   if(q.type==='pn')return v==='y'?'חיובי':'שלילי';
+  if(q.type==='fd')return v==='y'?'נמצא':'תקין / נשלל';
   return v==='y'?'כן':'לא';
 }
 const mod = e => '!+-*'.includes(e[e.length-1])&&e.length>1 ? e[e.length-1] : '';
@@ -1987,16 +2133,23 @@ function allAns(){
   if(A.p_smoke&&A.p_smoke!=='?')add({i_smoke:A.p_smoke==='n'?'n':'y'});
   if(A.i_smoke&&A.i_smoke!=='?')add({p_smoke:A.i_smoke==='y'?'y':'n'});
   if(A.p_expo==='y')add({d_contact:'y'});
+  if(A.dom==='w')add({sex:'a'});
+  if(A.n_sleep==='y')add({p_sleep:'b'});
+  if(A.p_act==='h')add({w_ath:'y'});
+  if(A.w_preg==='y')add({c_baby:'y'});
+  if(A.age==='o'||A.age==='g')add({w_preg:'n'});
   return answers.concat(extra);
 }
 function evaluate(){
   const AA=allAns(), A=Object.fromEntries(AA);
   const res=DX.map(d=>{
     let s=0, elim=null, elimQ=null, why=[];
+    const conf=AA.some(([qid,v])=>QI[qid].type==='fd'&&v==='y'&&d.p[qid]&&/^y[!+]$/.test(d.p[qid]));
     for(const [qid,v] of AA){
       const e=d.p[qid]; if(!e||v==='?')continue;
-      const m=mod(e), xs=vals(e), q=QI[qid], txt=q.lbl+': '+ansLabel(q,v);
-      if(xs.includes(v)){ s += m==='!'?(qid[0]==='g'&&qid[1]==='_'?1:(d.flag&&!q.scope?6:2)): (m==='+'||m==='*')?3:1; if(!q.scope)why.push([1,txt]); }
+      const m=mod(e), xs=vals(e), q=QI[qid], txt=q.lbl+': '+ansLabel(q,v), isF=q.type==='fd';
+      if(xs.includes(v)){ s += isF&&v==='y'?(m==='!'?7:m==='+'?5:2): m==='!'?(qid[0]==='g'&&qid[1]==='_'?1:isF?2:(d.flag&&!q.scope?6:2)): (m==='+'||m==='*')?3:1; if(!q.scope)why.push([1,txt]); }
+      else if(m==='!'&&conf&&!q.scope&&!isF){ s-=2; why.push([0,txt]); }
       else if(m==='!'){ elim=txt; elimQ=qid; break; }
       else { s -= (m==='-'||m==='*')?3:1; why.push([0,txt]); }
     }
@@ -2010,7 +2163,7 @@ function evaluate(){
 
 function nextQuestion(ev){
   const asked=new Set(Object.keys(ev.A));
-  const ok=q=>!q.ctx&&!q.tcm&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v));
+  const ok=q=>!q.ctx&&!q.tcm&&!isEx(q,ev.A)&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v));
   const cands=Q.filter(ok);
   const firsts=cands.filter(q=>q.first).sort((a,b)=>a.first-b.first);
   let best=null,bv=0;
@@ -2063,7 +2216,7 @@ function testProp(q){
 
 function nextCtx(ev){
   const asked=new Set(Object.keys(ev.A));
-  return Q.find(q=>q.ctx&&!(q.oo&&ev.A.dom!=='o')&&!(q.id==='c_baby'&&ev.A.sex==='b')&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v)));
+  return Q.find(q=>q.ctx&&!(q.oo&&ev.A.dom!=='o')&&!isEx(q,ev.A)&&!asked.has(q.id)&&(!q.cond||Object.entries(q.cond).every(([k,v])=>ev.A[k]===v)));
 }
 function render(){
   const ev=evaluate(); let q=nextQuestion(ev); const top=ev.act[0];
@@ -2113,15 +2266,16 @@ function renderTop(ev,q,done){
 
   if(!done&&q){
     const isT=q.type==='pn';
-    const L=q.type==='multi'?q.o.map(o=>o[1]):q.type==='ab'?q.a:isT?['חיובי','שלילי']:['כן','לא'];
+    const isF=q.type==='fd';
+    const L=q.type==='multi'?q.o.map(o=>o[1]):q.type==='ab'?q.a:isT?['חיובי','שלילי']:isF?['נמצא','תקין / נשלל']:['כן','לא'];
     const V=q.type==='multi'?q.o.map(o=>o[0]):q.type==='ab'?['a','b']:['y','n'];
     const prop=isT?testProp(q):'';
-    h+=`<div class="qcard"><span class="qnum">${isT?'<span class="kind">בדיקה קלינית</span>':''}${q.ctx?'<span class="kind">גורמים תורמים</span>':''}${q.prof?'<span class="kind">פרופיל המטופל</span>':''}שאלה ${answers.length+1}</span>
-      <h1 class="qtext ${isT?'test':''}">${esc(q.t)}</h1>
+    h+=`<div class="qcard"><span class="qnum">${isT?'<span class="kind">בדיקה קלינית</span>':''}${q.ctx?'<span class="kind">גורמים תורמים</span>':''}${q.prof?'<span class="kind">פרופיל המטופל</span>':''}${isF?'<span class="kind">ממצא בבדיקה</span>':''}שאלה ${answers.length+1}</span>
+      <h1 class="qtext ${isT?'test':''}">${isF?'בבדיקות שנעשו: ':''}${esc(q.t)}</h1>
       ${q.h?`<p class="qhint">${esc(q.h)}</p>`:''}
       ${q.pos?`<p class="qpos"><b>חיובי:</b> ${esc(q.pos)}</p>`:''}
       ${prop?`<span class="prop">${esc(prop)}</span>`:''}
-      <div class="answers ${L.length>2?'many':''}" data-q="${q.id}">${L.map((l,i)=>`<button class="ans" data-v="${V[i]}">${esc(l)}</button>`).join('')}${!q.scope?`<button class="skip" data-v="?">${isT?'לא נבדק / דלג':'לא יודע / דלג'}</button>`:''}</div>
+      <div class="answers ${L.length>2?'many':''}" data-q="${q.id}">${L.map((l,i)=>`<button class="ans" data-v="${V[i]}">${esc(l)}</button>`).join('')}${!q.scope?`<button class="skip" data-v="?">${isT||isF?'לא נבדק / דלג':'לא יודע / דלג'}</button>`:''}</div>
       ${answers.length>=3?'<div><button class="tbtn" id="finish">הצג תוצאה עכשיו</button></div>':''}</div>`;
   } else if(!ev.act.length){
     h+=`<div class="qcard result"><h2>אין אבחנה שמתאימה לכל התשובות</h2><p>ייתכן שתשובה אחת סותרת. אפשר לחזור לשאלה מסוימת מהשורה למעלה.</p>
